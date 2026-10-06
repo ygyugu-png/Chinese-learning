@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chinese Stage 2 – 第三课 (Lesson 16)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --plum:#68246D; --plum-deep:#3D1440; --plum-soft:#EFE6F0;
+  --paper:#FFFFFF; --wash:#F4F2F6; --ink:#211A25; --muted:#5E5566; --line:#DCD3E0;
+  --t1:#C62828; --t2:#C46A00; --t3:#2E7D32; --t4:#1E55B8; --t0:#77707D;
+  --hi:#FFF3C4;
+  --latin:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --han:"KaiTi","STKaiti","Kaiti SC","Kaiti TC","楷体","BiauKai","AR PL UKai CN","Noto Serif SC",serif;
+  --brush:var(--han);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --plum:#D9A6DE; --plum-deep:#F3E3F5; --plum-soft:#3A2440;
+    --paper:#1C1620; --wash:#120E15; --ink:#F1ECF3; --muted:#B5AABB; --line:#41354A;
+    --t1:#FF7A70; --t2:#FFB54D; --t3:#7BD07F; --t4:#7FB0FF; --t0:#A79EAE; --hi:#4A3F1A;
+  }
+}
+:root[data-theme="dark"]{
+  --plum:#D9A6DE; --plum-deep:#F3E3F5; --plum-soft:#3A2440;
+  --paper:#1C1620; --wash:#120E15; --ink:#F1ECF3; --muted:#B5AABB; --line:#41354A;
+  --t1:#FF7A70; --t2:#FFB54D; --t3:#7BD07F; --t4:#7FB0FF; --t0:#A79EAE; --hi:#4A3F1A;
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0}
+body{background:var(--wash);color:var(--ink);font-family:var(--latin);display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--plum);outline-offset:2px;border-radius:4px}
+
+/* ---------- stage ---------- */
+.viewport{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
+.stage{position:relative;width:min(100%, calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;background:var(--paper);
+  border-radius:6px;box-shadow:0 1px 0 var(--line),0 12px 40px -18px rgba(61,20,64,.35);container-type:inline-size;overflow:hidden}
+.stage::before{content:"";position:absolute;left:0;top:0;bottom:0;width:.9cqw;background:var(--plum)}
+.slide{position:absolute;inset:0;padding:4cqw 5.5cqw 3.5cqw 6.5cqw;display:none;flex-direction:column;
+  font-size:1.42cqw;line-height:1.45;overflow:auto}
+.slide.on{display:flex}
+.slide-foot{margin-top:auto;padding-top:1em;display:flex;justify-content:space-between;color:var(--muted);font-size:.72em}
+
+/* ---------- type ---------- */
+.zh,.han{font-family:var(--han)}
+h2.title{margin:0 0 .9em;display:flex;align-items:baseline;gap:.6em;flex-wrap:wrap;font-weight:400}
+h2.title .han{font-size:2.1em;font-weight:700;color:var(--plum)}
+h2.title .lat{font-size:1.15em;color:var(--muted)}
+.py{font-family:var(--latin);letter-spacing:.01em}
+.t1{color:var(--t1)}.t2{color:var(--t2)}.t3{color:var(--t3)}.t4{color:var(--t4)}.t0{color:var(--t0)}
+.en{color:var(--muted)}
+p{margin:0}
+a{color:var(--plum)}
+
+/* toggles */
+body.no-py .py:not(.keep){visibility:hidden}
+body.no-en .en:not(.keep){visibility:hidden}
+
+/* ---------- word entries ---------- */
+.cols{display:grid;gap:2.2em;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));align-items:start}
+.entry{border-top:2px solid var(--plum);padding-top:.7em}
+.headword{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;margin-bottom:.35em}
+.headword .zh{font-size:2.5em;font-weight:700;line-height:1.1}
+.headword .py{font-size:1.15em;font-weight:700}
+.gloss{font-weight:700;margin-bottom:.6em}
+.pat{display:flex;flex-wrap:wrap;gap:.3em;align-items:center;margin:.5em 0 .8em;font-size:.92em}
+.pat span{padding:.12em .5em;border-radius:3px;background:var(--wash);border:1px solid var(--line)}
+.pat span.k{background:var(--plum);border-color:var(--plum);color:var(--paper);font-family:var(--han);font-weight:700}
+.pat i{font-style:normal;color:var(--muted)}
+.ex{margin:.55em 0 .75em;padding-left:.8em;border-left:2px solid var(--line)}
+.ex .zh{font-size:1.18em;cursor:pointer}
+.ex .zh:hover{color:var(--plum)}
+.ex .py{font-size:.86em}
+.ex .en{font-size:.88em}
+mark{background:var(--hi);color:inherit;padding:0 .08em;border-radius:2px}
+.note{font-size:.86em;background:var(--plum-soft);padding:.6em .8em;border-radius:4px;margin-top:.6em}
+.note b{color:var(--plum)}
+.turn{margin-top:.8em;font-size:.9em}
+.turn::before{content:"你来说 · Your turn";display:block;font-weight:700;color:var(--plum);font-size:.85em;margin-bottom:.15em}
+
+/* reveal */
+.reveal{margin:.45em 0 .9em}
+.reveal .q{font-size:1.02em}
+.reveal .a{display:none;margin-top:.25em;padding-left:.8em;border-left:2px solid var(--plum)}
+.reveal.shown .a{display:block}
+.reveal .a .zh{font-size:1.15em;cursor:pointer}
+.reveal .a .py{font-size:.86em}
+.rbtn{border:1px solid var(--plum);background:transparent;color:var(--plum);border-radius:3px;padding:.1em .6em;font-size:.78em;cursor:pointer;margin-left:.4em;vertical-align:middle}
+.reveal.shown .rbtn{background:var(--plum);color:var(--paper)}
+
+/* ---------- title slide ---------- */
+.s-title{background:var(--plum-deep);color:#fff;justify-content:center}
+:root[data-theme="dark"] .s-title{background:#2A1530}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .s-title{background:#2A1530}}
+.s-title .big{font-family:var(--brush);font-size:13em;line-height:.95;color:#fff;margin:0;font-weight:400;letter-spacing:.02em}
+.s-title .course{font-size:2em;margin:0 0 .4em;color:#E9D6EC}
+.s-title .meta{display:flex;gap:2.5em;margin-top:1.4em;font-size:1.15em;color:#E9D6EC;flex-wrap:wrap}
+.s-title .meta b{display:block;color:#fff;font-size:1.25em}
+.s-title .uni{position:absolute;right:5.5cqw;bottom:3.5cqw;color:#CDB3D1;font-size:.95em}
+.s-title .tones-deco{position:absolute;right:5.5cqw;top:4cqw;display:flex;gap:1.2em;font-size:1.4em}
+.s-title .tones-deco span{font-family:var(--latin);font-weight:700}
+
+/* plan */
+.plan{display:grid;grid-template-columns:1fr 1.4fr;gap:3em}
+.plan h3{font-size:1.05em;color:var(--plum);margin:0 0 .5em}
+.plan ol,.plan ul{margin:0;padding-left:1.2em}
+.plan li{margin:.35em 0}
+.plan button.jump{background:none;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.2em}
+.plan button.jump:hover{text-decoration-color:var(--plum);color:var(--plum)}
+.plan .zh{font-size:1.05em}
+
+/* tones */
+.tonegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4em}
+.tone svg{width:100%;height:auto;display:block}
+.tone .cue{font-weight:700;margin:.3em 0 .2em}
+.tone .syl{font-size:1.25em;font-weight:700;line-height:1.7;cursor:pointer}
+.tone .syl button{all:unset;cursor:pointer;display:block}
+.tone .syl button:hover{text-decoration:underline}
+.tone .syl button:focus-visible{outline:2px solid var(--plum)}
+
+/* vocab grid */
+.vgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:.55em}
+.card{perspective:600px;height:5.4em;cursor:pointer;border:0;background:none;padding:0}
+.card .in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.card .f,.card .b{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--paper);padding:.2em;text-align:center}
+.card .f .zh{font-size:1.7em;font-weight:700}
+.card .b{transform:rotateY(180deg);background:var(--plum-soft)}
+.card .b .py{font-weight:700;font-size:.95em}
+.card .b .m{font-size:.75em;line-height:1.2;color:var(--ink)}
+.vtools{display:flex;gap:1em;align-items:center;margin-top:1em;flex-wrap:wrap;font-size:.9em}
+.btn{border:1px solid var(--plum);background:var(--plum);color:var(--paper);border-radius:4px;padding:.3em .9em;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--plum)}
+
+/* frequency */
+.freq{display:grid;grid-template-columns:1.25fr 1fr;gap:3em;align-items:start}
+.scale{display:flex;flex-direction:column;gap:.35em}
+.scale button{display:grid;grid-template-columns:7.4em 1fr 4.6em;align-items:center;gap:.8em;border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:.35em .7em;cursor:pointer;text-align:left}
+.scale button[aria-pressed="true"]{border-color:var(--plum);background:var(--plum-soft)}
+.scale .zh{font-size:1.45em;font-weight:700}
+.scale .bar{height:.55em;background:var(--wash);border-radius:99px;overflow:hidden;position:relative}
+.scale .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--plum);border-radius:99px}
+.scale .lab{font-size:.85em;color:var(--muted);text-align:right}
+.scale .sub{font-size:.8em;display:block;font-weight:400}
+.live{border:2px solid var(--plum);border-radius:6px;padding:1em 1.2em}
+.live .zh{font-size:2em;cursor:pointer}
+.live .py{font-size:1em}
+
+/* duration */
+.dur{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8em}
+.dur .entry h3{margin:0 0 .2em;font-size:1.05em}
+.dur .entry .when{color:var(--muted);font-size:.85em;margin-bottom:.4em}
+
+/* football timeline */
+.match{margin:.4em 0 1.2em}
+.match svg{width:100%;height:auto}
+.dialog .line{display:grid;grid-template-columns:1.6em 1fr;gap:.4em}
+.dialog .who{font-weight:700;color:var(--plum)}
+
+/* fairy-tale timeline */
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;text-align:center;margin:.4em 0 1.1em;position:relative}
+.story > div{border:1px solid var(--line);border-radius:6px;padding:.7em .5em}
+.story .emo{font-size:2.6em;line-height:1.1}
+.story .zh{font-size:1.2em;cursor:pointer}
+.story .when{font-family:var(--han);font-weight:700;color:var(--plum);font-size:1.3em}
+
+/* homework */
+.hw{display:grid;grid-template-columns:1fr 1fr;gap:2.5em}
+.hw .task{border-top:2px solid var(--plum);padding-top:.7em}
+.hw .task h3{margin:0 0 .4em;font-size:1.1em}
+.hw .task .zh.h{font-size:2em;font-weight:700}
+.chars{display:flex;flex-wrap:wrap;gap:.5em .7em;margin-top:.5em}
+.chars .w{display:flex}
+.chars span{font-family:var(--han);font-size:1.5em;width:1.7em;height:1.7em;display:grid;place-items:center;
+  background:
+   linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat,
+   linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat;border:1px solid var(--plum)}
+
+/* Kaiti reads best at its natural weight (no faux bold) */
+.zh,.han,[lang="zh"],.pat span.k,.chars span,.story .when,.s-title .big{font-weight:400 !important}
+
+/* ---------- control bar ---------- */
+.bar{height:60px;flex:none;display:flex;align-items:center;gap:.5rem;padding:0 max(12px,env(safe-area-inset-left)) 0 max(12px,env(safe-area-inset-right));justify-content:center;flex-wrap:nowrap}
+.bar button{border:1px solid var(--line);background:var(--paper);border-radius:4px;height:38px;min-width:38px;padding:0 .7rem;cursor:pointer;font-size:.9rem;white-space:nowrap}
+.bar button[aria-pressed="false"]{color:var(--muted);text-decoration:line-through}
+.bar button.nav{font-size:1.1rem;padding:0 .9rem}
+.bar .count{min-width:5.2em;text-align:center;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem}
+.bar .sep{width:1px;height:24px;background:var(--line);margin:0 .3rem}
+.progress{height:3px;background:var(--line);flex:none}
+.progress i{display:block;height:100%;background:var(--plum);transition:width .25s}
+
+/* overview */
+.ov{position:fixed;inset:0;background:rgba(20,10,24,.55);display:none;place-items:center;z-index:10;padding:16px}
+.ov.on{display:grid}
+.ov .panel{background:var(--paper);border-radius:8px;max-width:900px;width:100%;max-height:85vh;overflow:auto;padding:1.2rem 1.4rem}
+.ov h3{margin:0 0 .8rem;color:var(--plum)}
+.ov ol{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.4rem;padding:0;margin:0;list-style:none;counter-reset:s}
+.ov li button{width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:.5rem .6rem;cursor:pointer;display:flex;gap:.5rem}
+.ov li button::before{counter-increment:s;content:counter(s);color:var(--muted);min-width:1.4em}
+.ov li button.cur{border-color:var(--plum);background:var(--plum-soft)}
+.ov .close{float:right}
+.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.45rem .9rem;border-radius:4px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+
+/* ---------- small screens: slides become scrollable pages ---------- */
+@media (max-width: 760px), (max-height: 460px) and (max-width: 1000px){
+  .viewport{padding:0;place-items:stretch}
+  .stage{width:100%;aspect-ratio:auto;height:100%;border-radius:0;box-shadow:none}
+  .stage::before{width:5px}
+  .slide{font-size:16px;padding:22px 18px 24px 24px}
+  .cols,.dur,.freq,.plan,.hw{grid-template-columns:1fr !important;gap:1.4em}
+  .tonegrid{grid-template-columns:repeat(2,1fr)}
+  .vgrid{grid-template-columns:repeat(3,1fr)}
+  .s-title .big{font-size:6.5em}
+  .s-title .tones-deco{display:none}
+  .s-title .uni{position:static;margin-top:2em}
+  .bar{gap:.3rem;height:56px}
+  .bar .opt-label{display:none}
+  .bar .sep{display:none}
+}
+@media (prefers-reduced-motion: reduce){ .card .in{transition:none} .progress i{transition:none} }
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<main class="viewport">
+<div class="stage" id="stage" aria-live="polite">
+
+<!-- PLAN -->
+<section class="slide" data-title="内容 Today’s plan">
+  <h2 class="title"><span class="han">内容</span><span class="lat"><span class="py">nèi róng</span> · today’s plan</span></h2>
+  <div class="plan">
+    <div>
+      <h3>Warm-up and words</h3>
+      <ol>
+        <li><button class="jump" data-go="2">Pinyin and tones</button></li>
+        <li><button class="jump" data-go="3">Lesson 16 key vocabulary</button></li>
+        <li><button class="jump" data-go="7">Frequency words</button> <span class="zh">总是 · 通常 · 常常/经常 · 有时候 · 很少 · 从不</span></li>
+      </ol>
+      <p class="note" style="margin-top:1.4em"><b>Tip:</b> tap any Chinese sentence to hear it. Pinyin is coloured by tone: <span class="t1">1st</span>, <span class="t2">2nd</span>, <span class="t3">3rd</span>, <span class="t4">4th</span>, <span class="t0">neutral</span>. Use the Pinyin and English buttons below to hide them for practice.</p>
+    </div>
+    <div>
+      <h3>Grammar points</h3>
+      <ul>
+        <li><button class="jump" data-go="4"><span class="zh">A + 让 + B + verb</span></button> — make / let someone do something</li>
+        <li><button class="jump" data-go="6"><span class="zh">一定要 + verb</span></button> — must do something</li>
+        <li><button class="jump" data-go="9"><span class="zh">verb + 了 + 多长时间 + object？</span></button> — how long did you…?</li>
+        <li><button class="jump" data-go="9"><span class="zh">verb + object + 多长时间了？</span></button> — how long have you been…?</li>
+        <li><button class="jump" data-go="9"><span class="zh">verb + object + 要多长时间？</span></button> — how long does it take?</li>
+        <li><button class="jump" data-go="11"><span class="zh">去没去 / ……了没有？</span></button> — did you…?</li>
+        <li><button class="jump" data-go="12"><span class="zh">不过</span></button>, <button class="jump" data-go="13"><span class="zh">以前 / 以后</span></button>, <button class="jump" data-go="14"><span class="zh">因为……所以……</span></button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Chinese Stage 2 · 第三课</span><span>Lesson 16</span></div>
+</section>
+
+<!-- 3 TONES -->
+<section class="slide" data-title="Pinyin and tones">
+  <h2 class="title"><span class="han">声调</span><span class="lat">Pinyin and tones</span></h2>
+  <div class="tonegrid" id="tonegrid"></div>
+  <div class="note" style="margin-top:1.2em">
+    <b>Two different “i” sounds.</b> After <b>z c s zh ch sh r</b>, the <b>i</b> is not “ee” — it is a buzzed continuation of the consonant (<span class="py">zī, cì, shì</span>). After <b>j q x</b>, the <b>i</b> is a clear “ee” (<span class="py">jī, xiǎo</span>). Say <span class="py t4">zì</span> 字 and <span class="py t4">jì</span> 记 one after the other and feel the difference.
+  </div>
+  <div class="slide-foot"><span>Tap a syllable to hear it (where your browser has a Chinese voice)</span><span>3</span></div>
+</section>
+
+<!-- 4 VOCAB OVERVIEW -->
+<section class="slide" data-title="词汇 Vocabulary overview">
+  <h2 class="title"><span class="han">词汇</span><span class="lat">Lesson 16 vocabulary · tap a card to flip it</span></h2>
+  <div class="vgrid" id="vgrid"></div>
+  <div class="vtools">
+    <button class="btn" id="flipAll">Flip all</button>
+    <button class="btn ghost" id="shuffle">Shuffle</button>
+    <span class="en keep">Practise at home: <a href="https://quizlet.com/gb/625337955/chinese-in-steps-2-lesson-16-flash-cards/" target="_blank" rel="noopener">Quizlet – Chinese in Steps 2, Lesson 16</a></span>
+  </div>
+  <div class="slide-foot"><span>Say it, then flip to check</span><span>4</span></div>
+</section>
+
+<!-- 5 让 等 久 长 -->
+<section class="slide" data-title="让 · 等 · 久 · 长">
+  <h2 class="title"><span class="han">词汇</span><span class="lat">Vocabulary 1</span></h2>
+  <div class="cols">
+    <div class="entry">
+      <div class="headword"><span class="zh">让</span><span class="py">ràng</span></div>
+      <div class="gloss">make, let, ask, allow</div>
+      <div class="pat" data-pat="Person A|让|Person B|verb"></div>
+      <div class="ex" data-z="我妈妈<mark>让</mark>我学中文。" data-p="Wǒ mā ma ràng wǒ xué Zhōng wén." data-e="My mum makes me study Chinese."></div>
+      <div class="ex" data-z="医生<mark>让</mark>我休息。" data-p="Yī shēng ràng wǒ xiū xi." data-e="The doctor told me to rest."></div>
+      <p class="turn"><span class="zh">我的老师让我……</span></p>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">等</span><span class="py">děng</span></div>
+      <div class="gloss">wait (for)</div>
+      <div class="ex" data-z="我在家<mark>等</mark>你。" data-p="Wǒ zài jiā děng nǐ." data-e="I’ll wait for you at home."></div>
+      <div class="ex" data-z="请在图书馆门口<mark>等</mark>我。" data-p="Qǐng zài tú shū guǎn mén kǒu děng wǒ." data-e="Please wait for me at the library entrance."></div>
+      <p class="note">No word for “for”: <span class="zh">等你</span> = wait <i>for</i> you.</p>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">久</span><span class="py">jiǔ</span><span class="zh" style="font-size:1.6em;color:var(--muted)">/</span><span class="zh">长</span><span class="py">cháng</span></div>
+      <div class="gloss">a long time / long</div>
+      <div class="ex" data-z="（让你）<mark>久</mark>等了。" data-p="(Ràng nǐ) jiǔ děng le." data-e="Sorry to have kept you waiting."></div>
+      <div class="ex" data-z="我等了很<mark>久</mark>。" data-p="Wǒ děng le hěn jiǔ." data-e="I waited for a long time."></div>
+      <div class="ex" data-z="我等了很<mark>长</mark>时间。" data-p="Wǒ děng le hěn cháng shí jiān." data-e="I waited for a long time."></div>
+      <p class="note"><span class="zh">久</span> stands alone; <span class="zh">长</span> needs a noun: <span class="zh">很长时间</span>.</p>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Tap a sentence to hear it</span><span>5</span></div>
+</section>
+
+<!-- 6 刚 坏 -->
+<section class="slide" data-title="刚 · 坏">
+  <h2 class="title"><span class="han">词汇</span><span class="lat">Vocabulary 2</span></h2>
+  <div class="cols" style="--n:2">
+    <div class="entry">
+      <div class="headword"><span class="zh">刚</span><span class="py">gāng</span></div>
+      <div class="gloss">just (a moment ago)</div>
+      <div class="pat" data-pat="Person|刚|verb"></div>
+      <div class="ex" data-z="我<mark>刚</mark>回杜伦。" data-p="Wǒ gāng huí Dù lún." data-e="I’ve just come back to Durham."></div>
+      <div class="ex" data-z="我<mark>刚</mark>来英国。" data-p="Wǒ gāng lái Yīng guó." data-e="I’ve just arrived in the UK."></div>
+      <div class="ex" data-z="我<mark>刚</mark>起床。" data-p="Wǒ gāng qǐ chuáng." data-e="I’ve just got up."></div>
+      <p class="note"><span class="zh">刚</span> goes <b>before</b> the verb, never at the start of the sentence.</p>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">坏</span><span class="py">huài</span></div>
+      <div class="gloss">broken, out of order, gone off; bad</div>
+      <div class="pat" data-pat="Something|坏了"></div>
+      <div class="ex" data-z="我的电脑<mark>坏了</mark>。" data-p="Wǒ de diàn nǎo huài le." data-e="My computer has broken."></div>
+      <div class="ex" data-z="我的手机<mark>坏了</mark>。" data-p="Wǒ de shǒu jī huài le." data-e="My phone is broken."></div>
+      <div class="ex" data-z="牛奶<mark>坏了</mark>。" data-p="Niú nǎi huài le." data-e="The milk has gone off."></div>
+      <p class="turn"><span class="zh">我家的……坏了。</span></p>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Tap a sentence to hear it</span><span>6</span></div>
+</section>
+
+<!-- 7 一定 花 -->
+<section class="slide" data-title="一定 · 一定要 · 花">
+  <h2 class="title"><span class="han">词汇</span><span class="lat">Vocabulary 3</span></h2>
+  <div class="cols">
+    <div class="entry">
+      <div class="headword"><span class="zh">一定</span><span class="py">yí dìng</span></div>
+      <div class="gloss">must be, surely, definitely (a confident guess)</div>
+      <div class="ex" data-z="你<mark>一定</mark>是我妈妈的朋友。" data-p="Nǐ yí dìng shì wǒ mā ma de péng you." data-e="You must be my mum’s friend."></div>
+      <div class="ex" data-z="你<mark>一定</mark>很喜欢杜伦。" data-p="Nǐ yí dìng hěn xǐ huan Dù lún." data-e="You must really like Durham."></div>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">一定要</span><span class="py">yí dìng yào</span></div>
+      <div class="gloss">must do (strong need or insistence)</div>
+      <div class="pat" data-pat="Person|一定要|verb"></div>
+      <div class="ex" data-z="你<mark>一定要</mark>来看我们。" data-p="Nǐ yí dìng yào lái kàn wǒ men." data-e="You must come and see us."></div>
+      <div class="ex" data-z="我们<mark>一定要</mark>去中国吃中国菜。" data-p="Wǒ men yí dìng yào qù Zhōng guó chī Zhōng guó cài." data-e="We must go to China to eat Chinese food."></div>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">花</span><span class="py">huā</span></div>
+      <div class="gloss">spend (money, time); flower</div>
+      <div class="pat" data-pat="Person|花了|money / time"></div>
+      <div class="ex" data-z="今年夏天我<mark>花</mark>了很多钱。" data-p="Jīn nián xià tiān wǒ huā le hěn duō qián." data-e="I spent a lot of money this summer."></div>
+      <div class="ex" data-z="我<mark>花</mark>了很长时间写汉字。" data-p="Wǒ huā le hěn cháng shí jiān xiě Hàn zì." data-e="I spent a long time writing characters."></div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:.4em"><b>Spot the difference:</b> <span class="zh">你一定是学生</span> (I’m sure you are a student) vs <span class="zh">你一定要来</span> (you really must come). <span class="py">yí</span> has a 2nd tone here because <span class="py">dìng</span> is 4th tone.</p>
+  <div class="slide-foot"><span>Tap a sentence to hear it</span><span>7</span></div>
+</section>
+
+<!-- 8 FREQUENCY -->
+<section class="slide" data-title="Frequency words">
+  <h2 class="title"><span class="han">频率</span><span class="lat"><span class="py">pín lǜ</span> · how often? frequency words</span></h2>
+  <div class="freq">
+    <div class="scale" id="scale" role="group" aria-label="Frequency words"></div>
+    <div>
+      <div class="live" id="live">
+        <p class="zh" id="liveZ"></p>
+        <p class="py" id="liveP"></p>
+        <p class="en" id="liveE"></p>
+      </div>
+      <div class="pat" data-pat="Person|frequency word|verb"></div>
+      <p class="note"><b>Word order:</b> the frequency word sits after the subject, before the verb. <span class="zh">有时候</span> can also start the sentence: <span class="zh">有时候我喝咖啡。</span></p>
+      <p class="note"><b><span class="zh">常常</span> or <span class="zh">经常</span>?</b> Both mean “often”. In the negative say <span class="zh">不常</span> — never <span class="zh">不常常</span>.</p>
+      <p class="en keep" style="font-size:.8em;margin-top:.6em"><a href="https://resources.allsetlearning.com/chinese/grammar/Comparing_%22changchang%22_and_%22jingchang%22" target="_blank" rel="noopener">More on 常常 vs 经常 (AllSet Learning)</a></p>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Choose a word to change the sentence</span><span>8</span></div>
+</section>
+
+<!-- 9 离开 需要 看来 -->
+<section class="slide" data-title="离开 · 需要 · 看来">
+  <h2 class="title"><span class="han">词汇</span><span class="lat">Vocabulary 4</span></h2>
+  <div class="cols">
+    <div class="entry">
+      <div class="headword"><span class="zh">离开</span><span class="py">lí kāi</span></div>
+      <div class="gloss">leave, depart</div>
+      <div class="ex" data-z="他们<mark>离开</mark>了。" data-p="Tā men lí kāi le." data-e="They have left."></div>
+      <div class="ex" data-z="我们<mark>离开</mark>这儿吧。" data-p="Wǒ men lí kāi zhèr ba." data-e="Let’s get out of here."></div>
+      <div class="ex" data-z="我明天要<mark>离开</mark>杜伦。" data-p="Wǒ míng tiān yào lí kāi Dù lún." data-e="I’m leaving Durham tomorrow."></div>
+      <p class="note">In speech, <span class="zh">我们走吧</span> (let’s go) is the everyday choice.</p>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">需要</span><span class="py">xū yào</span></div>
+      <div class="gloss">need, require</div>
+      <div class="ex" data-z="你<mark>需要</mark>什么？" data-p="Nǐ xū yào shén me?" data-e="What do you need?"></div>
+      <div class="ex" data-z="请问您<mark>需要</mark>什么？" data-p="Qǐng wèn nín xū yào shén me?" data-e="What can I get you? (shop assistant)"></div>
+      <p class="turn"><span class="zh">我需要……</span></p>
+    </div>
+    <div class="entry">
+      <div class="headword"><span class="zh">看来</span><span class="py">kàn lái</span></div>
+      <div class="gloss">it looks like, it seems (starts the sentence)</div>
+      <div class="ex" data-z="<mark>看来</mark>你们真的喜欢学中文。" data-p="Kàn lái nǐ men zhēn de xǐ huan xué Zhōng wén." data-e="It looks like you really like studying Chinese."></div>
+      <div class="ex" data-z="<mark>看来</mark>今天的天气不太好。" data-p="Kàn lái jīn tiān de tiān qì bú tài hǎo." data-e="It looks like the weather isn’t great today."></div>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Tap a sentence to hear it</span><span>9</span></div>
+</section>
+
+<!-- 10 DURATION -->
+<section class="slide" data-title="多长时间 How long?">
+  <h2 class="title"><span class="han">多长时间？</span><span class="lat"><span class="py">duō cháng shí jiān</span> · how long?</span></h2>
+  <div class="dur">
+    <div class="entry">
+      <h3>A finished action</h3>
+      <p class="when">How long did you do it?</p>
+      <div class="pat" data-pat="Person|verb|了|多长时间|object ？"></div>
+      <div class="ex" data-z="你坐<mark>了多长时间</mark>公共汽车？" data-p="Nǐ zuò le duō cháng shí jiān gōng gòng qì chē?" data-e="How long were you on the bus?"></div>
+      <div class="pat" data-pat="Person|verb|了|time|object"></div>
+      <div class="ex" data-z="我坐<mark>了一个多小时</mark>公共汽车。" data-p="Wǒ zuò le yí ge duō xiǎo shí gōng gòng qì chē." data-e="I was on the bus for over an hour."></div>
+    </div>
+    <div class="entry">
+      <h3>Still going on</h3>
+      <p class="when">How long have you been doing it?</p>
+      <div class="pat" data-pat="Person|verb + object|多长时间了 ？"></div>
+      <div class="ex" data-z="你学中文<mark>多长时间了</mark>？" data-p="Nǐ xué Zhōng wén duō cháng shí jiān le?" data-e="How long have you been learning Chinese?"></div>
+      <div class="pat" data-pat="Person|verb + object|time + 了"></div>
+      <div class="ex" data-z="我学中文<mark>一年了</mark>。" data-p="Wǒ xué Zhōng wén yì nián le." data-e="I’ve been learning Chinese for a year (and still am)."></div>
+      <p class="note">The final <span class="zh">了</span> tells us it is still continuing.</p>
+    </div>
+    <div class="entry">
+      <h3>Time it takes</h3>
+      <p class="when">How long does it take?</p>
+      <div class="pat" data-pat="Person|verb + object|要多长时间 ？"></div>
+      <div class="ex" data-z="你走路去学校<mark>要多长时间</mark>？" data-p="Nǐ zǒu lù qù xué xiào yào duō cháng shí jiān?" data-e="How long does it take you to walk to school?"></div>
+      <div class="pat" data-pat="Person|verb + object|要 + time"></div>
+      <div class="ex" data-z="我走路去学校<mark>要二十分钟</mark>。" data-p="Wǒ zǒu lù qù xué xiào yào èr shí fēn zhōng." data-e="It takes me twenty minutes to walk to school."></div>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Ask your partner all three questions</span><span>10</span></div>
+</section>
+
+<!-- 11 FOOTBALL -->
+<section class="slide" data-title="比赛 · 上半场 · 下半场">
+  <h2 class="title"><span class="han">足球比赛</span><span class="lat">A football match</span></h2>
+  <div class="cols" style="--n:2">
+    <div>
+      <div class="headword"><span class="zh" style="font-size:2em">比赛</span><span class="py">bǐ sài</span><span class="en keep">competition, match</span></div>
+      <div class="match" aria-label="Timeline of a 90 minute match, split into first half and second half">
+        <svg viewBox="0 0 400 96" role="img">
+          <rect x="0" y="22" width="196" height="34" rx="3" fill="var(--plum)"/>
+          <rect x="204" y="22" width="196" height="34" rx="3" fill="var(--plum-soft)" stroke="var(--plum)"/>
+          <text x="98" y="45" text-anchor="middle" fill="var(--paper)" font-family="KaiTi, STKaiti, Kaiti SC, Noto Serif SC, serif" font-size="16" font-weight="700">上半场</text>
+          <text x="302" y="45" text-anchor="middle" fill="var(--plum)" font-family="KaiTi, STKaiti, Kaiti SC, Noto Serif SC, serif" font-size="16" font-weight="700">下半场</text>
+          <text x="98" y="14" text-anchor="middle" font-size="11" font-family="Atkinson Hyperlegible, sans-serif"><tspan fill="var(--t4)">shàng bàn</tspan> <tspan fill="var(--t3)">chǎng</tspan></text>
+          <text x="302" y="14" text-anchor="middle" font-size="11" font-family="Atkinson Hyperlegible, sans-serif"><tspan fill="var(--t4)">xià bàn</tspan> <tspan fill="var(--t3)">chǎng</tspan></text>
+          <text x="0" y="74" fill="var(--muted)" font-size="11" font-family="Atkinson Hyperlegible, sans-serif">0′</text>
+          <text x="200" y="74" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Atkinson Hyperlegible, sans-serif">45′ half-time</text>
+          <text x="400" y="74" text-anchor="end" fill="var(--muted)" font-size="11" font-family="Atkinson Hyperlegible, sans-serif">90′</text>
+          <text x="98" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Atkinson Hyperlegible, sans-serif">first half</text>
+          <text x="302" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Atkinson Hyperlegible, sans-serif">second half</text>
+        </svg>
+      </div>
+      <p class="note"><span class="zh">上</span> = first / previous, <span class="zh">下</span> = second / next, <span class="zh">半</span> = half. Compare <span class="zh">一半</span> <span class="py">yí bàn</span>, “half”: <span class="zh">我只吃了一半。</span></p>
+    </div>
+    <div class="dialog">
+      <p style="font-weight:700;margin-bottom:.4em">Say it in Chinese, then check.</p>
+      <div class="reveal" data-q="Do you like watching football matches?" data-z="你喜欢看足球比赛吗？" data-p="Nǐ xǐ huan kàn zú qiú bǐ sài ma?"></div>
+      <div class="reveal" data-q="I love watching football matches!" data-z="我很爱看足球比赛！" data-p="Wǒ hěn ài kàn zú qiú bǐ sài!"></div>
+      <div class="reveal" data-q="Did you go to watch the match yesterday?" data-z="你昨天去看足球比赛了吗？" data-p="Nǐ zuó tiān qù kàn zú qiú bǐ sài le ma?"></div>
+      <div class="reveal" data-q="I did, but I only watched the first half." data-z="去了，不过我只看了上半场。" data-p="Qù le, bú guò wǒ zhǐ kàn le shàng bàn chǎng."></div>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Practise the dialogue in pairs</span><span>11</span></div>
+</section>
+
+<!-- 12 V不V / 了没有 -->
+<section class="slide" data-title="去没去 · ……了没有？">
+  <h2 class="title"><span class="han">……了没有？</span><span class="lat">Asking “did you…?”</span></h2>
+  <div class="cols" style="--n:2">
+    <div class="entry">
+      <div class="gloss">Two ways to ask about the past</div>
+      <div class="pat" data-pat="verb|没|verb"></div>
+      <div class="ex" data-z="你昨天<mark>去没去</mark>看足球比赛？" data-p="Nǐ zuó tiān qù méi qù kàn zú qiú bǐ sài?" data-e="Did you go to watch the football match yesterday?"></div>
+      <div class="pat" data-pat="…verb + object|了没有 ？"></div>
+      <div class="ex" data-z="你昨天去看足球比赛<mark>了没有</mark>？" data-p="Nǐ zuó tiān qù kàn zú qiú bǐ sài le méi yǒu?" data-e="Did you go to watch the football match yesterday? (textbook p. 67)"></div>
+      <p class="note"><b><span class="zh">不</span> or <span class="zh">没</span>?</b> Now, habits and the future use <span class="zh">不</span>: <span class="zh">你去不去？</span> Things that did or didn’t happen use <span class="zh">没</span>: <span class="zh">你去没去？</span></p>
+    </div>
+    <div class="entry">
+      <div class="gloss">Your turn: ask the question, then answer it</div>
+      <div class="reveal" data-q="Have you eaten?" data-z="你吃饭了没有？" data-p="Nǐ chī fàn le méi yǒu?" data-a="吃了。/ 还没吃。" data-ap="Chī le. / Hái méi chī." data-ae="Yes. / Not yet."></div>
+      <div class="reveal" data-q="Have you taken your medicine today?" data-z="你今天吃药了没有？" data-p="Nǐ jīn tiān chī yào le méi yǒu?" data-a="吃了。/ 没吃。" data-ap="Chī le. / Méi chī." data-ae="Yes. / No."></div>
+      <div class="reveal" data-q="Did you write the characters?" data-z="你写汉字了没有？" data-p="Nǐ xiě Hàn zì le méi yǒu?" data-a="写了。/ 还没写。" data-ap="Xiě le. / Hái méi xiě." data-ae="Yes. / Not yet."></div>
+      <p class="note">Answer with the verb, not “yes” or “no”: <span class="zh">吃了</span>, <span class="zh">没吃</span>.</p>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Chinese in Steps 2, p. 67</span><span>12</span></div>
+</section>
+
+<!-- 13 不过 -->
+<section class="slide" data-title="不过 But, however">
+  <h2 class="title"><span class="han">不过</span><span class="lat"><span class="py">bú guò</span> · but, however</span></h2>
+  <div class="cols" style="--n:2">
+    <div>
+      <p class="gloss">Same meaning as <span class="zh">但是</span> and <span class="zh">可是</span>, but a little lighter and more conversational.</p>
+      <div class="pat" data-pat="Sentence 1|，不过|sentence 2"></div>
+      <p class="note"><b>Tone change:</b> <span class="zh">不</span> is normally <span class="py t4">bù</span>, but before a 4th tone it becomes <span class="py t2">bú</span>: <span class="py"><span class="t2">bú</span> <span class="t4">guò</span></span>, <span class="py"><span class="t2">bú</span> <span class="t4">shì</span></span>, <span class="py"><span class="t2">bú</span> <span class="t4">qù</span></span>.</p>
+    </div>
+    <div>
+      <p style="font-weight:700;margin-bottom:.4em">Translate with <span class="zh">不过</span>, then check.</p>
+      <div class="reveal" data-q="We went to watch a film, but we didn’t like it." data-z="我们去看电影了，不过我们不喜欢那个电影。" data-p="Wǒ men qù kàn diàn yǐng le, bú guò wǒ men bù xǐ huan nà ge diàn yǐng."></div>
+      <div class="reveal" data-q="I want to go to the library, but the bus has broken down." data-z="我想去图书馆，不过公共汽车坏了。" data-p="Wǒ xiǎng qù tú shū guǎn, bú guò gōng gòng qì chē huài le."></div>
+      <div class="reveal" data-q="I like Beijing roast duck, but my mum doesn’t." data-z="我喜欢北京烤鸭，不过我妈妈不喜欢。" data-p="Wǒ xǐ huan Běi jīng kǎo yā, bú guò wǒ mā ma bù xǐ huan."></div>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Try saying each one before you reveal it</span><span>13</span></div>
+</section>
+
+<!-- 14 以前 以后 -->
+<section class="slide" data-title="以前 · 以后">
+  <h2 class="title"><span class="han">以前 · 以后</span><span class="lat"><span class="py">yǐ qián</span> before, in the past · <span class="py">yǐ hòu</span> after, later</span></h2>
+  <div class="story">
+    <div><div class="when">以前</div><div class="emo" aria-hidden="true">🐸</div><p class="zh" data-say="以前他是一只青蛙。">以前他是一只青蛙。</p><p class="py">Yǐ qián tā shì yì zhī qīng wā.</p><p class="en">He used to be a frog.</p></div>
+    <div><div class="when">现在</div><div class="emo" aria-hidden="true">🤴</div><p class="zh" data-say="现在他是王子。">现在他是王子。</p><p class="py">Xiàn zài tā shì wáng zǐ.</p><p class="en">Now he is a prince.</p></div>
+    <div><div class="when">以后</div><div class="emo" aria-hidden="true">💍</div><p class="zh" data-say="以后他要和公主结婚。">以后他要和公主结婚。</p><p class="py">Yǐ hòu tā yào hé gōng zhǔ jié hūn.</p><p class="en">Later he will marry the princess.</p></div>
+  </div>
+  <div class="cols">
+    <div>
+      <div class="pat" data-pat="Person|以前|frequency word|verb"></div>
+      <div class="ex" data-z="我<mark>以前</mark>常常喝咖啡。" data-p="Wǒ yǐ qián cháng cháng hē kā fēi." data-e="I used to drink coffee a lot."></div>
+    </div>
+    <div>
+      <div class="pat" data-pat="Person|以前 / 以后|verb"></div>
+      <div class="ex" data-z="我<mark>以后</mark>想去中国工作。" data-p="Wǒ yǐ hòu xiǎng qù Zhōng guó gōng zuò." data-e="In the future I’d like to work in China."></div>
+    </div>
+    <div>
+      <div class="pat" data-pat="以前 / 以后|Person|verb"></div>
+      <div class="ex" data-z="<mark>以前</mark>我不会说中文。" data-p="Yǐ qián wǒ bú huì shuō Zhōng wén." data-e="I couldn’t speak Chinese before."></div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:.4em"><b>Bonus:</b> event + <span class="zh">以前/以后</span> = before/after it: <span class="zh">下课以后</span> after class, <span class="zh">吃饭以前</span> before eating.</p>
+  <div class="slide-foot"><span>Tell your partner one thing you did before and one you will do later</span><span>14</span></div>
+</section>
+
+<!-- 15 因为 所以 -->
+<section class="slide" data-title="因为……所以……">
+  <h2 class="title"><span class="han">因为……所以……</span><span class="lat"><span class="py">yīn wèi … suǒ yǐ</span> · because … so …</span></h2>
+  <div class="cols" style="--n:2">
+    <div>
+      <div class="pat" data-pat="因为|A (reason)|，所以|B (result)"></div>
+      <div class="ex" data-z="<mark>因为</mark>我有一个中国女朋友，<mark>所以</mark>我想学中文。" data-p="Yīn wèi wǒ yǒu yí ge Zhōng guó nǚ péng you, suǒ yǐ wǒ xiǎng xué Zhōng wén." data-e="Because I have a Chinese girlfriend, I want to learn Chinese."></div>
+      <div class="ex" data-z="<mark>因为</mark>那里太远了，<mark>所以</mark>我不想去。" data-p="Yīn wèi nà lǐ tài yuǎn le, suǒ yǐ wǒ bù xiǎng qù." data-e="Because it’s too far, I don’t want to go."></div>
+      <p class="note">In English we say “because” <b>or</b> “so”. Chinese happily uses both in one sentence.</p>
+    </div>
+    <div>
+      <p class="gloss">You can also use just one half</p>
+      <div class="ex" data-z="你为什么学中文？<mark>因为</mark>我喜欢中国菜。" data-p="Nǐ wèi shén me xué Zhōng wén? Yīn wèi wǒ xǐ huan Zhōng guó cài." data-e="Why are you learning Chinese? Because I like Chinese food."></div>
+      <div class="ex" data-z="我太忙了，<mark>所以</mark>我没有去。" data-p="Wǒ tài máng le, suǒ yǐ wǒ méi yǒu qù." data-e="I was too busy, so I didn’t go."></div>
+      <p class="turn"><span class="zh">因为……，所以我学中文。</span></p>
+    </div>
+  </div>
+  <div class="slide-foot"><span>Ask three classmates <span class="zh">你为什么学中文？</span></span><span>15</span></div>
+</section>
+
+<!-- 16 HOMEWORK -->
+<section class="slide" data-title="作业 Homework 1C">
+  <h2 class="title"><span class="han">作业</span><span class="lat"><span class="py">zuò yè</span> · homework 1C</span></h2>
+  <div class="hw">
+    <div class="task">
+      <h3>1 · <span class="zh">写汉字</span> <span class="en keep" style="font-weight:400">Write the characters</span></h3>
+      <p>Write each new word five times, saying the pinyin aloud as you go.</p>
+      <div class="chars" id="hwchars"></div>
+    </div>
+    <div class="task">
+      <h3>2 · <span class="zh">造两个句子</span> <span class="en keep" style="font-weight:400">Make two sentences</span></h3>
+      <div class="pat" data-pat="A|离|B|很远 / 很近"></div>
+      <div class="ex" data-z="我家<mark>离</mark>大学很<mark>近</mark>。" data-p="Wǒ jiā lí dà xué hěn jìn." data-e="My home is close to the university."></div>
+      <div class="pat" data-pat="因为|reason|，所以|result"></div>
+      <div class="ex" data-z="<mark>因为</mark>杜伦离伦敦很远，<mark>所以</mark>我很少去伦敦。" data-p="Yīn wèi Dù lún lí Lún dūn hěn yuǎn, suǒ yǐ wǒ hěn shǎo qù Lún dūn." data-e="Because Durham is far from London, I rarely go to London."></div>
+      <p class="note">Challenge: use a frequency word or <span class="zh">不过</span> in one of your sentences.</p>
+    </div>
+  </div>
+  <div class="slide-foot"><span>下次见！ See you next time</span><span>16</span></div>
+</section>
+
+</div>
+</main>
+
+<nav class="bar" aria-label="Slide controls">
+  <button class="nav" id="prev" aria-label="Previous slide">‹</button>
+  <span class="count" id="count">1 / 16</span>
+  <button class="nav" id="next" aria-label="Next slide">›</button>
+  <span class="sep"></span>
+  <button id="tPy" aria-pressed="true" title="Show or hide pinyin (P)">拼音<span class="opt-label"> Pinyin</span></button>
+  <button id="tEn" aria-pressed="true" title="Show or hide English (E)">EN<span class="opt-label"> English</span></button>
+  <span class="sep"></span>
+  <button id="ovBtn" title="All slides (G)">☰<span class="opt-label"> Slides</span></button>
+  <button id="fsBtn" title="Full screen (F)">⛶</button>
+</nav>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="All slides">
+  <div class="panel">
+    <button class="close btn ghost" id="ovClose">Close</button>
+    <h3>All slides</h3>
+    <ol id="ovList"></ol>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  /* ---------- tone colouring ---------- */
+  var T = {};
+  "āēīōūǖĀĒĪŌŪǕ".split("").forEach(function(c){T[c]=1});
+  "áéíóúǘÁÉÍÓÚǗ".split("").forEach(function(c){T[c]=2});
+  "ǎěǐǒǔǚǍĚǏǑǓǙ".split("").forEach(function(c){T[c]=3});
+  "àèìòùǜÀÈÌÒÙǛ".split("").forEach(function(c){T[c]=4});
+  function tone(s){ for (var i=0;i<s.length;i++){ if(T[s[i]]) return T[s[i]]; } return 0; }
+  function colourPy(str){
+    return str.replace(/[A-Za-z\u00C0-\u024F]+/g, function(syl){ return '<span class="t'+tone(syl)+'">'+syl+'</span>'; });
+  }
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+  function strip(html){ var d=document.createElement("div"); d.innerHTML=html; return d.textContent; }
+
+  /* ---------- speech ---------- */
+  var voice=null, canSpeak = "speechSynthesis" in window;
+  function pickVoice(){
+    if(!canSpeak) return;
+    var vs = speechSynthesis.getVoices();
+    voice = vs.find(function(v){return /zh[-_]CN/i.test(v.lang)}) || vs.find(function(v){return /^zh/i.test(v.lang)}) || null;
+  }
+  if(canSpeak){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+  var toastEl=document.getElementById("toast"), tt;
+  function toast(m){ toastEl.textContent=m; toastEl.classList.add("on"); clearTimeout(tt); tt=setTimeout(function(){toastEl.classList.remove("on")},2200); }
+  function say(text){
+    if(!canSpeak){ toast("Audio isn’t available in this browser"); return; }
+    if(!voice) pickVoice();
+    if(!voice){ toast("No Chinese voice found on this device"); }
+    try{
+      speechSynthesis.cancel();
+      var u=new SpeechSynthesisUtterance(text.replace(/[（）()]/g,""));
+      u.lang="zh-CN"; if(voice) u.voice=voice; u.rate=.8;
+      speechSynthesis.speak(u);
+    }catch(e){ toast("Audio couldn’t play"); }
+  }
+  document.addEventListener("click", function(e){
+    var el = e.target.closest("[data-say]");
+    if(el){ say(el.getAttribute("data-say")); }
+  });
+  document.addEventListener("keydown", function(e){
+    var el = e.target.closest && e.target.closest("[data-say]");
+    if(el && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); say(el.getAttribute("data-say")); }
+  });
+  function speakable(el, text){ el.setAttribute("data-say", text); el.setAttribute("tabindex","0"); el.setAttribute("role","button"); el.setAttribute("title","Tap to hear"); }
+
+  /* ---------- examples ---------- */
+  document.querySelectorAll(".ex").forEach(function(ex){
+    var z=ex.dataset.z, p=ex.dataset.p, e=ex.dataset.e;
+    ex.innerHTML = '<p class="zh" lang="zh">'+z+'</p><p class="py">'+colourPy(esc(p))+'</p>'+(e?'<p class="en">'+esc(e)+'</p>':'');
+    speakable(ex.querySelector(".zh"), strip(z));
+  });
+  /* reveals */
+  document.querySelectorAll(".reveal").forEach(function(r){
+    var d=r.dataset, h='<p class="q">'+esc(d.q)+'<button class="rbtn" aria-expanded="false">Show</button></p><div class="a">';
+    h+='<p class="zh" lang="zh">'+d.z+'</p><p class="py">'+colourPy(esc(d.p))+'</p>';
+    if(d.a){ h+='<p class="zh" lang="zh" style="margin-top:.3em">'+d.a+'</p><p class="py">'+colourPy(esc(d.ap))+'</p><p class="en">'+esc(d.ae)+'</p>'; }
+    h+='</div>';
+    r.innerHTML=h;
+    r.querySelectorAll(".a .zh").forEach(function(z){ speakable(z, z.textContent); });
+    var b=r.querySelector(".rbtn");
+    b.addEventListener("click", function(){ var s=r.classList.toggle("shown"); b.textContent=s?"Hide":"Show"; b.setAttribute("aria-expanded",s); });
+  });
+  /* patterns */
+  document.querySelectorAll(".pat").forEach(function(p){
+    var parts=p.dataset.pat.split("|");
+    p.innerHTML = parts.map(function(t){
+      var k=/[\u4e00-\u9fff]/.test(t) && !/[a-z]{3}/i.test(t);
+      return '<span class="'+(k?'k':'')+'">'+esc(t)+'</span>';
+    }).join('<i>+</i>');
+  });
+  /* standalone pinyin colouring */
+  document.querySelectorAll(".headword .py, h2 .py, .story .py, .note .py:not(.t1):not(.t2):not(.t3):not(.t4)").forEach(function(el){
+    if(!el.querySelector("span")) el.innerHTML = colourPy(el.textContent);
+  });
+  document.querySelectorAll(".headword .zh, .story .zh:not([data-say])").forEach(function(z){ speakable(z, z.textContent); });
+  document.querySelectorAll(".story [data-say]").forEach(function(z){ z.setAttribute("tabindex","0"); z.setAttribute("role","button"); });
+
+  /* ---------- tones slide ---------- */
+  var tones=[
+    {n:1,mark:"ā",cue:"Singing “Ah…”",d:"M10 12 L110 12",rows:[["zī","资"],["cī","疵"],["jī","鸡"],["jiā","家"],["xiāo","消"]]},
+    {n:2,mark:"á",cue:"“What?”",d:"M10 36 L110 12",rows:[["zí",""],["cí","词"],["jí","级"],["jiá","夹"],["xiáo","淆"]]},
+    {n:3,mark:"ǎ",cue:"“Really?”",d:"M10 30 Q45 62 70 56 T110 20",rows:[["zǐ","子"],["cǐ","此"],["jǐ","几"],["jiǎ","假"],["xiǎo","小"]]},
+    {n:4,mark:"à",cue:"“No!”",d:"M10 12 L110 58",rows:[["zì","字"],["cì","次"],["jì","记"],["jià","架"],["xiào","笑"]]}
+  ];
+  var tg=document.getElementById("tonegrid");
+  tones.forEach(function(t){
+    var lines=""; for(var i=0;i<5;i++){ lines+='<line x1="4" x2="116" y1="'+(12+i*11.5)+'" y2="'+(12+i*11.5)+'" stroke="var(--line)" stroke-width="1"/>'; }
+    var syl=t.rows.map(function(r){
+      return r[1] ? '<button data-say="'+r[1]+'" title="Hear '+r[0]+' ('+r[1]+')">'+r[0]+'</button>' : '<span style="display:block">'+r[0]+'</span>';
+    }).join("");
+    tg.insertAdjacentHTML("beforeend",
+      '<div class="tone"><svg viewBox="0 0 120 70" role="img" aria-label="Tone '+t.n+' pitch contour">'+lines+
+      '<path d="'+t.d+'" fill="none" stroke="var(--t'+t.n+')" stroke-width="5" stroke-linecap="round"/>'+
+      '<text x="116" y="68" text-anchor="end" font-size="10" fill="var(--muted)" font-family="Atkinson Hyperlegible, sans-serif">tone '+t.n+'</text></svg>'+
+      '<p class="cue"><span class="t'+t.n+'" style="font-size:1.3em">'+t.mark+'</span> '+t.cue+'</p>'+
+      '<div class="syl t'+t.n+'">'+syl+'</div></div>');
+  });
+
+  /* ---------- vocab cards ---------- */
+  var vocab=[["让","ràng","let, make, ask"],["等","děng","wait"],["花","huā","spend; flower"],["爱","ài","love"],["需要","xū yào","need"],["看来","kàn lái","it seems"],["离开","lí kāi","leave"],["出租车","chū zū chē","taxi"],["比赛","bǐ sài","match, competition"],["上半场","shàng bàn chǎng","first half"],["一半","yí bàn","half"],["时间","shí jiān","time"],["坏","huài","broken, bad"],["远","yuǎn","far"],["久","jiǔ","a long time"],["一定","yí dìng","definitely, must"],["刚","gāng","just (now)"],["通常","tōng cháng","usually"],["有时候","yǒu shí hou","sometimes"],["总是","zǒng shì","always"],["以后","yǐ hòu","after, later"],["真的","zhēn de","really"],["多长","duō cháng","how long"],["不过","bú guò","but, however"],["所以","suǒ yǐ","so, therefore"],["没关系","méi guān xi","it doesn’t matter"]];
+  var vg=document.getElementById("vgrid");
+  function renderCards(list){
+    vg.innerHTML="";
+    list.forEach(function(w){
+      var b=document.createElement("button"); b.className="card"; b.setAttribute("aria-label",w[0]+", tap to flip");
+      b.innerHTML='<div class="in"><div class="f"><span class="zh" lang="zh">'+w[0]+'</span></div><div class="b"><span class="py keep">'+colourPy(w[1])+'</span><span class="m">'+esc(w[2])+'</span></div></div>';
+      b.addEventListener("click",function(){ var f=b.classList.toggle("flip"); if(f) say(w[0]); b.setAttribute("aria-label", f? w[0]+" "+w[1]+", "+w[2] : w[0]+", tap to flip"); });
+      vg.appendChild(b);
+    });
+  }
+  renderCards(vocab);
+  var allFlipped=false;
+  document.getElementById("flipAll").addEventListener("click",function(){
+    allFlipped=!allFlipped; vg.querySelectorAll(".card").forEach(function(c){c.classList.toggle("flip",allFlipped)});
+    this.textContent = allFlipped ? "Flip back" : "Flip all";
+  });
+  document.getElementById("shuffle").addEventListener("click",function(){
+    var a=vocab.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t;}
+    allFlipped=false; document.getElementById("flipAll").textContent="Flip all"; renderCards(a);
+  });
+
+  /* homework chars */
+  var hw=document.getElementById("hwchars");
+  ["让","等","需要","看来","离开","比赛","坏","远","久","一定","刚","总是","通常","不过","所以"].forEach(function(w){ hw.insertAdjacentHTML("beforeend",'<div class="w" lang="zh">'+w.split("").map(function(c){return "<span>"+c+"</span>"}).join("")+'</div>'); });
+
+  /* ---------- frequency scale ---------- */
+  var freq=[["总是","zǒng shì","always",100],["通常","tōng cháng","usually",80],["常常 / 经常","cháng cháng / jīng cháng","often",65],["有时候","yǒu shí hou","sometimes",40],["很少","hěn shǎo","rarely",15],["从不","cóng bù","never",0]];
+  var sc=document.getElementById("scale");
+  freq.forEach(function(f,i){
+    var b=document.createElement("button"); b.setAttribute("aria-pressed", i===0);
+    b.innerHTML='<span class="zh" lang="zh">'+f[0]+'</span><span><span class="bar"><i style="width:'+f[3]+'%"></i></span><span class="sub py">'+colourPy(f[1])+'</span></span><span class="lab">'+f[2]+'</span>';
+    b.addEventListener("click",function(){ setFreq(i); say(f[0].split(" ")[0]); });
+    sc.appendChild(b);
+  });
+  function setFreq(i){
+    var f=freq[i], w=f[0].split(" / ")[0], p=f[1].split(" / ")[0];
+    sc.querySelectorAll("button").forEach(function(b,j){b.setAttribute("aria-pressed", j===i)});
+    var z="我<mark>"+w+"</mark>喝咖啡。";
+    var lz=document.getElementById("liveZ"); lz.innerHTML=z; speakable(lz, "我"+w+"喝咖啡。");
+    var cap=p.charAt(0).toUpperCase()+p.slice(1);
+    document.getElementById("liveP").innerHTML=colourPy("Wǒ "+p+" hē kā fēi.");
+    document.getElementById("liveE").textContent="I "+f[2]+" drink coffee.";
+  }
+  setFreq(0);
+
+  /* ---------- deck navigation ---------- */
+  var slides=[].slice.call(document.querySelectorAll(".slide")), cur=0, N=slides.length;
+  var count=document.getElementById("count"), prog=document.getElementById("prog");
+  function go(i, push){
+    cur=Math.max(0,Math.min(N-1,i));
+    slides.forEach(function(s,j){ s.classList.toggle("on", j===cur); });
+    slides[cur].scrollTop=0;
+    count.textContent=(cur+1)+" / "+N;
+    prog.style.width=((cur+1)/N*100)+"%";
+    if(push!==false){ try{ history.replaceState(null,"","#"+(cur+1)); }catch(e){} }
+    if(canSpeak) speechSynthesis.cancel();
+  }
+  document.getElementById("prev").onclick=function(){go(cur-1)};
+  document.getElementById("next").onclick=function(){go(cur+1)};
+  document.querySelectorAll("[data-go]").forEach(function(b){ b.addEventListener("click",function(){ go(+b.dataset.go-1); }); });
+
+  /* toggles */
+  function setToggle(btn, cls, on){ btn.setAttribute("aria-pressed", on); document.body.classList.toggle(cls, !on); try{ localStorage.setItem(cls, on?"1":"0"); }catch(e){} }
+  var tPy=document.getElementById("tPy"), tEn=document.getElementById("tEn");
+  var savedPy="1", savedEn="1";
+  try{ savedPy=localStorage.getItem("no-py")||"1"; savedEn=localStorage.getItem("no-en")||"1"; }catch(e){}
+  setToggle(tPy,"no-py",savedPy==="1"); setToggle(tEn,"no-en",savedEn==="1");
+  tPy.onclick=function(){ setToggle(tPy,"no-py", tPy.getAttribute("aria-pressed")!=="true"); };
+  tEn.onclick=function(){ setToggle(tEn,"no-en", tEn.getAttribute("aria-pressed")!=="true"); };
+
+  /* overview */
+  var ov=document.getElementById("ov"), ovList=document.getElementById("ovList");
+  slides.forEach(function(s,i){
+    var li=document.createElement("li"), b=document.createElement("button");
+    b.textContent=s.dataset.title; b.onclick=function(){ go(i); closeOv(); };
+    li.appendChild(b); ovList.appendChild(li);
+  });
+  function openOv(){ ovList.querySelectorAll("button").forEach(function(b,i){b.classList.toggle("cur",i===cur)}); ov.classList.add("on"); ovList.querySelectorAll("button")[cur].focus(); }
+  function closeOv(){ ov.classList.remove("on"); document.getElementById("ovBtn").focus(); }
+  document.getElementById("ovBtn").onclick=openOv;
+  document.getElementById("ovClose").onclick=closeOv;
+  ov.addEventListener("click",function(e){ if(e.target===ov) closeOv(); });
+
+  /* fullscreen */
+  document.getElementById("fsBtn").onclick=function(){
+    try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }catch(e){ toast("Full screen isn’t available here"); }
+  };
+
+  document.addEventListener("keydown",function(e){
+    if(e.target.matches && e.target.matches("input,textarea")) return;
+    if(ov.classList.contains("on")){ if(e.key==="Escape") closeOv(); return; }
+    var k=e.key;
+    if(k==="ArrowRight"||k==="PageDown"){ e.preventDefault(); go(cur+1); }
+    else if(k==="ArrowLeft"||k==="PageUp"){ e.preventDefault(); go(cur-1); }
+    else if(k===" " && !(e.target.closest && e.target.closest("button,[role=button]"))){ e.preventDefault(); go(cur+(e.shiftKey?-1:1)); }
+    else if(k==="Home"){ go(0); } else if(k==="End"){ go(N-1); }
+    else if(k==="p"||k==="P"){ tPy.click(); } else if(k==="e"||k==="E"){ tEn.click(); }
+    else if(k==="g"||k==="G"){ openOv(); } else if(k==="f"||k==="F"){ document.getElementById("fsBtn").click(); }
+  });
+  /* swipe */
+  var sx=null, sy=null;
+  document.getElementById("stage").addEventListener("touchstart",function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+  document.getElementById("stage").addEventListener("touchend",function(e){
+    if(sx===null) return; var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.5) go(cur+(dx<0?1:-1)); sx=null;
+  });
+
+  var h=parseInt((location.hash||"").slice(1),10);
+  go(isNaN(h)?0:h-1, false);
+})();
+</script>
+</body>
+</html>
