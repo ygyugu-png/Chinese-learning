@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>和 还是 也？</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b655c;
+    --line: #e4ddd2;
+    --red: #b3261e;
+    --red-soft: #f7e3e1;
+    --gold: #a8741a;
+    --gold-soft: #f6ecd8;
+    --blue: #2f5d8a;
+    --blue-soft: #e3ecf5;
+    --green: #2e7d4f;
+    --green-soft: #e2f1e8;
+    --he: #2f5d8a;
+    --he-soft: #e3ecf5;
+    --ye: #a8741a;
+    --ye-soft: #f6ecd8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --paper: #24211e;
+      --ink: #efe9e1;
+      --muted: #a89f93;
+      --line: #3a3530;
+      --red: #f08a82;
+      --red-soft: #3d2422;
+      --gold: #e0b562;
+      --gold-soft: #3a3020;
+      --blue: #8cb6e0;
+      --blue-soft: #1f2d3b;
+      --green: #7cc79b;
+      --green-soft: #1e3328;
+      --he: #8cb6e0;
+      --he-soft: #1f2d3b;
+      --ye: #e0b562;
+      --ye-soft: #3a3020;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header.hero {
+    background: var(--red);
+    color: #fff;
+    border-radius: 18px;
+    padding: 30px 28px;
+    margin-bottom: 20px;
+  }
+  @media (prefers-color-scheme: dark) { header.hero { color: #1a1816; } }
+  .hero h1 { margin: 0; font-size: 2.3rem; line-height: 1.25; letter-spacing: 0.04em; }
+  .hero p { margin: 6px 0 0; font-size: 1rem; opacity: 0.9; }
+
+  nav.steps {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    padding: 10px 0;
+    align-items: center;
+  }
+  nav.steps a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  nav.steps a:hover { border-color: var(--red); color: var(--red); }
+  .pyToggle { margin-left: auto; font-size: 0.88rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    margin-bottom: 22px;
+  }
+  .step-no {
+    display: inline-block;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .step-no.self { background: var(--green-soft); color: var(--green); }
+  h2 { margin: 0 0 4px; font-size: 1.6rem; line-height: 1.3; }
+  .sub-en { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+  h3 { font-size: 1.15rem; margin: 22px 0 8px; }
+  .en { color: var(--muted); font-size: 0.92rem; }
+
+  .he { color: var(--he); font-weight: 700; background: var(--he-soft); border-radius: 4px; padding: 0 3px; }
+  .ye { color: var(--ye); font-weight: 700; background: var(--ye-soft); border-radius: 4px; padding: 0 3px; }
+
+  /* big compare */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .vs { grid-template-columns: 1fr; } }
+  .vs .side { border-radius: 14px; padding: 18px 18px; }
+  .vs .side.h { background: var(--he-soft); }
+  .vs .side.y { background: var(--ye-soft); }
+  .vs .big { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .vs .side.h .big { color: var(--he); }
+  .vs .side.y .big { color: var(--ye); }
+  .vs .what { font-weight: 600; margin: 8px 0 4px; }
+  .vs .formula {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .ex { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+  .ex li { background: var(--bg); border-radius: 10px; padding: 8px 14px; }
+  .ex .zh { font-size: 1.15rem; }
+  .ex .py { display: block; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  .ex .tr { display: block; color: var(--muted); font-size: 0.9rem; }
+  .hide-py .py { display: none !important; }
+
+  .rule { border-left: 4px solid var(--line); padding: 2px 0 2px 16px; margin: 18px 0; }
+  .rule.h { border-color: var(--he); }
+  .rule.y { border-color: var(--ye); }
+  .rule h3 { margin-top: 0; }
+
+  .wrongright { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .wrongright div { border-radius: 8px; padding: 8px 12px; font-size: 1.05rem; }
+  .wrongright .x { background: var(--red-soft); color: var(--red); }
+  .wrongright .x::before { content: "✗ "; }
+  .wrongright .ok { background: var(--green-soft); color: var(--green); }
+  .wrongright .ok::before { content: "✓ "; }
+
+  /* english trap table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* summary */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .summary div { border-radius: 12px; padding: 14px 16px; background: var(--green-soft); font-size: 1rem; }
+  .summary b { color: var(--green); }
+
+  /* exercises */
+  .score {
+    display: inline-flex; gap: 6px; align-items: center;
+    background: var(--green-soft); color: var(--green);
+    font-weight: 700; border-radius: 999px; padding: 4px 14px; font-size: 0.9rem;
+  }
+  .q {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .q .prompt { font-size: 1.2rem; margin-bottom: 8px; }
+  .q .prompt .num { color: var(--muted); font-size: 0.9rem; margin-right: 6px; }
+  .q .blank {
+    display: inline-block; min-width: 2.2em; text-align: center;
+    border-bottom: 2px solid var(--muted); margin: 0 2px; font-weight: 700;
+  }
+  .q .blank.ok { color: var(--green); border-color: var(--green); }
+  .q .blank.no { color: var(--red); border-color: var(--red); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    font: inherit; font-size: 1.05rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 6px 16px; border-radius: 10px; cursor: pointer;
+  }
+  .opt:hover:not([disabled]) { border-color: var(--ink); }
+  .opt.correct { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+  .opt[disabled] { cursor: default; }
+  .opts.col { flex-direction: column; align-items: stretch; }
+  .opts.col .opt { text-align: left; }
+  .fb { margin-top: 8px; font-size: 0.95rem; display: none; border-radius: 8px; padding: 8px 12px; }
+  .fb.show { display: block; }
+  .fb.good { background: var(--green-soft); color: var(--green); }
+  .fb.bad { background: var(--red-soft); color: var(--red); }
+  .fb .why { color: var(--ink); display: block; margin-top: 2px; }
+
+  .reveal-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .attempt {
+    flex: 1 1 260px;
+    font: inherit; font-size: 1.1rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; background: var(--bg); color: var(--ink);
+  }
+  .btn {
+    font: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #1a1816; } }
+  .answer { display: none; margin-top: 8px; background: var(--green-soft); color: var(--green); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; }
+  .answer.show { display: block; }
+  .answer .note { display: block; font-size: 0.88rem; color: var(--ink); }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+
+  /* class activity */
+  .activity { background: var(--gold-soft); border-radius: 14px; padding: 18px 20px; }
+  .activity ol { margin: 6px 0 0; padding-left: 1.3em; }
+  .activity li { margin-bottom: 6px; }
+  .speech { display: grid; gap: 8px; margin-top: 12px; }
+  .bubble { background: var(--paper); border-radius: 14px; padding: 8px 14px; max-width: 520px; font-size: 1.1rem; }
+  .bubble.r { margin-left: auto; }
+  .bubble small { display: block; color: var(--muted); font-size: 0.8rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 30px; }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 14px; }
+    nav.steps, .btn, .score { display: none !important; }
+    section.card { break-inside: avoid; border-color: #ccc; }
+    header.hero { background: none; color: #000; border: 2px solid #000; }
+    .answer { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>和 还是 也？</h1>
+    <p>“and”, “also”, “too”: which one do I use in Chinese?</p>
+  </header>
+
+  <nav class="steps" aria-label="Sections">
+    <a href="#learn">1 学一学</a>
+    <a href="#he">2 和</a>
+    <a href="#ye">3 也</a>
+    <a href="#trap">4 English “and”</a>
+    <a href="#class">5 课堂活动</a>
+    <a href="#p1">6 练习</a>
+    <a href="#sum">7 总结</a>
+    <label class="pyToggle"><input type="checkbox" id="pyT" checked> 拼音 pinyin</label>
+  </nav>
+
+  <!-- 1 -->
+  <section class="card" id="learn">
+    <span class="step-no">第一部分 · Part 1</span>
+    <h2>一个连名词，一个在动词前面</h2>
+    <p class="sub-en">One joins nouns. The other goes in front of the verb.</p>
+    <div class="vs">
+      <div class="side h">
+        <div class="big">和</div>
+        <div class="what">“and”: joins <b>people and things</b></div>
+        <div class="formula">名词 A + 和 + 名词 B</div>
+        <ul class="ex">
+          <li><span class="zh">我<span class="he">和</span>她</span><span class="py">wǒ hé tā</span><span class="tr">me and her</span></li>
+          <li><span class="zh">咖啡<span class="he">和</span>茶</span><span class="py">kāfēi hé chá</span><span class="tr">coffee and tea</span></li>
+        </ul>
+      </div>
+      <div class="side y">
+        <div class="big">也</div>
+        <div class="what">“also / too”: goes <b>before the verb</b></div>
+        <div class="formula">主语 + 也 + 动词 / 形容词</div>
+        <ul class="ex">
+          <li><span class="zh">我<span class="ye">也</span>是学生。</span><span class="py">wǒ yě shì xuéshēng.</span><span class="tr">I am also a student.</span></li>
+          <li><span class="zh">她<span class="ye">也</span>很忙。</span><span class="py">tā yě hěn máng.</span><span class="tr">She is busy too.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="card" id="he">
+    <span class="step-no">第二部分 · Part 2</span>
+    <h2>和 hé</h2>
+    <p class="sub-en">How to use 和</p>
+
+    <div class="rule h">
+      <h3>① 和 joins nouns and pronouns</h3>
+      <ul class="ex">
+        <li><span class="zh">我<span class="he">和</span>我妹妹都是学生。</span><span class="py">Wǒ hé wǒ mèimei dōu shì xuéshēng.</span><span class="tr">My younger sister and I are both students.</span></li>
+        <li><span class="zh">我喜欢猫<span class="he">和</span>狗。</span><span class="py">Wǒ xǐhuan māo hé gǒu.</span><span class="tr">I like cats and dogs.</span></li>
+      </ul>
+    </div>
+
+    <div class="rule h">
+      <h3>② With three or more things, use 、 and put 和 before the last one</h3>
+      <ul class="ex">
+        <li><span class="zh">我学中文、法语<span class="he">和</span>历史。</span><span class="py">Wǒ xué Zhōngwén, Fǎyǔ hé lìshǐ.</span><span class="tr">I study Chinese, French and history.</span></li>
+      </ul>
+    </div>
+
+    <div class="rule h">
+      <h3>③ 和 + person + 一起 = (together) with someone</h3>
+      <ul class="ex">
+        <li><span class="zh">我常常<span class="he">和</span>朋友一起去咖啡店。</span><span class="py">Wǒ chángcháng hé péngyou yìqǐ qù kāfēidiàn.</span><span class="tr">I often go to the café with friends.</span></li>
+      </ul>
+    </div>
+
+    <div class="rule h">
+      <h3>④ 和 does NOT join two sentences, or two actions done one after the other</h3>
+      <div class="wrongright">
+        <div class="x">我很忙和我很累。</div>
+        <div class="ok">我很忙，<span class="ye">也</span>很累。</div>
+      </div>
+      <div class="wrongright">
+        <div class="x">我去超市和买了水果。</div>
+        <div class="ok">我去超市买了水果。</div>
+      </div>
+      <p class="en">For “and” between two sentences, use a comma, or a comma + 也.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="card" id="ye">
+    <span class="step-no">第三部分 · Part 3</span>
+    <h2>也 yě</h2>
+    <p class="sub-en">How to use 也</p>
+
+    <div class="rule y">
+      <h3>① 也 goes after the subject and before the verb or adjective</h3>
+      <div class="wrongright">
+        <div class="x">也我是英国人。</div>
+        <div class="ok">我<span class="ye">也</span>是英国人。</div>
+      </div>
+      <div class="wrongright">
+        <div class="x">我是也英国人。</div>
+        <div class="ok">我<span class="ye">也</span>是英国人。</div>
+      </div>
+      <p class="en">English “too” can go at the end (“I'm British too”). 也 never goes at the beginning or at the end.</p>
+    </div>
+
+    <div class="rule y">
+      <h3>② Different people, same thing</h3>
+      <ul class="ex">
+        <li><span class="zh">他是英国人，我<span class="ye">也</span>是。</span><span class="py">Tā shì Yīngguó rén, wǒ yě shì.</span><span class="tr">He is British, and so am I.</span></li>
+        <li><span class="zh">A：我喜欢喝茶。　B：我<span class="ye">也</span>喜欢！</span><span class="py">Wǒ xǐhuan hē chá. — Wǒ yě xǐhuan!</span><span class="tr">I like tea. — Me too!</span></li>
+      </ul>
+    </div>
+
+    <div class="rule y">
+      <h3>③ Same person, two things</h3>
+      <ul class="ex">
+        <li><span class="zh">我喜欢看书，<span class="ye">也</span>喜欢听音乐。</span><span class="py">Wǒ xǐhuan kàn shū, yě xǐhuan tīng yīnyuè.</span><span class="tr">I like reading, and I also like listening to music.</span></li>
+        <li><span class="zh">我会说英语，<span class="ye">也</span>会说一点儿中文。</span><span class="py">Wǒ huì shuō Yīngyǔ, yě huì shuō yìdiǎnr Zhōngwén.</span><span class="tr">I can speak English, and also a little Chinese.</span></li>
+      </ul>
+    </div>
+
+    <div class="rule y">
+      <h3>④ 也 goes before 不, 很 and 都</h3>
+      <ul class="ex">
+        <li><span class="zh">他不吃肉，我<span class="ye">也</span>不吃。</span><span class="py">Tā bù chī ròu, wǒ yě bù chī.</span><span class="tr">He doesn't eat meat, and neither do I.</span></li>
+        <li><span class="zh">今天<span class="ye">也</span>很冷。</span><span class="py">Jīntiān yě hěn lěng.</span><span class="tr">Today is cold too.</span></li>
+        <li><span class="zh">我们<span class="ye">也</span>都是学生。</span><span class="py">Wǒmen yě dōu shì xuéshēng.</span><span class="tr">We are all students too.</span></li>
+      </ul>
+    </div>
+
+    <div class="rule y">
+      <h3>⑤ 和 and 也 together</h3>
+      <ul class="ex">
+        <li><span class="zh">我<span class="he">和</span>Tom是英国人，Emma<span class="ye">也</span>是。</span><span class="py">Wǒ hé Tom shì Yīngguó rén, Emma yě shì.</span><span class="tr">Tom and I are British, and so is Emma.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="card" id="trap">
+    <span class="step-no">第四部分 · Part 4</span>
+    <h2>English “and” ≠ always 和</h2>
+    <p class="sub-en">English uses “and” almost everywhere. Chinese doesn't.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>English</th><th>What is joined?</th><th>Chinese</th></tr></thead>
+        <tbody>
+          <tr><td>tea <b>and</b> coffee</td><td>two things</td><td>茶<span class="he">和</span>咖啡</td></tr>
+          <tr><td>my mum <b>and</b> I</td><td>two people</td><td>我<span class="he">和</span>我妈妈</td></tr>
+          <tr><td>I'm tired <b>and</b> hungry.</td><td>two descriptions</td><td>我很累，<span class="ye">也</span>很饿。</td></tr>
+          <tr><td>I like tea, <b>and</b> I also like coffee.</td><td>two sentences, same person</td><td>我喜欢茶，<span class="ye">也</span>喜欢咖啡。</td></tr>
+          <tr><td>He's a student, <b>and</b> so am I.</td><td>two people, same thing</td><td>他是学生，我<span class="ye">也</span>是。</td></tr>
+          <tr><td>I went to the shop <b>and</b> bought fruit.</td><td>one action after another</td><td>我去商店买了水果。<span class="en">(no word needed)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="card" id="class">
+    <span class="step-no">第五部分 · Part 5</span>
+    <h2>课堂活动：我也是！</h2>
+    <p class="sub-en">Class activity: Me too!</p>
+    <div class="activity">
+      <ol>
+        <li>One student says a true sentence about themselves: <b>我喜欢……</b> / <b>我会……</b> / <b>我不……</b></li>
+        <li>Anyone it's true for stands up and says <b>我也……！</b></li>
+        <li>The class makes a 和 sentence about two of the people standing: <b>A<span class="he">和</span>B都……</b></li>
+      </ol>
+      <div class="speech">
+        <div class="bubble">我喜欢踢足球。<small>Tom</small></div>
+        <div class="bubble r">我<span class="ye">也</span>喜欢踢足球！<small>Emma</small></div>
+        <div class="bubble">Tom<span class="he">和</span>Emma都喜欢踢足球。<small>全班 · the whole class</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="card" id="p1">
+    <span class="step-no self">练习 · Practice 1</span>
+    <div class="bar">
+      <div>
+        <h2>和 还是 也？</h2>
+        <p class="sub-en" style="margin:0">Choose the right word.</p>
+      </div>
+      <span class="score" id="sc1">0 / 10</span>
+    </div>
+    <div id="ex1"></div>
+  </section>
+
+  <section class="card" id="p2">
+    <span class="step-no self">练习 · Practice 2</span>
+    <div class="bar">
+      <div>
+        <h2>也 放在哪儿？</h2>
+        <p class="sub-en" style="margin:0">Where does 也 go? Choose the correct sentence.</p>
+      </div>
+      <span class="score" id="sc2">0 / 5</span>
+    </div>
+    <div id="ex2"></div>
+  </section>
+
+  <section class="card" id="p3">
+    <span class="step-no self">练习 · Practice 3</span>
+    <div class="bar">
+      <div>
+        <h2>对还是错？</h2>
+        <p class="sub-en" style="margin:0">Right or wrong? If it's wrong, you'll see the correct version.</p>
+      </div>
+      <span class="score" id="sc3">0 / 8</span>
+    </div>
+    <div id="ex3"></div>
+  </section>
+
+  <section class="card" id="p4">
+    <span class="step-no self">练习 · Practice 4</span>
+    <div class="bar">
+      <div>
+        <h2>翻译</h2>
+        <p class="sub-en" style="margin:0">Translate into Chinese. Write your answer first, then check.</p>
+      </div>
+    </div>
+    <div id="ex4"></div>
+    <div style="margin-top:14px"><button class="btn" id="resetAll">全部重来 · Reset all practice</button></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="card" id="sum">
+    <span class="step-no">总结 · Summary</span>
+    <h2>记住！</h2>
+    <p class="sub-en">Remember!</p>
+    <div class="summary">
+      <div><b><span class="he">和</span> = and</b><br>Joins people and things: 我<span class="he">和</span>你, 茶<span class="he">和</span>咖啡.</div>
+      <div><b><span class="ye">也</span> = also / too</b><br>Subject + <span class="ye">也</span> + verb: 我<span class="ye">也</span>是。</div>
+      <div><b>Two sentences?</b><br>Not 和. Use a comma, or comma + <span class="ye">也</span>.</div>
+      <div><b>Order</b><br><span class="ye">也</span>不 · <span class="ye">也</span>很 · <span class="ye">也</span>都</div>
+    </div>
+  </section>
+
+  <footer>和 · 也 · 语法练习</footer>
+</div>
+
+<script>
+  // Pinyin toggle
+  document.getElementById('pyT').addEventListener('change', e => document.body.classList.toggle('hide-py', !e.target.checked));
+
+  // ---------- Practice 1: 和 or 也 ----------
+  const ex1 = [
+    ['我', '我妹妹都是学生。', '和', 'Joins two people: 我 and 我妹妹.'],
+    ['我是学生，他', '是学生。', '也', 'Different person, same thing: he is “also” a student.'],
+    ['我喜欢猫', '狗。', '和', 'Joins two things: 猫 and 狗.'],
+    ['A：你喝咖啡吗？B：我', '喝。', '也', '“I drink it too”: 也 goes before the verb.'],
+    ['我', '朋友一起去图书馆。', '和', '和 + person + 一起 = with someone.'],
+    ['他不吃肉，我', '不吃。', '也', '也 goes before 不: “I don’t either.”'],
+    ['北京', '上海都很大。', '和', 'Joins two places: 北京 and 上海.'],
+    ['我会说英语，', '会说一点儿中文。', '也', 'Same person, two things: 和 can’t join two sentences.'],
+    ['老师', '学生都来了。', '和', 'Joins two groups of people.'],
+    ['我很忙，', '很累。', '也', 'Two descriptions: use 也, not 和.']
+  ];
+  const s1 = { done: 0, ok: 0 };
+  function buildEx1() {
+    const box = document.getElementById('ex1'); box.innerHTML = '';
+    s1.done = 0; s1.ok = 0; upd('sc1', s1, ex1.length);
+    ex1.forEach((it, i) => {
+      const [a, b, ans, why] = it;
+      const q = document.createElement('div'); q.className = 'q';
+      q.innerHTML = `<div class="prompt"><span class="num">${i + 1}.</span>${a}<span class="blank">　</span>${b}</div>
+        <div class="opts"><button class="opt">和</button><button class="opt">也</button></div>
+        <div class="fb"></div>`;
+      const blank = q.querySelector('.blank'), fb = q.querySelector('.fb');
+      q.querySelectorAll('.opt').forEach(btn => btn.addEventListener('click', () => {
+        const right = btn.textContent === ans;
+        q.querySelectorAll('.opt').forEach(o => { o.disabled = true; if (o.textContent === ans) o.classList.add('correct'); });
+        if (!right) btn.classList.add('wrong');
+        blank.textContent = ans; blank.classList.add(right ? 'ok' : 'no');
+        fb.className = 'fb show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = (right ? '对了！' : '不对。答案是 ' + ans + '。') + `<span class="why">${why}</span>`;
+        s1.done++; if (right) s1.ok++; upd('sc1', s1, ex1.length);
+      }));
+      box.appendChild(q);
+    });
+  }
+
+  // ---------- Practice 2: where does 也 go ----------
+  const ex2 = [
+    ['I am also a student.', ['也我是学生。', '我也是学生。', '我是也学生。'], 1, 'Subject (我) + 也 + verb (是).'],
+    ['I don’t drink tea either.', ['我也不喝茶。', '我不也喝茶。', '我不喝也茶。'], 0, '也 goes before 不.'],
+    ['We are all students too.', ['也我们都是学生。', '我们是也都学生。', '我们也都是学生。'], 2, '也 goes before 都.'],
+    ['She is very busy too.', ['她很也忙。', '她也很忙。', '也她很忙。'], 1, '也 goes before 很.'],
+    ['I like tea, and I also like coffee.', ['我喜欢茶，也喜欢咖啡。', '我喜欢茶，喜欢也咖啡。', '我喜欢茶和也咖啡。'], 0, '也 goes before the second verb 喜欢.']
+  ];
+  const s2 = { done: 0, ok: 0 };
+  function buildEx2() {
+    const box = document.getElementById('ex2'); box.innerHTML = '';
+    s2.done = 0; s2.ok = 0; upd('sc2', s2, ex2.length);
+    ex2.forEach((it, i) => {
+      const [en, opts, ans, why] = it;
+      const q = document.createElement('div'); q.className = 'q';
+      q.innerHTML = `<div class="prompt"><span class="num">${i + 1}.</span>${en}</div>
+        <div class="opts col">${opts.map(o => `<button class="opt">${o}</button>`).join('')}</div>
+        <div class="fb"></div>`;
+      const btns = q.querySelectorAll('.opt'), fb = q.querySelector('.fb');
+      btns.forEach((btn, k) => btn.addEventListener('click', () => {
+        const right = k === ans;
+        btns.forEach((o, j) => { o.disabled = true; if (j === ans) o.classList.add('correct'); });
+        if (!right) btn.classList.add('wrong');
+        fb.className = 'fb show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = (right ? '对了！' : '不对。') + `<span class="why">${why}</span>`;
+        s2.done++; if (right) s2.ok++; upd('sc2', s2, ex2.length);
+      }));
+      box.appendChild(q);
+    });
+  }
+
+  // ---------- Practice 3: right or wrong ----------
+  const ex3 = [
+    ['我和他是朋友。', true, '', '和 joins two people.'],
+    ['我很累和很饿。', false, '我很累，也很饿。', '和 can’t join two descriptions.'],
+    ['也我喜欢中文。', false, '我也喜欢中文。', '也 goes after the subject.'],
+    ['我喜欢看书，也喜欢听音乐。', true, '', 'Same person, two things: 也.'],
+    ['我去超市和买了水果。', false, '我去超市买了水果。', 'One action after another needs no 和.'],
+    ['他是英国人，我也是。', true, '', 'Different person, same thing: 也.'],
+    ['我和妈妈一起吃饭。', true, '', '和 + person + 一起.'],
+    ['我是也老师。', false, '我也是老师。', '也 goes before the verb 是.']
+  ];
+  const s3 = { done: 0, ok: 0 };
+  function buildEx3() {
+    const box = document.getElementById('ex3'); box.innerHTML = '';
+    s3.done = 0; s3.ok = 0; upd('sc3', s3, ex3.length);
+    ex3.forEach((it, i) => {
+      const [zh, isRight, fix, why] = it;
+      const q = document.createElement('div'); q.className = 'q';
+      q.innerHTML = `<div class="prompt"><span class="num">${i + 1}.</span>${zh}</div>
+        <div class="opts"><button class="opt" data-v="1">✓ 对</button><button class="opt" data-v="0">✗ 错</button></div>
+        <div class="fb"></div>`;
+      const btns = q.querySelectorAll('.opt'), fb = q.querySelector('.fb');
+      btns.forEach(btn => btn.addEventListener('click', () => {
+        const said = btn.dataset.v === '1';
+        const right = said === isRight;
+        btns.forEach(o => { o.disabled = true; if ((o.dataset.v === '1') === isRight) o.classList.add('correct'); });
+        if (!right) btn.classList.add('wrong');
+        fb.className = 'fb show ' + (right ? 'good' : 'bad');
+        const head = right ? '对了！' : '不对。';
+        const corr = isRight ? '这个句子是对的。' : '正确：' + fix;
+        fb.innerHTML = `${head} ${corr}<span class="why">${why}</span>`;
+        s3.done++; if (right) s3.ok++; upd('sc3', s3, ex3.length);
+      }));
+      box.appendChild(q);
+    });
+  }
+
+  // ---------- Practice 4: translation ----------
+  const ex4 = [
+    ['My younger brother and I both study Chinese.', '我和我弟弟都学中文。', '和 joins the two people; 都 = both.'],
+    ['I like Beijing, and I also like Shanghai.', '我喜欢北京，也喜欢上海。', 'Same person, two sentences: 也.'],
+    ['She doesn’t eat meat, and I don’t either.', '她不吃肉，我也不吃。', '也 before 不.'],
+    ['I often go to the café with my friends.', '我常常和朋友一起去咖啡店。', '和 + person + 一起.'],
+    ['I’m tired, and also a bit hungry.', '我很累，也有点儿饿。', 'Two descriptions: 也, not 和.']
+  ];
+  function buildEx4() {
+    const box = document.getElementById('ex4'); box.innerHTML = '';
+    ex4.forEach((it, i) => {
+      const [en, ans, note] = it;
+      const q = document.createElement('div'); q.className = 'q';
+      q.innerHTML = `<div class="prompt"><span class="num">${i + 1}.</span>${en}</div>
+        <div class="reveal-row">
+          <input class="attempt" type="text" placeholder="写中文 · type your answer" aria-label="Your answer">
+          <button class="btn primary">看答案 · Check</button>
+        </div>
+        <div class="answer">${ans}<span class="note">${note}</span></div>`;
+      const btn = q.querySelector('.btn'), a = q.querySelector('.answer');
+      btn.addEventListener('click', () => {
+        a.classList.toggle('show');
+        btn.textContent = a.classList.contains('show') ? '隐藏 · Hide' : '看答案 · Check';
+      });
+      box.appendChild(q);
+    });
+  }
+
+  function upd(id, s, total) {
+    document.getElementById(id).textContent = `${s.ok} / ${total}` + (s.done === total ? (s.ok === total ? ' · 太棒了！' : ' · 完成') : '');
+  }
+
+  function buildAll() { buildEx1(); buildEx2(); buildEx3(); buildEx4(); }
+  document.getElementById('resetAll').addEventListener('click', () => { buildAll(); document.getElementById('p1').scrollIntoView({ behavior: 'smooth' }); });
+  buildAll();
+</script>
+</body>
+</html>
