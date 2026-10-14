@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>给北京同学写信</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b655c;
+    --line: #e4ddd2;
+    --red: #b3261e;
+    --red-soft: #f7e3e1;
+    --gold: #a8741a;
+    --gold-soft: #f6ecd8;
+    --blue: #2f5d8a;
+    --blue-soft: #e3ecf5;
+    --green: #2e7d4f;
+    --green-soft: #e2f1e8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --paper: #24211e;
+      --ink: #efe9e1;
+      --muted: #a89f93;
+      --line: #3a3530;
+      --red: #f08a82;
+      --red-soft: #3d2422;
+      --gold: #e0b562;
+      --gold-soft: #3a3020;
+      --blue: #8cb6e0;
+      --blue-soft: #1f2d3b;
+      --green: #7cc79b;
+      --green-soft: #1e3328;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header.hero {
+    background: var(--red);
+    color: #fff;
+    border-radius: 18px;
+    padding: 32px 28px;
+    margin-bottom: 20px;
+  }
+  @media (prefers-color-scheme: dark) { header.hero { color: #1a1816; } }
+  .hero h1 { margin: 0; font-size: 2.1rem; line-height: 1.25; letter-spacing: 0.04em; }
+  .hero p { margin: 0; font-size: 1.05rem; opacity: 0.95; }
+  .hero .en { font-size: 0.95rem; opacity: 0.85; }
+
+  nav.steps {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    padding: 10px 0;
+  }
+  nav.steps a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  nav.steps a:hover { border-color: var(--red); color: var(--red); }
+
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    margin-bottom: 22px;
+  }
+  .step-no {
+    display: inline-block;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  h2 { margin: 0 0 4px; font-size: 1.6rem; line-height: 1.3; }
+  h2 + .en, .sub-en { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+  h3 { font-size: 1.15rem; margin: 22px 0 8px; }
+  .en { color: var(--muted); font-size: 0.92rem; }
+
+  .big-q {
+    font-size: 1.35rem;
+    font-weight: 600;
+    background: var(--gold-soft);
+    border-left: 5px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 12px 0 16px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 1.05rem;
+  }
+
+  /* format table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.zh { font-weight: 600; white-space: nowrap; }
+
+  /* letters */
+  .letter {
+    background: repeating-linear-gradient(var(--paper) 0 2.15em, var(--line) 2.15em calc(2.15em + 1px));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 26px;
+    font-size: 1.08rem;
+    line-height: 2.15em;
+    font-family: "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif SC", "Songti SC", serif;
+  }
+  .letter p { margin: 0; }
+  .letter .ind { text-indent: 2em; }
+  .letter .right { text-align: right; }
+  .letter .label {
+    font-family: system-ui, sans-serif;
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+    line-height: 1.6;
+    display: none;
+  }
+  .show-labels .letter .label { display: inline-block; }
+  .show-q .letter .q { background: var(--gold-soft); box-shadow: 0 0 0 2px var(--gold-soft); border-radius: 4px; }
+
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 14px; }
+  .tab {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 10px;
+    padding: 8px 16px;
+    font: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .tab[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .tab[aria-pressed="true"] { color: #1a1816; } }
+  .toggles { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; font-size: 0.92rem; color: var(--muted); }
+  .toggles label { cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+  .panel[hidden] { display: none; }
+
+  /* remember box */
+  .remember { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 12px; }
+  .remember div {
+    background: var(--green-soft);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.98rem;
+  }
+  .remember b { color: var(--green); }
+
+  /* planner */
+  .planner { display: grid; gap: 10px; }
+  .planner .row { display: grid; grid-template-columns: 220px 1fr; gap: 12px; align-items: start; }
+  .planner .row .prompt { font-weight: 600; font-size: 0.98rem; }
+  .planner .row .prompt span { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+  .planner .box { border: 1.5px dashed var(--line); border-radius: 10px; min-height: 64px; }
+  @media (max-width: 640px) { .planner .row { grid-template-columns: 1fr; } }
+
+  /* language bank */
+  .bank-group { margin-bottom: 18px; }
+  .bank-group h3 { margin: 14px 0 6px; }
+  .bank { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .bank li {
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex; justify-content: space-between; gap: 10px; align-items: baseline;
+  }
+
+  /* timer */
+  .timer-wrap { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+  .timer {
+    font-variant-numeric: tabular-nums;
+    font-size: 4.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    min-width: 5ch;
+  }
+  .timer.warn { color: var(--red); }
+  .timer-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    font: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #1a1816; } }
+  .board-note {
+    margin-top: 16px;
+    font-size: 1.25rem;
+    background: var(--blue-soft);
+    color: var(--blue);
+    padding: 12px 16px;
+    border-radius: 10px;
+  }
+
+  /* checklist */
+  .check { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .check li label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; padding: 4px 0; }
+  .check input { width: 20px; height: 20px; margin-top: 5px; accent-color: var(--green); flex: none; }
+  .check input:checked + span { color: var(--muted); text-decoration: line-through; }
+  .feedback { display: grid; gap: 10px; margin-top: 14px; }
+  .feedback div { border-bottom: 1.5px dashed var(--line); padding-bottom: 18px; }
+
+  .exit {
+    font-size: 1.4rem; font-weight: 600; text-align: center;
+    padding: 24px 12px; border: 2px dashed var(--red); border-radius: 14px; color: var(--red);
+  }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 30px; }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 14px; }
+    nav.steps, .timer-card, .tabs, .toggles, .btn { display: none !important; }
+    .panel[hidden] { display: block !important; }
+    section.card { break-inside: avoid; border-color: #ccc; }
+    header.hero { background: none; color: #000; border: 2px solid #000; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>给北京的同学写一封信</h1>
+  </header>
+
+  <nav class="steps" aria-label="Lesson steps">
+    <a href="#s1">1 想一想</a>
+    <a href="#s2">2 信的格式</a>
+    <a href="#s3">3 范文</a>
+    <a href="#s4">4 计划</a>
+    <a href="#s5">5 语言库</a>
+    <a href="#s6">6 写信</a>
+    <a href="#s7">7 检查</a>
+    <a href="#s8">8 下一步</a>
+  </nav>
+
+  <!-- 1 -->
+  <section class="card" id="s1">
+    <span class="step-no">第一步 · Step 1</span>
+    <h2>你想问北京的同学什么？</h2>
+    <p class="sub-en">If you could ask a Chinese student three things, what would you ask?</p>
+    <div class="big-q">一封好信像一次聊天：告诉对方一些事情，也问对方一些问题。</div>
+    <p class="en" style="margin-top:-6px">A good letter is like a conversation: tell them something, and ask them something back.</p>
+    <h3>例如 · For example</h3>
+    <div class="chips">
+      <span class="chip">你学什么专业？</span>
+      <span class="chip">你周末常常做什么？</span>
+      <span class="chip">北京有什么好玩儿的地方？</span>
+      <span class="chip">中国大学生的生活是什么样的？</span>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="card" id="s2">
+    <span class="step-no">第二步 · Step 2</span>
+    <h2>中文信的格式</h2>
+    <p class="sub-en">A Chinese letter has six parts, always in this order.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Part</th><th>中文</th><th>Where it goes</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>1. Greeting line</td><td class="zh">称呼</td><td>Top left, no indent, ends with a colon ：</td><td>亲爱的朋友：</td></tr>
+          <tr><td>2. Hello</td><td class="zh">问候</td><td>New line, indented two characters</td><td>你好！</td></tr>
+          <tr><td>3. Body</td><td class="zh">正文</td><td>Every paragraph indented two characters</td><td>我叫……，我是英国人。</td></tr>
+          <tr><td>4. Closing wish</td><td class="zh">祝福语</td><td>After the body</td><td>祝你学习顺利！</td></tr>
+          <tr><td>5. Signature</td><td class="zh">署名</td><td>Bottom right</td><td>你的英国朋友 + your name</td></tr>
+          <tr><td>6. Date</td><td class="zh">日期</td><td>Under your name, bottom right</td><td>2026年10月14日</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="remember">
+      <div><b>日期在最后</b><br>The date goes at the <b>end</b>, as 年 → 月 → 日.</div>
+      <div><b>空两格</b><br>Indent every paragraph by <b>two characters</b>.</div>
+      <div><b>用“你”</b><br>You're writing to another student, so use 你, not 您.</div>
+      <div><b>中文标点</b><br>Use Chinese punctuation: ，。！？：</div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="card" id="s3">
+    <span class="step-no">第三步 · Step 3</span>
+    <h2>看一看范文</h2>
+    <p class="sub-en">Three example letters on the same topics. With a partner, find: the colon, the indents, the closing wish, the name and date, and every question.</p>
+
+    <div class="tabs" role="group" aria-label="Choose a letter">
+      <button class="tab" data-panel="A1" aria-pressed="true">范文一 Tom</button>
+      <button class="tab" data-panel="A2" aria-pressed="false">范文二 Emma</button>
+      <button class="tab" data-panel="B1" aria-pressed="false">范文三 James</button>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="tgLabels"> 显示格式 · Show the six parts</label>
+      <label><input type="checkbox" id="tgQ"> 找问题 · Highlight the questions</label>
+    </div>
+
+    <div id="letters">
+      <div class="panel" data-panel="A1">
+        <div class="letter">
+          <p>亲爱的朋友：<span class="label">称呼</span></p>
+          <p class="ind">你好！<span class="label">问候</span>我叫Tom，中文名字叫汤明。我是英国人，今年二十岁。<span class="label">正文</span></p>
+          <p class="ind">我是大学生，我学历史和中文。我喜欢看电影，也喜欢踢足球。我有一个妹妹，她十六岁。</p>
+          <p class="ind"><span class="q">你叫什么名字？</span><span class="q">你学什么专业？</span><span class="q">你喜欢什么运动？</span></p>
+          <p class="ind">很高兴认识你！</p>
+          <p>祝你学习顺利！<span class="label">祝福语</span></p>
+          <p class="right">你的新朋友</p>
+          <p class="right"><span class="label">署名</span>汤明（Tom）</p>
+          <p class="right"><span class="label">日期</span>2026年10月14日</p>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="A2" hidden>
+        <div class="letter">
+          <p>亲爱的北京的同学：<span class="label">称呼</span></p>
+          <p class="ind">你好！<span class="label">问候</span>我叫Emma，中文名字叫艾玛。我今年二十一岁，是英国人。我在大学学习经济和中文，现在是二年级的学生。<span class="label">正文</span></p>
+          <p class="ind">我们的大学很大，有很多国际学生。我每天上午有课，下午常常去图书馆学习。周末我喜欢和朋友一起去咖啡店，因为那里很安静，而且咖啡很好喝。</p>
+          <p class="ind">我学中文学了一年了。中文很有意思，但是汉字有点难。我还没去过中国，所以很想明年去北京看看。</p>
+          <p class="ind"><span class="q">你在北京生活怎么样？</span><span class="q">你周末常常做什么？</span><span class="q">北京有什么好吃的东西？</span></p>
+          <p class="ind">期待你的回信！</p>
+          <p>祝你一切顺利！<span class="label">祝福语</span></p>
+          <p class="right">你的英国朋友</p>
+          <p class="right"><span class="label">署名</span>艾玛（Emma）</p>
+          <p class="right"><span class="label">日期</span>2026年10月14日</p>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="B1" hidden>
+        <div class="letter">
+          <p>亲爱的朋友：<span class="label">称呼</span></p>
+          <p class="ind">你好！<span class="label">问候</span>我叫James，中文名字叫詹明远，是英国一所大学三年级的学生，专业是语言学。虽然我学中文才两年，但是我已经非常喜欢中国文化了。<span class="label">正文</span></p>
+          <p class="ind">我想跟你介绍一下我在英国的大学生活。这里的学生每周一般只有十几个小时的课，其他时间要自己安排学习。我觉得这样很自由，但是也需要很好地管理时间。另外，很多学生会参加社团，我参加了一个中文角，每周跟中国留学生聊天。</p>
+          <p class="ind"><span class="q">你们的大学生活是什么样的？</span><span class="q">跟英国比，你觉得哪些地方一样，哪些地方不一样？</span>我听说北京有很多好吃的，比如烤鸭和炸酱面。如果有机会去北京，我一定要尝尝。<span class="q">你能给我推荐几个北京好玩儿的地方吗？</span></p>
+          <p class="ind">如果你在学英语，我很愿意帮你练习。期待你的回信！</p>
+          <p>祝学习进步！<span class="label">祝福语</span></p>
+          <p class="right"><span class="label">署名</span>詹明远（James）</p>
+          <p class="right"><span class="label">日期</span>2026年10月14日</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="card" id="s4">
+    <span class="step-no">第四步 · Step 4</span>
+    <h2>做计划</h2>
+    <p class="sub-en">Plan your letter with keywords only, not full sentences.</p>
+
+    <h3>我的计划 · My plan</h3>
+    <div class="planner">
+      <div class="row"><div class="prompt">1. 关于我<span>name, age, nationality, what I study</span></div><div class="box"></div></div>
+      <div class="row"><div class="prompt">2. 我的生活<span>university, city, hobbies, weekend</span></div><div class="box"></div></div>
+      <div class="row"><div class="prompt">3. 学中文<span>how long, what's fun, what's hard</span></div><div class="box"></div></div>
+      <div class="row"><div class="prompt">4. 我的问题<span>at least two questions for your reader</span></div><div class="box"></div></div>
+      <div class="row"><div class="prompt">5. 结尾<span>closing wish, name, date</span></div><div class="box"></div></div>
+    </div>
+    <p class="en" style="margin-top:12px">Have a Chinese name? Sign with it and your English name, e.g. 艾玛（Emma）.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="card" id="s5">
+    <span class="step-no">第五步 · Step 5</span>
+    <h2>语言库</h2>
+    <p class="sub-en">Useful sentences for your letter.</p>
+
+    <div class="bank-group">
+      <h3>介绍自己 · Introducing yourself</h3>
+      <ul class="bank">
+        <li><span>我叫……，中文名字叫……。</span></li>
+        <li><span>我是英国人。/ 我是……人，现在在英国上大学。</span></li>
+        <li><span>我今年……岁。</span></li>
+        <li><span>我学……专业。/ 我的专业是……。</span></li>
+        <li><span>我现在是大学……年级的学生。</span></li>
+        <li><span>我是英国一所大学……年级的学生，专业是……。</span></li>
+      </ul>
+    </div>
+
+    <div class="bank-group">
+      <h3>我的生活和大学 · My life and university</h3>
+      <ul class="bank">
+        <li><span>我的大学很大 / 不太大。</span></li>
+        <li><span>我每天……，周末常常……。</span></li>
+        <li><span>我喜欢……，也喜欢……。</span></li>
+        <li><span>我喜欢……，因为……。</span></li>
+        <li><span>……很好，而且……。</span></li>
+        <li><span>跟中国比，英国的大学……。</span></li>
+        <li><span>我觉得……，但是也……。</span></li>
+      </ul>
+    </div>
+
+    <div class="bank-group">
+      <h3>学中文 · Learning Chinese</h3>
+      <ul class="bank">
+        <li><span>我学中文。中文很有意思。</span></li>
+        <li><span>我学中文学了……了。</span></li>
+        <li><span>中文很有意思，但是汉字有点难。</span></li>
+        <li><span>我（还没）去过中国。</span></li>
+        <li><span>虽然……，但是我已经……了。</span></li>
+        <li><span>如果有机会，我想……。</span></li>
+      </ul>
+    </div>
+
+    <div class="bank-group">
+      <h3>提问题 · Asking questions</h3>
+      <ul class="bank">
+        <li><span>你叫什么名字？</span></li>
+        <li><span>你学什么专业？</span></li>
+        <li><span>你喜欢做什么？</span></li>
+        <li><span>你周末常常做什么？</span></li>
+        <li><span>北京有什么好吃的 / 好玩儿的地方？</span></li>
+        <li><span>中国大学生的生活是什么样的？</span></li>
+        <li><span>你能给我推荐……吗？</span></li>
+      </ul>
+    </div>
+
+    <div class="bank-group">
+      <h3>结尾 · Ending the letter</h3>
+      <ul class="bank">
+        <li><span>很高兴认识你！</span></li>
+        <li><span>期待你的回信！</span></li>
+        <li><span>祝你学习顺利！/ 祝你一切顺利！/ 祝学习进步！</span></li>
+        <li><span>你的新朋友 / 你的英国朋友 + 名字</span></li>
+        <li><span>P.S. 如果你在学英语，我可以帮你练习。</span></li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- 6 -->
+  <section class="card timer-card" id="s6">
+    <span class="step-no">第六步 · Step 6</span>
+    <h2>开始写信！</h2>
+    <p class="sub-en">Write your letter. 20 minutes.</p>
+    <div class="timer-wrap">
+      <div class="timer" id="timer" aria-live="polite">20:00</div>
+      <div class="timer-btns">
+        <button class="btn primary" id="tStart">开始 Start</button>
+        <button class="btn" id="tPause">暂停 Pause</button>
+        <button class="btn" id="tReset">重来 Reset</button>
+      </div>
+    </div>
+    <div class="board-note">写你会写的中文。不会写的字，可以先写拼音。<br><span class="en">Write the Chinese you know. If you can't write a character, write the pinyin for now.</span></div>
+    <div class="remember">
+      <div><b>可以 ✓</b><br>Look up single words in a dictionary like Pleco.</div>
+      <div><b>不可以 ✗</b><br>No Google Translate or AI for whole sentences. Your reader wants <b>your</b> Chinese!</div>
+      <div><b>不要写 ✗</b><br>No home address, phone number or personal social media.</div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="card" id="s7">
+    <span class="step-no">第七步 · Step 7</span>
+    <h2>互相检查</h2>
+    <p class="sub-en">Swap letters with a partner. Read it as if you were the student in Beijing.</p>
+
+    <h3>格式 · Format</h3>
+    <ul class="check">
+      <li><label><input type="checkbox"><span>称呼 at the top with a colon ：</span></label></li>
+      <li><label><input type="checkbox"><span>你好！ and every paragraph indented two characters</span></label></li>
+      <li><label><input type="checkbox"><span>A closing wish (祝……)</span></label></li>
+      <li><label><input type="checkbox"><span>Name and date at the bottom right, date as 年月日</span></label></li>
+    </ul>
+
+    <h3>内容 · Content</h3>
+    <ul class="check">
+      <li><label><input type="checkbox"><span>The reader learns who the writer is and what they study</span></label></li>
+      <li><label><input type="checkbox"><span>At least one detail about life in the UK</span></label></li>
+      <li><label><input type="checkbox"><span>At least two questions the reader can answer</span></label></li>
+      <li><label><input type="checkbox"><span>Nothing private: no address, phone number or personal social media</span></label></li>
+    </ul>
+
+    <h3>语言 · Language (check just three things)</h3>
+    <ul class="check">
+      <li><label><input type="checkbox"><span>Time words before the verb (我每天……)</span></label></li>
+      <li><label><input type="checkbox"><span>很 before adjectives, and no 是 + adjective</span></label></li>
+      <li><label><input type="checkbox"><span>Chinese punctuation ，。？！</span></label></li>
+    </ul>
+
+    <h3>给同学的反馈 · Feedback for your partner</h3>
+    <div class="feedback">
+      <div>我喜欢 · One thing I liked:</div>
+      <div>我想问你 · One question I'd ask you:</div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="card" id="s8">
+    <span class="step-no">第八步 · Step 8</span>
+    <h2>下一步</h2>
+    <p class="sub-en">What happens next</p>
+    <ol>
+      <li>Copy your letter out neatly on good paper.</li>
+      <li>Give it to your teacher, who will check every letter before sending.</li>
+      <li>Your letter will be shared with students in Beijing, and you might get a reply!</li>
+    </ol>
+    <h3>离开以前 · Before you leave, finish this sentence:</h3>
+    <div class="exit">写信的时候，我觉得最难的是……</div>
+  </section>
+
+  <footer>给北京同学的信 · 2026</footer>
+</div>
+
+<script>
+  // Model letter tabs
+  const letterTabs = document.querySelectorAll('#s3 .tab');
+  const panels = document.querySelectorAll('#letters .panel');
+  letterTabs.forEach(btn => btn.addEventListener('click', () => {
+    letterTabs.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+    panels.forEach(p => { p.hidden = p.dataset.panel !== btn.dataset.panel; });
+  }));
+
+  // Toggles
+  const s3 = document.getElementById('s3');
+  document.getElementById('tgLabels').addEventListener('change', e => s3.classList.toggle('show-labels', e.target.checked));
+  document.getElementById('tgQ').addEventListener('change', e => s3.classList.toggle('show-q', e.target.checked));
+
+  // Writing timer
+  const TOTAL = 20 * 60;
+  let left = TOTAL, tick = null;
+  const el = document.getElementById('timer');
+  const show = () => {
+    const m = String(Math.floor(left / 60)).padStart(2, '0');
+    const s = String(left % 60).padStart(2, '0');
+    el.textContent = m + ':' + s;
+    el.classList.toggle('warn', left <= 5 * 60);
+  };
+  document.getElementById('tStart').addEventListener('click', () => {
+    if (tick || left === 0) return;
+    tick = setInterval(() => {
+      left = Math.max(0, left - 1);
+      show();
+      if (left === 0) { clearInterval(tick); tick = null; el.textContent = '时间到！'; }
+    }, 1000);
+  });
+  document.getElementById('tPause').addEventListener('click', () => { clearInterval(tick); tick = null; });
+  document.getElementById('tReset').addEventListener('click', () => { clearInterval(tick); tick = null; left = TOTAL; show(); });
+  show();
+</script>
+</body>
+</html>
