@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第31课 对话一</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css">
+<style>
+
+  :root {
+    --bg: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b655c;
+    --line: #e4ddd2;
+    --red: #b3261e;
+    --red-soft: #f7e3e1;
+    --gold: #a8741a;
+    --gold-soft: #f6ecd8;
+    --blue: #2f5d8a;
+    --blue-soft: #e3ecf5;
+    --green: #2e7d4f;
+    --green-soft: #e2f1e8;
+    --he: #2f5d8a;
+    --he-soft: #e3ecf5;
+    --ye: #a8741a;
+    --ye-soft: #f6ecd8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --paper: #24211e;
+      --ink: #efe9e1;
+      --muted: #a89f93;
+      --line: #3a3530;
+      --red: #f08a82;
+      --red-soft: #3d2422;
+      --gold: #e0b562;
+      --gold-soft: #3a3020;
+      --blue: #8cb6e0;
+      --blue-soft: #1f2d3b;
+      --green: #7cc79b;
+      --green-soft: #1e3328;
+      --he: #8cb6e0;
+      --he-soft: #1f2d3b;
+      --ye: #e0b562;
+      --ye-soft: #3a3020;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header.hero {
+    background: var(--red);
+    color: #fff;
+    border-radius: 18px;
+    padding: 30px 28px;
+    margin-bottom: 20px;
+  }
+  @media (prefers-color-scheme: dark) { header.hero { color: #1a1816; } }
+  .hero h1 { margin: 0; font-size: 2.3rem; line-height: 1.25; letter-spacing: 0.04em; }
+  .hero p { margin: 6px 0 0; font-size: 1rem; opacity: 0.9; }
+
+  nav.steps {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    padding: 10px 0;
+    align-items: center;
+  }
+  nav.steps a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  nav.steps a:hover { border-color: var(--red); color: var(--red); }
+  .pyToggle { margin-left: auto; font-size: 0.88rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    margin-bottom: 22px;
+  }
+  .step-no {
+    display: inline-block;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .step-no.self { background: var(--green-soft); color: var(--green); }
+  h2 { margin: 0 0 4px; font-size: 1.6rem; line-height: 1.3; }
+  .sub-en { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+  h3 { font-size: 1.15rem; margin: 22px 0 8px; }
+  .en { color: var(--muted); font-size: 0.92rem; }
+
+  .he { color: var(--he); font-weight: 700; background: var(--he-soft); border-radius: 4px; padding: 0 3px; }
+  .ye { color: var(--ye); font-weight: 700; background: var(--ye-soft); border-radius: 4px; padding: 0 3px; }
+
+  /* big compare */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .vs { grid-template-columns: 1fr; } }
+  .vs .side { border-radius: 14px; padding: 18px 18px; }
+  .vs .side.h { background: var(--he-soft); }
+  .vs .side.y { background: var(--ye-soft); }
+  .vs .big { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .vs .side.h .big { color: var(--he); }
+  .vs .side.y .big { color: var(--ye); }
+  .vs .what { font-weight: 600; margin: 8px 0 4px; }
+  .vs .formula {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .ex { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+  .ex li { background: var(--bg); border-radius: 10px; padding: 8px 14px; }
+  .ex .zh { font-size: 1.15rem; }
+  .ex .py { display: block; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  .ex .tr { display: block; color: var(--muted); font-size: 0.9rem; }
+  .hide-py .py { display: none !important; }
+
+  .rule { border-left: 4px solid var(--line); padding: 2px 0 2px 16px; margin: 18px 0; }
+  .rule.h { border-color: var(--he); }
+  .rule.y { border-color: var(--ye); }
+  .rule h3 { margin-top: 0; }
+
+  .wrongright { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .wrongright div { border-radius: 8px; padding: 8px 12px; font-size: 1.05rem; }
+  .wrongright .x { background: var(--red-soft); color: var(--red); }
+  .wrongright .x::before { content: "✗ "; }
+  .wrongright .ok { background: var(--green-soft); color: var(--green); }
+  .wrongright .ok::before { content: "✓ "; }
+
+  /* english trap table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* summary */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .summary div { border-radius: 12px; padding: 14px 16px; background: var(--green-soft); font-size: 1rem; }
+  .summary b { color: var(--green); }
+
+  /* exercises */
+  .score {
+    display: inline-flex; gap: 6px; align-items: center;
+    background: var(--green-soft); color: var(--green);
+    font-weight: 700; border-radius: 999px; padding: 4px 14px; font-size: 0.9rem;
+  }
+  .q {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .q .prompt { font-size: 1.2rem; margin-bottom: 8px; }
+  .q .prompt .num { color: var(--muted); font-size: 0.9rem; margin-right: 6px; }
+  .q .blank {
+    display: inline-block; min-width: 2.2em; text-align: center;
+    border-bottom: 2px solid var(--muted); margin: 0 2px; font-weight: 700;
+  }
+  .q .blank.ok { color: var(--green); border-color: var(--green); }
+  .q .blank.no { color: var(--red); border-color: var(--red); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    font: inherit; font-size: 1.05rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 6px 16px; border-radius: 10px; cursor: pointer;
+  }
+  .opt:hover:not([disabled]) { border-color: var(--ink); }
+  .opt.correct { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+  .opt[disabled] { cursor: default; }
+  .opts.col { flex-direction: column; align-items: stretch; }
+  .opts.col .opt { text-align: left; }
+  .fb { margin-top: 8px; font-size: 0.95rem; display: none; border-radius: 8px; padding: 8px 12px; }
+  .fb.show { display: block; }
+  .fb.good { background: var(--green-soft); color: var(--green); }
+  .fb.bad { background: var(--red-soft); color: var(--red); }
+  .fb .why { color: var(--ink); display: block; margin-top: 2px; }
+
+  .reveal-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .attempt {
+    flex: 1 1 260px;
+    font: inherit; font-size: 1.1rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; background: var(--bg); color: var(--ink);
+  }
+  .btn {
+    font: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #1a1816; } }
+  .answer { display: none; margin-top: 8px; background: var(--green-soft); color: var(--green); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; }
+  .answer.show { display: block; }
+  .answer .note { display: block; font-size: 0.88rem; color: var(--ink); }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+
+  /* class activity */
+  .activity { background: var(--gold-soft); border-radius: 14px; padding: 18px 20px; }
+  .activity ol { margin: 6px 0 0; padding-left: 1.3em; }
+  .activity li { margin-bottom: 6px; }
+  .speech { display: grid; gap: 8px; margin-top: 12px; }
+  .bubble { background: var(--paper); border-radius: 14px; padding: 8px 14px; max-width: 520px; font-size: 1.1rem; }
+  .bubble.r { margin-left: auto; }
+  .bubble small { display: block; color: var(--muted); font-size: 0.8rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 30px; }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 14px; }
+    nav.steps, .btn, .score { display: none !important; }
+    section.card { break-inside: avoid; border-color: #ccc; }
+    header.hero { background: none; color: #000; border: 2px solid #000; }
+    .answer { display: none !important; }
+  }
+  .tab { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 8px 16px; font: inherit; font-size: 0.95rem; cursor: pointer; }
+  .tab[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+  .exit { font-size: 1.3rem; font-weight: 600; text-align: center; padding: 22px 12px; border: 2px dashed var(--red); border-radius: 14px; color: var(--red); }
+  .timer-wrap { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .toggles { display: inline-flex; gap: 6px; align-items: center; font-size: 0.92rem; color: var(--muted); cursor: pointer; }
+  @media (prefers-color-scheme: dark) { .tab[aria-pressed="true"] { color: #1a1816; } }
+
+  .kai { font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .remember { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+  .remember div { background: var(--green-soft); border-radius: 12px; padding: 12px 14px; font-size: 0.98rem; }
+  .remember b { color: var(--green); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+
+  /* review chunks */
+  .chunks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .chunk {
+    font: inherit; font-size: 1.5rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 12px; padding: 12px 8px; cursor: pointer; text-align: center;
+    font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif;
+  }
+  .chunk .gap { display: inline-block; min-width: 2.2em; border-bottom: 2px solid var(--muted); color: transparent; }
+  .chunk.open .gap { color: var(--green); border-color: var(--green); }
+
+  /* dialogue */
+  .dlg { display: grid; gap: 8px; }
+  .ln { display: grid; grid-template-columns: 64px 1fr auto; gap: 10px; align-items: start; border-radius: 12px; padding: 8px 12px; }
+  .ln.s { background: var(--blue-soft); }
+  .ln.t { background: var(--gold-soft); }
+  .ln .sp { font-weight: 700; padding-top: 6px; font-size: 0.95rem; }
+  .ln.s .sp { color: var(--blue); }
+  .ln.t .sp { color: var(--gold); }
+  .ln .zh { font-size: 1.35rem; line-height: 1.6; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .ln .pyl { color: var(--muted); font-size: 0.88rem; font-style: italic; }
+  .ln .enl { font-size: 0.92rem; color: var(--ink); display: none; margin-top: 2px; }
+  .ln.show-en .enl { display: block; }
+  .show-all-en .ln .enl { display: block; }
+  .hide-py .ln .pyl { display: none; }
+  .ln .btns { display: flex; gap: 4px; }
+  .ln .ib { border: 0; background: var(--paper); border-radius: 8px; padding: 4px 8px; cursor: pointer; font-size: 0.85rem; color: var(--ink); }
+  .ln.playing { outline: 3px solid var(--red); }
+  .hl { background: var(--paper); border-bottom: 2px solid var(--red); border-radius: 3px; padding: 0 2px; }
+  .no-hl .hl { background: none; border-bottom: none; padding: 0; }
+  .hidden-text .ln .zh, .hidden-text .ln .pyl { filter: blur(7px); user-select: none; }
+  .blank { color: var(--muted); letter-spacing: 1px; }
+
+  /* listening */
+  .lq { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+  .lq .prompt { font-size: 1.15rem; margin-bottom: 8px; }
+  .lq .num { color: var(--muted); margin-right: 6px; }
+
+  /* grammar */
+  .gp { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; }
+  .gp h3 { margin: 0 0 6px; }
+  .gp .pat { display: inline-block; background: var(--red-soft); color: var(--red); font-weight: 700; border-radius: 8px; padding: 4px 12px; font-size: 1.1rem; margin-bottom: 8px; }
+  .gp .from { background: var(--gold-soft); border-radius: 10px; padding: 8px 12px; font-size: 1.15rem; margin: 6px 0; }
+  .gp .from::before { content: "对话："; color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+  .gp .exs { margin: 6px 0 0; padding-left: 1.2em; }
+  .gp .exs li { font-size: 1.1rem; margin-bottom: 2px; }
+  .gp .exs .tr { color: var(--muted); font-size: 0.88rem; }
+  .gp .check { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 10px; }
+  .gp .check .prompt { font-size: 1.05rem; margin-bottom: 6px; }
+  .gtabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+  /* disappearing */
+  .levelbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+  .lvl { font: inherit; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 7px 14px; cursor: pointer; }
+  .lvl[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+
+  /* role-play */
+  .idcard { border: 2px solid var(--blue); border-radius: 16px; padding: 16px 18px; margin: 12px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .idcard div { background: var(--blue-soft); border-radius: 10px; padding: 8px 12px; }
+  .idcard b { display: block; color: var(--blue); font-size: 0.85rem; }
+  .idcard span { font-size: 1.15rem; }
+  .bnote { background: var(--gold-soft); border-radius: 12px; padding: 12px 14px; }
+  .bnote b { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>第三十一课　对话一</h1>
+    <p>在注册处 · At the registration desk</p>
+  </header>
+
+  <nav class="steps" aria-label="Activities">
+    <a href="#b1">1 复习</a>
+    <a href="#b2">2 听一听</a>
+    <a href="#b3">3 读一读</a>
+    <a href="#b4">4 语言点</a>
+    <a href="#b5">5 背一背</a>
+    <a href="#b6">6 演一演</a>
+    <a href="#b7">7 总结</a>
+    <label class="pyToggle"><input type="checkbox" id="pyT" checked> 拼音 pinyin</label>
+  </nav>
+
+  <!-- 1 review -->
+  <section class="card" id="b1">
+    <span class="step-no">第一步 · 5 分钟</span>
+    <h2>复习：动词 + 名词</h2>
+    <p class="sub-en">Review: say the missing word, then click to check. Then use the chunk in a sentence!</p>
+    <div class="chunks" id="chunks"></div>
+  </section>
+
+  <!-- 2 listening -->
+  <section class="card" id="b2">
+    <span class="step-no">第二步 · 8 分钟</span>
+    <h2>听一听</h2>
+    <p class="sub-en">Listen to Dialogue 1 with your book closed. First listen: answer A. Second listen: answer B.</p>
+    <div class="toolbar">
+      <button class="btn primary" id="playAll">▶ 听对话 Play dialogue</button>
+      <button class="btn" id="stopAll">■ 停 Stop</button>
+      <span class="en">Computer voice. Your teacher may use the textbook audio instead.</span>
+    </div>
+    <h3>A. 第一遍：大意 · First listen: the main idea</h3>
+    <div id="lqA"></div>
+    <h3>B. 第二遍：对还是错？ · Second listen: true or false?</h3>
+    <div id="lqB"></div>
+  </section>
+
+  <!-- 3 reading -->
+  <section class="card" id="b3">
+    <span class="step-no">第三步 · 8 分钟</span>
+    <h2>读一读：对话一</h2>
+    <p class="sub-en">Read and understand. Click “EN” on a line to see what it means, and 🔊 to hear it. The new words from this lesson are underlined.</p>
+    <div class="toolbar">
+      <label class="toggles" style="margin:0"><input type="checkbox" id="allEn"> 全部英文 Show all English</label>
+      <label class="toggles" style="margin:0"><input type="checkbox" id="hlT" checked> 标出生词 Underline new words</label>
+    </div>
+    <div class="dlg" id="dlg"></div>
+    <div class="remember">
+      <div><b>找对地方了</b><br>You've found the right place. 找 + 对 = find correctly (opposite: 找错了).</div>
+      <div><b>好记</b><br>Easy to remember. 好 + verb = easy to …: 好吃、好学、好记.</div>
+      <div><b>填写一下</b><br>一下 makes a request softer and more polite: 请你填写一下.</div>
+    </div>
+  </section>
+
+  <!-- 4 grammar -->
+  <section class="card" id="b4">
+    <span class="step-no">第四步 · 12 分钟</span>
+    <h2>语言点</h2>
+    <p class="sub-en">Five language points from the dialogue. Read the pattern, then try the quick check.</p>
+    <div class="gtabs" id="gtabs"></div>
+    <div id="gbody"></div>
+  </section>
+
+  <!-- 5 disappearing -->
+  <section class="card" id="b5">
+    <span class="step-no">第五步 · 8 分钟</span>
+    <h2>背一背：越来越少的对话</h2>
+    <p class="sub-en">The disappearing dialogue: read it with a partner (A = 学生, B = 老师). Each round, more characters disappear. Can you still say it?</p>
+    <div class="levelbar" id="levels"></div>
+    <div class="dlg" id="dlg2"></div>
+  </section>
+
+  <!-- 6 role-play -->
+  <section class="card" id="b6">
+    <span class="step-no">第六步 · 7 分钟</span>
+    <h2>演一演：换一个学生</h2>
+    <p class="sub-en">Remix the dialogue. A draws an ID card and becomes a new student. B is the teacher and must react to what A says, so don't just repeat the book!</p>
+    <div class="toolbar"><button class="btn primary" id="drawId">🎴 抽身份卡 Draw an ID card</button></div>
+    <div class="idcard" id="idcard" hidden></div>
+    <div class="bnote">
+      <b>B (老师) listen and react:</b>
+      <ul style="margin:6px 0 0;padding-left:1.2em">
+        <li>来读学位的？ → 如果你读学位，请到……系报到。</li>
+        <li>来进修的？ → 那你找对地方了。</li>
+        <li>没有护照？ → 没关系，明天带来就行。</li>
+        <li>预订了宿舍？ → ……以后，到对面的办公室去交费取钥匙。</li>
+        <li>没有预订？ → 你可以在这儿预订。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 summary -->
+  <section class="card" id="b7">
+    <span class="step-no">总结 · 2 分钟</span>
+    <h2>今天学的句子</h2>
+    <p class="sub-en">Five sentence patterns to take away.</p>
+    <div class="summary">
+      <div><b>V + 的 = the people who V</b><br>读中文的是在这儿报到吗？</div>
+      <div><b>如果……，（那）就……</b><br>如果你能用中文填，那就用中文填。</div>
+      <div><b>是……的</b><br>我是来进修的。<br>名字是老师给我起的。</div>
+      <div><b>A 还是 B？</b><br>用中文填还是用英文填？</div>
+      <div><b>V 完……以后，到……去……</b><br>办理完手续以后，到办公室去交费。</div>
+    </div>
+    <h3>离开以前 · Before you leave</h3>
+    <div class="exit">用“如果”和“是……的”说两句关于你自己的话。</div>
+  </section>
+
+  <footer>步步高中文 4 · 第31课 · 对话一</footer>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+  $('pyT').addEventListener('change', e => document.body.classList.toggle('hide-py', !e.target.checked));
+
+  // ---------- speech ----------
+  let voices = [];
+  function loadVoices() { try { voices = window.speechSynthesis.getVoices().filter(v => /zh[-_]CN/i.test(v.lang)); } catch (e) {} }
+  try { loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; } catch (e) {}
+  function say(text, who, onend) {
+    try {
+      if (!('speechSynthesis' in window)) { onend && onend(); return; }
+      const u = new SpeechSynthesisUtterance(text.replace(/Jay Lee/g, 'Jay Lee'));
+      u.lang = 'zh-CN'; u.rate = 0.82;
+      if (voices.length) u.voice = voices[who === 't' && voices.length > 1 ? 1 : 0];
+      u.pitch = who === 't' ? 0.85 : 1.15;
+      u.onend = () => onend && onend(); u.onerror = () => onend && onend();
+      window.speechSynthesis.speak(u);
+    } catch (e) { onend && onend(); }
+  }
+  function stopSpeech() { try { window.speechSynthesis.cancel(); } catch (e) {} document.querySelectorAll('.ln.playing').forEach(l => l.classList.remove('playing')); }
+
+  // ---------- dialogue data ----------
+  const HL = ['读', '报到', '如果', '学位', '中文系', '进修', '注册', '录取', '通知书', '有意思', '起', '力量', '表格', '预订', '办理', '手续', '办公室', '交费', '钥匙', '李健', '登记', '填写', '填', '取'];
+  const D = [
+    ['s', '请问，读中文的是在这儿报到吗？', 'Qǐngwèn, dú Zhōngwén de shì zài zhèr bàodào ma?', 'Excuse me, is this where people studying Chinese register?'],
+    ['t', '如果你读学位，请到中文系报到。', 'Rúguǒ nǐ dú xuéwèi, qǐng dào Zhōngwénxì bàodào.', 'If you’re doing a degree, please register at the Chinese Department.'],
+    ['s', '我不读学位，我是来进修的。', 'Wǒ bù dú xuéwèi, wǒ shì lái jìnxiū de.', 'I’m not doing a degree. I’m here for advanced (non-degree) study.'],
+    ['t', '那你找对地方了，进修的就是在这儿登记注册。', 'Nà nǐ zhǎo duì dìfang le, jìnxiū de jiù shì zài zhèr dēngjì zhùcè.', 'Then you’ve come to the right place. Advanced-study students register right here.'],
+    ['s', '谢谢！这是我的录取通知书和护照。', 'Xièxie! Zhè shì wǒ de lùqǔ tōngzhīshū hé hùzhào.', 'Thank you! Here are my offer letter and my passport.'],
+    ['t', '你的英文名字叫Jay Lee，中文名字叫李健，很有意思。', 'Nǐ de Yīngwén míngzi jiào Jay Lee, Zhōngwén míngzi jiào Lǐ Jiàn, hěn yǒu yìsi.', 'Your English name is Jay Lee and your Chinese name is Li Jian. That’s interesting.'],
+    ['s', '这个名字是我的中文老师给我起的，我很喜欢。', 'Zhège míngzi shì wǒ de Zhōngwén lǎoshī gěi wǒ qǐ de, wǒ hěn xǐhuan.', 'My Chinese teacher gave me this name. I like it a lot.'],
+    ['t', '不错，好记，意思也好，很有力量。请你填写一下这张表格。', 'Búcuò, hǎo jì, yìsi yě hǎo, hěn yǒu lìliàng. Qǐng nǐ tiánxiě yíxià zhè zhāng biǎogé.', 'Not bad: easy to remember, a good meaning, and it sounds strong. Please fill in this form.'],
+    ['s', '用中文填还是用英文填？', 'Yòng Zhōngwén tián háishi yòng Yīngwén tián?', 'Should I fill it in in Chinese or in English?'],
+    ['t', '如果你能用中文填，那就用中文填。', 'Rúguǒ nǐ néng yòng Zhōngwén tián, nà jiù yòng Zhōngwén tián.', 'If you can fill it in in Chinese, then do it in Chinese.'],
+    ['s', '好。老师，我还预订了留学生宿舍。', 'Hǎo. Lǎoshī, wǒ hái yùdìng le liúxuéshēng sùshè.', 'OK. Teacher, I’ve also booked a room in the international student dorm.'],
+    ['t', '办理完登记手续以后，到对面的办公室去交费取钥匙。', 'Bànlǐ wán dēngjì shǒuxù yǐhòu, dào duìmiàn de bàngōngshì qù jiāofèi qǔ yàoshi.', 'When you’ve finished registering, go to the office opposite to pay and collect your key.'],
+    ['s', '谢谢。', 'Xièxie.', 'Thank you.']
+  ];
+  const SP = { s: '学生', t: '老师' };
+  function highlight(zh) {
+    const keys = HL.slice().sort((a, b) => b.length - a.length);
+    let out = '', i = 0;
+    while (i < zh.length) {
+      const k = keys.find(k => zh.startsWith(k, i));
+      if (k) { out += `<span class="hl">${k}</span>`; i += k.length; } else { out += zh[i]; i++; }
+    }
+    return out;
+  }
+
+  // ---------- 1 review ----------
+  const CH = [['读', '学位'], ['填', '表格'], ['办理', '手续'], ['预订', '宿舍'], ['交', '学费'], ['取', '钥匙'], ['起', '名字'], ['到中文系', '报到']];
+  CH.forEach(([v, n]) => {
+    const b = document.createElement('button'); b.className = 'chunk';
+    b.innerHTML = `${v}<span class="gap">${n}</span>`;
+    b.addEventListener('click', () => { b.classList.toggle('open'); if (b.classList.contains('open')) say(v + n, 's'); });
+    $('chunks').appendChild(b);
+  });
+
+  // ---------- generic MCQ ----------
+  function mcq(box, prompt, opts, ans, why, num) {
+    const q = document.createElement('div'); q.className = 'lq';
+    q.innerHTML = `<div class="prompt">${num ? `<span class="num">${num}.</span>` : ''}${prompt}</div><div class="opts"></div><div class="fb"></div>`;
+    const o = q.querySelector('.opts'), fb = q.querySelector('.fb');
+    opts.forEach(t => {
+      const b = document.createElement('button'); b.className = 'opt'; b.textContent = t;
+      b.addEventListener('click', () => {
+        const right = t === ans;
+        o.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (x.textContent === ans) x.classList.add('correct'); });
+        if (!right) b.classList.add('wrong');
+        fb.className = 'fb show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = (right ? '对了！' : '不对。') + (why ? `<span class="why">${why}</span>` : '');
+      });
+      o.appendChild(b);
+    });
+    box.appendChild(q);
+  }
+
+  // ---------- 2 listening ----------
+  let playIdx = -1;
+  function playFrom(i, rowsSel) {
+    if (i >= D.length) { stopSpeech(); return; }
+    playIdx = i;
+    document.querySelectorAll('#dlg .ln').forEach((l, k) => l.classList.toggle('playing', k === i));
+    say(D[i][1], D[i][0], () => { if (playIdx === i) setTimeout(() => playFrom(i + 1), 450); });
+  }
+  $('playAll').addEventListener('click', () => { stopSpeech(); playFrom(0); });
+  $('stopAll').addEventListener('click', () => { playIdx = -1; stopSpeech(); });
+
+  [
+    ['这个对话在哪儿？Where does the conversation take place?', ['在宿舍', '在注册处', '在图书馆'], '在注册处', 'The student is registering (报到、注册).'],
+    ['学生是来做什么的？What is the student here to do?', ['读学位', '进修', '工作'], '进修', '我不读学位，我是来进修的。'],
+    ['学生给老师看了什么？What does the student show the teacher?', ['护照和表格', '录取通知书和护照', '钥匙和护照'], '录取通知书和护照', '这是我的录取通知书和护照。']
+  ].forEach((q, i) => mcq($('lqA'), q[0], q[1], q[2], q[3], i + 1));
+
+  [
+    ['学生的中文名字叫李健。', '对', '中文名字叫李健。'],
+    ['这个中文名字是学生自己起的。', '错', '是他的中文老师给他起的。'],
+    ['老师觉得这个名字不太好。', '错', '不错，好记，意思也好，很有力量。'],
+    ['学生一定要用英文填表格。', '错', '如果你能用中文填，那就用中文填。'],
+    ['学生还没有预订宿舍。', '错', '我还预订了留学生宿舍。'],
+    ['学生要到对面的办公室去交费、取钥匙。', '对', '到对面的办公室去交费取钥匙。']
+  ].forEach((q, i) => mcq($('lqB'), q[0], ['对', '错'], q[1], q[2], i + 1));
+
+  // ---------- 3 reading ----------
+  function lineEl(d, i, zhHTML, withBtns) {
+    const el = document.createElement('div'); el.className = 'ln ' + d[0];
+    el.innerHTML = `<div class="sp">${SP[d[0]]}</div>
+      <div><div class="zh">${zhHTML}</div><div class="pyl">${d[2]}</div><div class="enl">${d[3]}</div></div>
+      <div class="btns">${withBtns ? '<button class="ib say">🔊</button><button class="ib en">EN</button>' : '<button class="ib say">🔊</button>'}</div>`;
+    el.querySelector('.say').addEventListener('click', () => { stopSpeech(); el.classList.add('playing'); say(d[1], d[0], () => el.classList.remove('playing')); });
+    const enb = el.querySelector('.en'); if (enb) enb.addEventListener('click', () => el.classList.toggle('show-en'));
+    return el;
+  }
+  D.forEach((d, i) => $('dlg').appendChild(lineEl(d, i, highlight(d[1]), true)));
+  $('allEn').addEventListener('change', e => $('b3').classList.toggle('show-all-en', e.target.checked));
+  $('hlT').addEventListener('change', e => $('b3').classList.toggle('no-hl', !e.target.checked));
+
+  // ---------- 4 grammar ----------
+  const G = [
+    {
+      tab: '① V + 的', title: 'Verb phrase + 的 = “the people who …”',
+      pat: '读中文的 · 进修的 · 交费的',
+      expl: 'When it’s clear we are talking about people, Chinese can drop the noun after 的. 读中文的（学生） = the (students) who study Chinese.',
+      from: ['读中文的是在这儿报到吗？', '进修的就是在这儿登记注册。'],
+      exs: [['交费的请到对面的办公室。', 'Those paying fees, please go to the office opposite.'], ['读学位的要到中文系报到。', 'Degree students must register at the Chinese Department.']],
+      checks: [['“The people who collect keys go to the office.”', ['取钥匙的到办公室去。', '的取钥匙到办公室去。', '取的钥匙到办公室去。'], '取钥匙的到办公室去。', 'Verb phrase (取钥匙) + 的 = the people who collect keys.']]
+    },
+    {
+      tab: '② 如果……就', title: '如果……，（那）就…… if …, then …',
+      pat: '如果 + condition，（那）就 + result',
+      expl: '如果 is more formal than 要是. 就 goes before the verb in the second part, after the subject if there is one. 那 (“in that case”) is optional.',
+      from: ['如果你读学位，请到中文系报到。', '如果你能用中文填，那就用中文填。'],
+      exs: [['如果你没有护照，就不能注册。', 'If you don’t have a passport, you can’t register.'], ['如果宿舍没有房间，你就得住在外边。', 'If the dorm has no rooms, you’ll have to live off campus.']],
+      checks: [['如果你没有预订宿舍，＿＿＿', ['就可以在这儿预订。', '所以可以在这儿预订。', '因为可以在这儿预订。'], '就可以在这儿预订。', '如果……就……: the result part uses 就, not 所以 or 因为.'],
+               ['Where does 就 go? “If you can’t, then I’ll fill it in.”', ['如果你不会填，就我帮你填。', '如果你不会填，我就帮你填。', '如果你不会填，我帮你就填。'], '如果你不会填，我就帮你填。', '就 comes after the subject (我) and before the verb.']]
+    },
+    {
+      tab: '③ 是……的', title: '是……的: focus on who, how or why',
+      pat: '是 + the focus + verb + 的',
+      expl: 'Use 是……的 to highlight a detail of something already done or already true: who did it, for what purpose, how, when. The focus goes right after 是.',
+      from: ['我是来进修的。（purpose）', '这个名字是我的中文老师给我起的。（who）'],
+      exs: [['我是坐飞机来的。', 'I came by plane. (how)'], ['你的中文名字是谁给你起的？', 'Who gave you your Chinese name? (who)']],
+      checks: [['你的中文名字是谁给你起的？', ['是我的老师给我起的。', '我的老师给我起。', '是我的老师起了。'], '是我的老师给我起的。', 'Answer with the same 是……的 frame, putting the person after 是.'],
+               ['“I came (here) to do a degree.”', ['我来读学位了。', '我是来读学位的。', '我是读学位来。'], '我是来读学位的。', 'Purpose is the focus: 是 + 来 + purpose + 的.']]
+    },
+    {
+      tab: '④ A还是B？', title: 'A 还是 B？ A or B? (questions)',
+      pat: '（用）A + V + 还是 + （用）B + V？',
+      expl: 'In questions that offer a choice, “or” is 还是. In statements, “or” is 或者. A 还是 B questions don’t need 吗.',
+      from: ['用中文填还是用英文填？'],
+      exs: [['你是来读学位的还是来进修的？', 'Are you here for a degree or for advanced study?'], ['我们用现金交费还是用微信交费？', 'Do we pay in cash or by WeChat?']],
+      checks: [['“Should I register today or tomorrow?” (a question)', ['我今天注册或者明天注册？', '我今天注册还是明天注册？', '我今天注册还是明天注册吗？'], '我今天注册还是明天注册？', 'A choice question uses 还是, without 吗.'],
+               ['Statement: “You can pay today or tomorrow.”', ['你今天或者明天交费都可以。', '你今天还是明天交费都可以。'], '你今天或者明天交费都可以。', 'In a statement, “or” is 或者.']]
+    },
+    {
+      tab: '⑤ V完以后', title: 'V + 完 …… 以后，到 + place + 去 + V',
+      pat: 'V完 + object + 以后，到 + 地方 + 去 + V',
+      expl: '完 after a verb means “finish doing it”. 以后 = after. 到 + place + 去 + verb = go to a place to do something. The place comes before the action.',
+      from: ['办理完登记手续以后，到对面的办公室去交费取钥匙。'],
+      exs: [['填完表格以后，到办公室去交费。', 'After filling in the form, go to the office to pay.'], ['交完费以后，到宿舍去取钥匙。', 'After paying, go to the dorm to collect your key.']],
+      checks: [['“After you finish registering, go to the dorm to collect your key.”', ['注册完以后，到宿舍去取钥匙。', '注册以后完，去取钥匙到宿舍。', '完注册以后，到宿舍取钥匙去。'], '注册完以后，到宿舍去取钥匙。', '完 goes right after the verb; the place comes before 去 + verb.']]
+    }
+  ];
+  function showG(i) {
+    document.querySelectorAll('#gtabs .tab').forEach((t, k) => t.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+    const g = G[i], box = $('gbody'); box.innerHTML = '';
+    const el = document.createElement('div'); el.className = 'gp';
+    el.innerHTML = `<h3>${g.title}</h3><div class="pat">${g.pat}</div><p class="en" style="margin:4px 0 8px">${g.expl}</p>
+      ${g.from.map(f => `<div class="from kai">${f}</div>`).join('')}
+      <ul class="exs">${g.exs.map(e => `<li><span class="kai">${e[0]}</span> <span class="tr">${e[1]}</span></li>`).join('')}</ul>
+      <div class="check"><b>试一试 Quick check</b><div class="cbox"></div></div>`;
+    box.appendChild(el);
+    g.checks.forEach((c, k) => mcq(el.querySelector('.cbox'), c[0], shuffle(c[1]), c[2], c[3], k + 1));
+  }
+  G.forEach((g, i) => {
+    const t = document.createElement('button'); t.className = 'tab'; t.textContent = g.tab;
+    t.addEventListener('click', () => showG(i)); $('gtabs').appendChild(t);
+  });
+  showG(0);
+
+  // ---------- 5 disappearing ----------
+  const LV = ['全部 Full', '第一轮 Round 1', '第二轮 Round 2', '第三轮 Round 3', '只有第一个字 First character only'];
+  const PUNCT = /[，。！？、：\s]/;
+  function mask(zh, lv) {
+    if (lv === 0) return zh;
+    let k = 0, out = '', first = true;
+    for (const ch of zh) {
+      if (PUNCT.test(ch) || /[A-Za-z]/.test(ch)) { out += ch; continue; }
+      let hide;
+      if (lv === 4) hide = !first;
+      else hide = (k % 4) < lv && !first;
+      out += hide ? '<span class="blank">＿</span>' : ch;
+      k++; first = false;
+    }
+    return out;
+  }
+  function showLv(lv) {
+    document.querySelectorAll('#levels .lvl').forEach((b, k) => b.setAttribute('aria-pressed', k === lv ? 'true' : 'false'));
+    const box = $('dlg2'); box.innerHTML = '';
+    D.forEach((d, i) => { const el = lineEl(d, i, mask(d[1], lv), false); el.querySelector('.pyl').style.display = lv ? 'none' : ''; box.appendChild(el); });
+  }
+  LV.forEach((l, i) => { const b = document.createElement('button'); b.className = 'lvl'; b.textContent = l; b.addEventListener('click', () => showLv(i)); $('levels').appendChild(b); });
+  showLv(0);
+
+  // ---------- 6 role-play ----------
+  const ID = {
+    name: [['Emma Brown', '艾玛', '我的中国朋友'], ['Tom Smith', '汤明', '我的中文老师'], ['Lucy Green', '陆希', '我自己'], ['Sam Taylor', '谭山', '我的妈妈'], ['Olivia Jones', '周丽雅', '我的中国同学']],
+    purpose: ['来进修的（一年）', '来读学位的（中文）', '来读学位的（经济）', '来学一个学期中文的'],
+    docs: ['录取通知书和护照', '只有护照（忘带录取通知书了！）', '只有录取通知书（护照在宿舍！）'],
+    dorm: ['预订了留学生宿舍', '没有预订宿舍', '预订了，但是想换房间']
+  };
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  $('drawId').addEventListener('click', () => {
+    const n = pick(ID.name);
+    const c = $('idcard'); c.hidden = false;
+    c.innerHTML = `<div><b>名字 Name</b><span>${n[0]} · ${n[1]}</span></div>
+      <div><b>中文名字是谁起的？</b><span>${n[2]}</span></div>
+      <div><b>你是来……的</b><span>${pick(ID.purpose)}</span></div>
+      <div><b>你带了</b><span>${pick(ID.docs)}</span></div>
+      <div><b>宿舍</b><span>${pick(ID.dorm)}</span></div>`;
+  });
+</script>
+</body>
+</html>
