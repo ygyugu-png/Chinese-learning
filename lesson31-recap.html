@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第31课 复习</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css">
+<style>
+
+  :root {
+    --bg: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b655c;
+    --line: #e4ddd2;
+    --red: #b3261e;
+    --red-soft: #f7e3e1;
+    --gold: #a8741a;
+    --gold-soft: #f6ecd8;
+    --blue: #2f5d8a;
+    --blue-soft: #e3ecf5;
+    --green: #2e7d4f;
+    --green-soft: #e2f1e8;
+    --he: #2f5d8a;
+    --he-soft: #e3ecf5;
+    --ye: #a8741a;
+    --ye-soft: #f6ecd8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --paper: #24211e;
+      --ink: #efe9e1;
+      --muted: #a89f93;
+      --line: #3a3530;
+      --red: #f08a82;
+      --red-soft: #3d2422;
+      --gold: #e0b562;
+      --gold-soft: #3a3020;
+      --blue: #8cb6e0;
+      --blue-soft: #1f2d3b;
+      --green: #7cc79b;
+      --green-soft: #1e3328;
+      --he: #8cb6e0;
+      --he-soft: #1f2d3b;
+      --ye: #e0b562;
+      --ye-soft: #3a3020;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header.hero {
+    background: var(--red);
+    color: #fff;
+    border-radius: 18px;
+    padding: 30px 28px;
+    margin-bottom: 20px;
+  }
+  @media (prefers-color-scheme: dark) { header.hero { color: #1a1816; } }
+  .hero h1 { margin: 0; font-size: 2.3rem; line-height: 1.25; letter-spacing: 0.04em; }
+  .hero p { margin: 6px 0 0; font-size: 1rem; opacity: 0.9; }
+
+  nav.steps {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    padding: 10px 0;
+    align-items: center;
+  }
+  nav.steps a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  nav.steps a:hover { border-color: var(--red); color: var(--red); }
+  .pyToggle { margin-left: auto; font-size: 0.88rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    margin-bottom: 22px;
+  }
+  .step-no {
+    display: inline-block;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .step-no.self { background: var(--green-soft); color: var(--green); }
+  h2 { margin: 0 0 4px; font-size: 1.6rem; line-height: 1.3; }
+  .sub-en { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+  h3 { font-size: 1.15rem; margin: 22px 0 8px; }
+  .en { color: var(--muted); font-size: 0.92rem; }
+
+  .he { color: var(--he); font-weight: 700; background: var(--he-soft); border-radius: 4px; padding: 0 3px; }
+  .ye { color: var(--ye); font-weight: 700; background: var(--ye-soft); border-radius: 4px; padding: 0 3px; }
+
+  /* big compare */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .vs { grid-template-columns: 1fr; } }
+  .vs .side { border-radius: 14px; padding: 18px 18px; }
+  .vs .side.h { background: var(--he-soft); }
+  .vs .side.y { background: var(--ye-soft); }
+  .vs .big { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .vs .side.h .big { color: var(--he); }
+  .vs .side.y .big { color: var(--ye); }
+  .vs .what { font-weight: 600; margin: 8px 0 4px; }
+  .vs .formula {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .ex { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+  .ex li { background: var(--bg); border-radius: 10px; padding: 8px 14px; }
+  .ex .zh { font-size: 1.15rem; }
+  .ex .py { display: block; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  .ex .tr { display: block; color: var(--muted); font-size: 0.9rem; }
+  .hide-py .py { display: none !important; }
+
+  .rule { border-left: 4px solid var(--line); padding: 2px 0 2px 16px; margin: 18px 0; }
+  .rule.h { border-color: var(--he); }
+  .rule.y { border-color: var(--ye); }
+  .rule h3 { margin-top: 0; }
+
+  .wrongright { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .wrongright div { border-radius: 8px; padding: 8px 12px; font-size: 1.05rem; }
+  .wrongright .x { background: var(--red-soft); color: var(--red); }
+  .wrongright .x::before { content: "✗ "; }
+  .wrongright .ok { background: var(--green-soft); color: var(--green); }
+  .wrongright .ok::before { content: "✓ "; }
+
+  /* english trap table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* summary */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .summary div { border-radius: 12px; padding: 14px 16px; background: var(--green-soft); font-size: 1rem; }
+  .summary b { color: var(--green); }
+
+  /* exercises */
+  .score {
+    display: inline-flex; gap: 6px; align-items: center;
+    background: var(--green-soft); color: var(--green);
+    font-weight: 700; border-radius: 999px; padding: 4px 14px; font-size: 0.9rem;
+  }
+  .q {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .q .prompt { font-size: 1.2rem; margin-bottom: 8px; }
+  .q .prompt .num { color: var(--muted); font-size: 0.9rem; margin-right: 6px; }
+  .q .blank {
+    display: inline-block; min-width: 2.2em; text-align: center;
+    border-bottom: 2px solid var(--muted); margin: 0 2px; font-weight: 700;
+  }
+  .q .blank.ok { color: var(--green); border-color: var(--green); }
+  .q .blank.no { color: var(--red); border-color: var(--red); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    font: inherit; font-size: 1.05rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 6px 16px; border-radius: 10px; cursor: pointer;
+  }
+  .opt:hover:not([disabled]) { border-color: var(--ink); }
+  .opt.correct { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+  .opt[disabled] { cursor: default; }
+  .opts.col { flex-direction: column; align-items: stretch; }
+  .opts.col .opt { text-align: left; }
+  .fb { margin-top: 8px; font-size: 0.95rem; display: none; border-radius: 8px; padding: 8px 12px; }
+  .fb.show { display: block; }
+  .fb.good { background: var(--green-soft); color: var(--green); }
+  .fb.bad { background: var(--red-soft); color: var(--red); }
+  .fb .why { color: var(--ink); display: block; margin-top: 2px; }
+
+  .reveal-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .attempt {
+    flex: 1 1 260px;
+    font: inherit; font-size: 1.1rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; background: var(--bg); color: var(--ink);
+  }
+  .btn {
+    font: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #1a1816; } }
+  .answer { display: none; margin-top: 8px; background: var(--green-soft); color: var(--green); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; }
+  .answer.show { display: block; }
+  .answer .note { display: block; font-size: 0.88rem; color: var(--ink); }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+
+  /* class activity */
+  .activity { background: var(--gold-soft); border-radius: 14px; padding: 18px 20px; }
+  .activity ol { margin: 6px 0 0; padding-left: 1.3em; }
+  .activity li { margin-bottom: 6px; }
+  .speech { display: grid; gap: 8px; margin-top: 12px; }
+  .bubble { background: var(--paper); border-radius: 14px; padding: 8px 14px; max-width: 520px; font-size: 1.1rem; }
+  .bubble.r { margin-left: auto; }
+  .bubble small { display: block; color: var(--muted); font-size: 0.8rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 30px; }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 14px; }
+    nav.steps, .btn, .score { display: none !important; }
+    section.card { break-inside: avoid; border-color: #ccc; }
+    header.hero { background: none; color: #000; border: 2px solid #000; }
+    .answer { display: none !important; }
+  }
+  .tab { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 8px 16px; font: inherit; font-size: 0.95rem; cursor: pointer; }
+  .tab[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+  .exit { font-size: 1.3rem; font-weight: 600; text-align: center; padding: 22px 12px; border: 2px dashed var(--red); border-radius: 14px; color: var(--red); }
+  .timer-wrap { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .toggles { display: inline-flex; gap: 6px; align-items: center; font-size: 0.92rem; color: var(--muted); cursor: pointer; }
+  @media (prefers-color-scheme: dark) { .tab[aria-pressed="true"] { color: #1a1816; } }
+
+  .kai { font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .remember { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+  .remember div { background: var(--green-soft); border-radius: 12px; padding: 12px 14px; font-size: 0.98rem; }
+  .remember b { color: var(--green); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .msg { margin-top: 10px; min-height: 1.6em; font-size: 0.98rem; }
+  .msg.good { color: var(--green); }
+  .msg.bad { color: var(--red); }
+
+  /* warm-up */
+  .wq { text-align: center; border: 2px dashed var(--red); border-radius: 16px; padding: 24px 12px; font-size: 1.8rem; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; min-height: 110px; display: flex; align-items: center; justify-content: center; }
+
+  /* board */
+  .teams { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .team { flex: 1 1 200px; border-radius: 14px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+  .team.a { background: var(--blue-soft); color: var(--blue); }
+  .team.b { background: var(--gold-soft); color: var(--gold); }
+  .team b { font-size: 1.1rem; }
+  .team .pts { font-size: 2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  @media (max-width: 680px) { .board { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; } }
+  .bh { text-align: center; font-weight: 700; background: var(--red); color: #fff; border-radius: 10px; padding: 8px 4px; font-size: 0.95rem; }
+  @media (prefers-color-scheme: dark) { .bh { color: #1a1816; } }
+  .bt { font: inherit; font-size: 1.6rem; font-weight: 800; border: 0; border-radius: 10px; padding: 16px 4px; background: var(--gold-soft); color: var(--gold); cursor: pointer; }
+  .bt:hover { outline: 3px solid var(--gold); }
+  .bt.used { background: var(--bg); color: var(--line); cursor: default; outline: none; }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: none; align-items: center; justify-content: center; z-index: 20; padding: 16px; }
+  .modal.show { display: flex; }
+  .mbox { background: var(--paper); border-radius: 18px; padding: 24px; max-width: 640px; width: 100%; }
+  .mbox .cat { color: var(--muted); font-size: 0.9rem; }
+  .mbox .qq { font-size: 1.7rem; margin: 8px 0 16px; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .mbox .award { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
+
+  /* translate / errors */
+  .tr-item, .er-item { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
+  .tr-item .en1 { font-size: 1.08rem; }
+  .tr-item .row2 { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .tr-item input { flex: 1 1 260px; font: inherit; font-size: 1.1rem; border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; background: var(--bg); color: var(--ink); }
+  .reveal { display: none; margin-top: 8px; background: var(--green-soft); color: var(--green); border-radius: 8px; padding: 8px 12px; font-size: 1.15rem; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .reveal small { display: block; color: var(--ink); font-family: system-ui, sans-serif; font-size: 0.85rem; }
+  .open .reveal { display: block; }
+  .er-item { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .er-item .bad { font-size: 1.2rem; color: var(--red); font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .er-item .bad::before { content: "✗ "; }
+  .er-item .reveal { width: 100%; }
+
+  /* cloze */
+  .bank { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .bank span { background: var(--red-soft); color: var(--red); border-radius: 8px; padding: 3px 12px; font-size: 1.15rem; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .bank span.usedw { opacity: .35; text-decoration: line-through; }
+  .cloze { font-size: 1.25rem; line-height: 2.2; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
+  .cloze p { margin: 0 0 10px; text-indent: 2em; }
+  .cloze select { font: inherit; font-size: 1.05rem; border: 0; border-bottom: 2px solid var(--muted); background: var(--bg); color: var(--ink); border-radius: 4px; padding: 0 2px; }
+  .cloze select.ok { border-color: var(--green); color: var(--green); background: var(--green-soft); }
+  .cloze select.no { border-color: var(--red); color: var(--red); background: var(--red-soft); }
+
+  /* stations */
+  .st-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  @media (max-width: 680px) { .st-tabs { grid-template-columns: 1fr 1fr; } }
+  .st-tab { font: inherit; text-align: left; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+  .st-tab .ic { font-size: 1.5rem; display: block; }
+  .st-tab b { display: block; }
+  .st-tab small { color: var(--muted); }
+  .st-tab[aria-pressed="true"] { border: 2px solid var(--red); background: var(--red-soft); }
+  .st-panel { border: 2px solid var(--red); border-radius: 16px; padding: 16px 18px; }
+  .st-panel h3 { margin: 0 0 6px; font-size: 1.4rem; }
+  .st-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  @media (max-width: 680px) { .st-roles { grid-template-columns: 1fr; } }
+  .st-role { border-radius: 12px; padding: 10px 14px; }
+  .st-role.a { background: var(--blue-soft); }
+  .st-role.b { background: var(--gold-soft); }
+  .st-role .who { font-weight: 700; }
+  .st-role.a .who { color: var(--blue); }
+  .st-role.b .who { color: var(--gold); }
+  .pats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pats button { font: inherit; font-size: 1.1rem; border: 2px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 4px 12px; cursor: pointer; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .pats button.used { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+  .pats button.used::before { content: "✓ "; }
+  .mini-timer { font-variant-numeric: tabular-nums; font-size: 1.8rem; font-weight: 700; }
+  .mini-timer.warn { color: var(--red); }
+
+  /* can-do */
+  .cando { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .cando li { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .cando .stars button { font: inherit; border: 0; background: transparent; font-size: 1.5rem; cursor: pointer; color: var(--line); padding: 0 2px; }
+  .cando .stars button.on { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>第三十一课　复习</h1>
+    <p>在学校注册 · Lesson review</p>
+  </header>
+
+  <nav class="steps" aria-label="Activities">
+    <a href="#r1">1 热身</a>
+    <a href="#r2">2 大挑战</a>
+    <a href="#r3">3 选词填空</a>
+    <a href="#r4">4 翻译</a>
+    <a href="#r5">5 改错</a>
+    <a href="#r6">6 情景</a>
+    <a href="#r7">7 我能……</a>
+  </nav>
+
+  <!-- 1 warm-up -->
+  <section class="card" id="r1">
+    <span class="step-no">第一步 · 4 分钟</span>
+    <h2>热身：快问快答</h2>
+    <p class="sub-en">Quick questions: answer your partner in full sentences, then swap. Click for the next question.</p>
+    <div class="wq" id="wq">点“下一个”开始</div>
+    <div class="toolbar" style="justify-content:center;margin-top:12px"><button class="btn primary" id="wNext">下一个 Next →</button></div>
+  </section>
+
+  <!-- 2 board game -->
+  <section class="card" id="r2">
+    <span class="step-no">第二步 · 10 分钟</span>
+    <h2>大挑战：两队比赛</h2>
+    <p class="sub-en">Two teams take turns choosing a square. The harder the question, the more points it's worth. If one team gets it wrong, the other team can steal it.</p>
+    <div class="teams">
+      <div class="team a"><b>A 队</b><span class="pts" id="ptsA">0</span></div>
+      <div class="team b"><b>B 队</b><span class="pts" id="ptsB">0</span></div>
+      <button class="btn" id="boardReset">重来 Reset</button>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="mbox">
+      <div class="cat" id="mCat"></div>
+      <div class="qq" id="mQ"></div>
+      <div class="opts" id="mOpts"></div>
+      <div class="fb" id="mFb"></div>
+      <div class="award">
+        <button class="btn" id="giveA" style="background:var(--blue-soft)">A 队得分</button>
+        <button class="btn" id="giveB" style="background:var(--gold-soft)">B 队得分</button>
+        <button class="btn" id="giveN">没人得分 · No points</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 cloze -->
+  <section class="card" id="r3">
+    <span class="step-no">第三步 · 8 分钟</span>
+    <h2>选词填空</h2>
+    <p class="sub-en">Textbook page 15: choose the right word for each gap. Each word is used once. Then click “检查”.</p>
+    <div class="bank" id="bank"></div>
+    <div class="cloze" id="cloze"></div>
+    <div class="toolbar" style="margin-top:12px">
+      <button class="btn primary" id="clozeCheck">检查 Check</button>
+      <button class="btn" id="clozeReset">重来 Reset</button>
+      <span class="score" id="clozeScore">0 / 10</span>
+    </div>
+  </section>
+
+  <!-- 4 translation -->
+  <section class="card" id="r4">
+    <span class="step-no">第四步 · 8 分钟</span>
+    <h2>翻译</h2>
+    <p class="sub-en">Textbook page 16: say each sentence in Chinese first, then write it, then check.</p>
+    <div id="trans"></div>
+  </section>
+
+  <!-- 5 errors -->
+  <section class="card" id="r5">
+    <span class="step-no">第五步 · 6 分钟</span>
+    <h2>改错：哪儿不对？</h2>
+    <p class="sub-en">Each sentence has one mistake. Tell your partner how to fix it, then click to check.</p>
+    <div id="errs"></div>
+  </section>
+
+  <!-- 6 stations -->
+  <section class="card" id="r6">
+    <span class="step-no">第六步 · 12 分钟</span>
+    <h2>情景：从报到到住进宿舍</h2>
+    <p class="sub-en">Four situations from your first days in China. Spend 3 minutes on each, then move to the next and swap roles. Tick each pattern when you use it.</p>
+    <div class="st-tabs" id="stTabs"></div>
+    <div class="st-panel" id="stPanel"></div>
+  </section>
+
+  <!-- 7 can-do -->
+  <section class="card" id="r7">
+    <span class="step-no">总结 · 2 分钟</span>
+    <h2>我能……</h2>
+    <p class="sub-en">How confident are you? Click 1 to 3 stars for each.</p>
+    <ul class="cando" id="cando"></ul>
+    <h3>离开以前 · Before you leave</h3>
+    <div class="exit">这一课，我觉得最有用的一句话是：……</div>
+  </section>
+
+  <footer>步步高中文 4 · 第31课 · 复习</footer>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+
+  // ---------- 1 warm-up ----------
+  const WQ = shuffle([
+    '你的中文名字是谁给你起的？', '你是来读学位的还是来进修的？', '你去过学校的图书馆没有？',
+    '你们学校的阅览室大不大？', '你填表格的时候，用中文填还是用英文填？', '你来自哪儿？住在几号房间？',
+    '如果你去中国学汉语，你想上哪个班？为什么？', '你一点儿都不喜欢做什么？'
+  ]);
+  let wi = -1;
+  $('wNext').addEventListener('click', () => { wi = (wi + 1) % WQ.length; $('wq').textContent = WQ[wi]; });
+
+  // ---------- 2 board ----------
+  const CATS = ['词义', '汉字', '搭配', '语法', '课文'];
+  const QS = {
+    '词义': [
+      ['钥匙', ['key', 'office', 'form'], 'key'],
+      ['录取通知书', ['offer letter', 'passport', 'application form'], 'offer letter'],
+      ['零起点', ['from scratch', 'zero marks', 'starting line'], 'from scratch'],
+      ['清真', ['halal', 'clean', 'quiet'], 'halal']
+    ],
+    '汉字': [
+      ['bàngōngshì', ['办公室', '办工室', '半公室'], '办公室'],
+      ['shèbèi', ['设备', '社备', '设被'], '设备'],
+      ['yuèlǎnshì', ['阅览室', '阅揽室', '悦览室'], '阅览室'],
+      ['duìwài Hànyǔ', ['对外汉语', '队外汉语', '对外汉话'], '对外汉语']
+    ],
+    '搭配': [
+      ['＿＿表格', ['填', '交', '起'], '填'],
+      ['＿＿手续', ['办理', '预订', '报到'], '办理'],
+      ['设备很＿＿', ['先进', '大量', '一般'], '先进'],
+      ['大学＿＿对外汉语课', ['开设', '进行', '录取'], '开设']
+    ],
+    '语法': [
+      ['用中文填＿＿用英文填？', ['还是', '或者', '和'], '还是'],
+      ['我是来进修＿＿。', ['的', '了', '过'], '的'],
+      ['你要早去，＿＿就没有座位了。', ['不然', '如果', '所以'], '不然'],
+      ['初级班＿＿零起点。', ['为', '在', '有'], '为']
+    ],
+    '课文': [
+      ['李健的中文名字是谁给他起的？', ['他的中文老师', '他的妈妈', '他自己'], '他的中文老师'],
+      ['王小明读什么？', ['数学', '语言', '历史'], '数学'],
+      ['中级班的学生要认识多少汉字？', ['八百到一千多个', '一千五百多个', '一点儿都不会'], '八百到一千多个'],
+      ['中国的大学什么时候开学？', ['九月初和二月底', '一月和七月', '十月和三月'], '九月初和二月底']
+    ]
+  };
+  let score = { A: 0, B: 0 }, cur = null;
+  function buildBoard() {
+    score = { A: 0, B: 0 }; $('ptsA').textContent = 0; $('ptsB').textContent = 0;
+    const b = $('board'); b.innerHTML = '';
+    CATS.forEach(c => { const h = document.createElement('div'); h.className = 'bh'; h.textContent = c; b.appendChild(h); });
+    for (let r = 0; r < 4; r++) CATS.forEach(c => {
+      const t = document.createElement('button'); t.className = 'bt'; t.textContent = (r + 1) * 100;
+      t.addEventListener('click', () => { if (t.classList.contains('used')) return; openQ(c, r, t); });
+      b.appendChild(t);
+    });
+  }
+  function openQ(c, r, tile) {
+    const [q, opts, ans] = QS[c][r]; cur = { tile, pts: (r + 1) * 100 };
+    $('mCat').textContent = `${c} · ${(r + 1) * 100}`;
+    $('mQ').textContent = q; $('mFb').className = 'fb'; $('mFb').innerHTML = '';
+    $('mOpts').innerHTML = '';
+    shuffle(opts).forEach(o => {
+      const btn = document.createElement('button'); btn.className = 'opt'; btn.textContent = o;
+      btn.addEventListener('click', () => {
+        const right = o === ans;
+        $('mOpts').querySelectorAll('.opt').forEach(x => { x.disabled = true; if (x.textContent === ans) x.classList.add('correct'); });
+        if (!right) btn.classList.add('wrong');
+        $('mFb').className = 'fb show ' + (right ? 'good' : 'bad');
+        $('mFb').textContent = right ? '对了！' : '不对！答案是：' + ans;
+      });
+      $('mOpts').appendChild(btn);
+    });
+    $('modal').classList.add('show');
+  }
+  function award(t) {
+    if (!cur) return;
+    if (t) { score[t] += cur.pts; $('pts' + t).textContent = score[t]; }
+    cur.tile.classList.add('used'); cur.tile.textContent = t ? t : '—'; cur = null;
+    $('modal').classList.remove('show');
+  }
+  $('giveA').addEventListener('click', () => award('A'));
+  $('giveB').addEventListener('click', () => award('B'));
+  $('giveN').addEventListener('click', () => award(null));
+  $('modal').addEventListener('click', e => { if (e.target === $('modal')) award(null); });
+  $('boardReset').addEventListener('click', buildBoard);
+  buildBoard();
+
+  // ---------- 3 cloze ----------
+  const WORDS = ['可以', '报到', '和', '读', '考试', '如果', '一起', '参加', '大约', '然后'];
+  const CLOZE = [
+    ['如果你来我们学院', '读', '学位的话，本科要读四年。申请人要有高中以上学历，汉语水平', '考试', '（HSK）成绩要达到五级以上。你将和中国的本科学生', '一起', '上课，不过你可以少选几门选修课。', '如果', '你是交换生，你的学分可以转换。'],
+    ['如果你来我们学院进修的话，你学习一到两年都', '可以', '。你要先到我们的对外汉语系', '报到', '，在那里学习汉语', '和', '中国文化。学生注册后要参加考试，', '然后', '分班学习。对外汉语系共有四种班，入门班、初级班、中级班和高级班，每班', '大约', '有十五到二十人。学习期间，学生可以', '参加', '汉语水平考试。']
+  ];
+  function buildCloze() {
+    $('bank').innerHTML = WORDS.map(w => `<span data-w="${w}">${w}</span>`).join('');
+    const box = $('cloze'); box.innerHTML = '';
+    CLOZE.forEach(par => {
+      const p = document.createElement('p');
+      par.forEach((seg, i) => {
+        if (i % 2 === 0) p.appendChild(document.createTextNode(seg));
+        else {
+          const s = document.createElement('select'); s.dataset.ans = seg;
+          s.innerHTML = '<option value="">＿＿</option>' + WORDS.map(w => `<option>${w}</option>`).join('');
+          s.addEventListener('change', updateBank);
+          p.appendChild(s);
+        }
+      });
+      box.appendChild(p);
+    });
+    $('clozeScore').textContent = '0 / 10';
+  }
+  function updateBank() {
+    const chosen = [...document.querySelectorAll('#cloze select')].map(s => s.value).filter(Boolean);
+    document.querySelectorAll('#bank span').forEach(sp => sp.classList.toggle('usedw', chosen.includes(sp.dataset.w)));
+    document.querySelectorAll('#cloze select').forEach(s => s.classList.remove('ok', 'no'));
+  }
+  $('clozeCheck').addEventListener('click', () => {
+    let ok = 0;
+    document.querySelectorAll('#cloze select').forEach(s => { const r = s.value === s.dataset.ans; if (r) ok++; s.classList.toggle('ok', r); s.classList.toggle('no', !r); });
+    $('clozeScore').textContent = `${ok} / 10` + (ok === 10 ? ' · 太棒了！' : '');
+  });
+  $('clozeReset').addEventListener('click', buildCloze);
+  buildCloze();
+
+  // ---------- 4 translation ----------
+  [
+    ['The reading room at the British Library does not have an air conditioner.', '大英图书馆的阅览室没有空调。', '阅览室 · 空调'],
+    ['Shall we meet at the coffee shop opposite my office at 12 tomorrow?', '我们明天十二点在我办公室对面的咖啡店见面，好吗？', 'Time → place → action: 明天十二点 + 在……见面'],
+    ['I can’t find your name. Have you booked a room?', '我找不到你的名字。你预订房间了没有？', '找不到 = can’t find; V了……没有？'],
+    ['Students who are going to study Chinese please go to the second floor to register.', '学汉语的学生请到二楼报到。', 'V + 的 + 学生; 到 + place + 报到'],
+    ['I am from Vietnam; he is from Mali.', '我来自越南，他来自马里。', '来自 + place'],
+    ['You must pay the accommodation fee first, otherwise you can’t have the key.', '你得先交住宿费，不然就不能拿钥匙。', '先……，不然（就）……']
+  ].forEach(([en, zh, note], i) => {
+    const d = document.createElement('div'); d.className = 'tr-item';
+    d.innerHTML = `<div class="en1">${i + 1}. ${en}</div><div class="row2"><input type="text" placeholder="写中文" aria-label="Translation ${i + 1}"><button class="btn primary">看答案</button></div><div class="reveal">${zh}<small>${note}</small></div>`;
+    d.querySelector('.btn').addEventListener('click', () => d.classList.toggle('open'));
+    $('trans').appendChild(d);
+  });
+
+  // ---------- 5 errors ----------
+  [
+    ['我是来进修了。', '我是来进修的。', '是……的, not 了.'],
+    ['用中文填或者用英文填？', '用中文填还是用英文填？', 'In a question, “or” is 还是.'],
+    ['阅览室很大不大？', '阅览室大不大？', 'No 很 in an A不A question.'],
+    ['你去过图书馆没有吗？', '你去过图书馆没有？', '没有 already makes it a question: no 吗.'],
+    ['我自来马来西亚。', '我来自马来西亚。', '来自 is one word.'],
+    ['我一点儿汉语不会。', '我一点儿汉语都不会。', '一点儿……都不…….'],
+    ['你填完以后表格，到办公室去交费。', '你填完表格以后，到办公室去交费。', 'V完 + object + 以后.'],
+    ['每个班有左右二十个人。', '每个班有二十个人左右。', '左右 goes after the number.']
+  ].forEach(([bad, good, why]) => {
+    const d = document.createElement('div'); d.className = 'er-item';
+    d.innerHTML = `<span class="bad">${bad}</span><button class="btn">看答案</button><div class="reveal">${good}<small>${why}</small></div>`;
+    d.querySelector('.btn').addEventListener('click', () => d.classList.toggle('open'));
+    $('errs').appendChild(d);
+  });
+
+  // ---------- 6 stations ----------
+  const ST = [
+    { ic: '📝', t: '注册处', s: 'Registration desk', situ: 'You’ve just arrived at a university in Beijing to study Chinese.',
+      a: ['A · 新生', 'Say why you’ve come (degree or advanced study), show your documents, ask about the form and the dorm.'],
+      b: ['B · 老师', 'Send degree students to the right department, check documents, ask about the Chinese name, explain the next steps.'],
+      pats: ['是……的', '如果……就……', 'A还是B？', 'V完……以后', '办理手续', '交费取钥匙'] },
+    { ic: '🤝', t: '宿舍楼道', s: 'Dorm corridor', situ: 'You meet your new neighbour for the first time.',
+      a: ['A · 留学生', 'Introduce yourself: where you’re from, your room, what you’re studying (文科 or 理科?).'],
+      b: ['B · 邻居', 'Introduce yourself too. Ask if they’ve been to the library yet and give them a tip.'],
+      pats: ['来自', 'V过……没有？', '文科 / 理科', 'A不A？', '不然……'] },
+    { ic: '📚', t: '图书馆', s: 'Library', situ: 'You want to borrow a magazine and find somewhere quiet to study.',
+      a: ['A · 学生', 'Ask about borrowing magazines, the facilities, the reading room and when it’s busy.'],
+      b: ['B · 图书馆老师', 'Answer, describe the facilities, and warn about busy times.'],
+      pats: ['借本杂志看看', '设备怎么样？', '先进', '阅览室大不大？', '不然就没有座位了'] },
+    { ic: '📞', t: '给朋友打电话', s: 'Calling a friend', situ: 'Your friend in the UK wants to come to China to study Chinese next year. Tell them what to expect.',
+      a: ['A · 在中国的你', 'Explain the placement test, the classes, the timetable, food and the dorms.'],
+      b: ['B · 英国的朋友', 'You know only a little Chinese. Ask lots of questions: which class? how many hours? what about food?'],
+      pats: ['如果……', '为', '有的……有的……', '大约 / 左右', '一点儿……都不……', '零起点'] }
+  ];
+  let stI = 0, stLeft = 180, stTick = null;
+  function stTime() { const m = Math.floor(stLeft / 60), s = String(stLeft % 60).padStart(2, '0'); const el = $('stTimer'); if (el) { el.textContent = `${m}:${s}`; el.classList.toggle('warn', stLeft <= 30); } }
+  function showSt(i) {
+    stI = i;
+    document.querySelectorAll('.st-tab').forEach((t, k) => t.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+    const s = ST[i];
+    $('stPanel').innerHTML = `
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+        <h3>${s.ic} ${s.t} · ${s.s}</h3>
+        <div class="timer-wrap"><span class="mini-timer" id="stTimer">3:00</span><button class="btn primary" id="stGo">开始 Start</button><button class="btn" id="stNext">下一站 Next →</button></div>
+      </div>
+      <p class="en" style="margin:4px 0 0">${s.situ}</p>
+      <div class="st-roles">
+        <div class="st-role a"><div class="who">${s.a[0]}</div>${s.a[1]}</div>
+        <div class="st-role b"><div class="who">${s.b[0]}</div>${s.b[1]}</div>
+      </div>
+      <div style="margin-top:12px"><b>要用的 · Use these:</b></div>
+      <div class="pats">${s.pats.map(p => `<button>${p}</button>`).join('')}</div>`;
+    $('stPanel').querySelectorAll('.pats button').forEach(b => b.addEventListener('click', () => b.classList.toggle('used')));
+    $('stGo').addEventListener('click', () => {
+      if (stTick) return; if (stLeft === 0) stLeft = 180;
+      stTick = setInterval(() => { stLeft = Math.max(0, stLeft - 1); stTime(); if (stLeft === 0) { clearInterval(stTick); stTick = null; $('stTimer').textContent = '换！Swap!'; } }, 1000);
+    });
+    $('stNext').addEventListener('click', () => showSt((stI + 1) % ST.length));
+    clearInterval(stTick); stTick = null; stLeft = 180; stTime();
+  }
+  ST.forEach((s, i) => {
+    const t = document.createElement('button'); t.className = 'st-tab';
+    t.innerHTML = `<span class="ic">${s.ic}</span><b>${i + 1}. ${s.t}</b><small>${s.s}</small>`;
+    t.addEventListener('click', () => showSt(i)); $('stTabs').appendChild(t);
+  });
+  showSt(0);
+
+  // ---------- 7 can-do ----------
+  [
+    '我能在中国的大学报到、注册。 I can register at a Chinese university.',
+    '我能介绍自己，认识新朋友。 I can introduce myself to a new neighbour.',
+    '我能问学校的设备和图书馆。 I can ask about campus facilities.',
+    '我能介绍在中国学汉语的情况。 I can explain what studying Chinese in China is like.',
+    '我能用中文填写申请表。 I can fill in an application form in Chinese.'
+  ].forEach(t => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${t}</span><span class="stars">${[1, 2, 3].map(n => `<button data-n="${n}" aria-label="${n} star">★</button>`).join('')}</span>`;
+    const bs = li.querySelectorAll('.stars button');
+    bs.forEach(b => b.addEventListener('click', () => bs.forEach(x => x.classList.toggle('on', +x.dataset.n <= +b.dataset.n))));
+    $('cando').appendChild(li);
+  });
+</script>
+</body>
+</html>
