@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第31课 课文</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css">
+<style>
+
+  :root {
+    --bg: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b655c;
+    --line: #e4ddd2;
+    --red: #b3261e;
+    --red-soft: #f7e3e1;
+    --gold: #a8741a;
+    --gold-soft: #f6ecd8;
+    --blue: #2f5d8a;
+    --blue-soft: #e3ecf5;
+    --green: #2e7d4f;
+    --green-soft: #e2f1e8;
+    --he: #2f5d8a;
+    --he-soft: #e3ecf5;
+    --ye: #a8741a;
+    --ye-soft: #f6ecd8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --paper: #24211e;
+      --ink: #efe9e1;
+      --muted: #a89f93;
+      --line: #3a3530;
+      --red: #f08a82;
+      --red-soft: #3d2422;
+      --gold: #e0b562;
+      --gold-soft: #3a3020;
+      --blue: #8cb6e0;
+      --blue-soft: #1f2d3b;
+      --green: #7cc79b;
+      --green-soft: #1e3328;
+      --he: #8cb6e0;
+      --he-soft: #1f2d3b;
+      --ye: #e0b562;
+      --ye-soft: #3a3020;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header.hero {
+    background: var(--red);
+    color: #fff;
+    border-radius: 18px;
+    padding: 30px 28px;
+    margin-bottom: 20px;
+  }
+  @media (prefers-color-scheme: dark) { header.hero { color: #1a1816; } }
+  .hero h1 { margin: 0; font-size: 2.3rem; line-height: 1.25; letter-spacing: 0.04em; }
+  .hero p { margin: 6px 0 0; font-size: 1rem; opacity: 0.9; }
+
+  nav.steps {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    padding: 10px 0;
+    align-items: center;
+  }
+  nav.steps a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  nav.steps a:hover { border-color: var(--red); color: var(--red); }
+  .pyToggle { margin-left: auto; font-size: 0.88rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    margin-bottom: 22px;
+  }
+  .step-no {
+    display: inline-block;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .step-no.self { background: var(--green-soft); color: var(--green); }
+  h2 { margin: 0 0 4px; font-size: 1.6rem; line-height: 1.3; }
+  .sub-en { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+  h3 { font-size: 1.15rem; margin: 22px 0 8px; }
+  .en { color: var(--muted); font-size: 0.92rem; }
+
+  .he { color: var(--he); font-weight: 700; background: var(--he-soft); border-radius: 4px; padding: 0 3px; }
+  .ye { color: var(--ye); font-weight: 700; background: var(--ye-soft); border-radius: 4px; padding: 0 3px; }
+
+  /* big compare */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .vs { grid-template-columns: 1fr; } }
+  .vs .side { border-radius: 14px; padding: 18px 18px; }
+  .vs .side.h { background: var(--he-soft); }
+  .vs .side.y { background: var(--ye-soft); }
+  .vs .big { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .vs .side.h .big { color: var(--he); }
+  .vs .side.y .big { color: var(--ye); }
+  .vs .what { font-weight: 600; margin: 8px 0 4px; }
+  .vs .formula {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .ex { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+  .ex li { background: var(--bg); border-radius: 10px; padding: 8px 14px; }
+  .ex .zh { font-size: 1.15rem; }
+  .ex .py { display: block; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  .ex .tr { display: block; color: var(--muted); font-size: 0.9rem; }
+  .hide-py .py { display: none !important; }
+
+  .rule { border-left: 4px solid var(--line); padding: 2px 0 2px 16px; margin: 18px 0; }
+  .rule.h { border-color: var(--he); }
+  .rule.y { border-color: var(--ye); }
+  .rule h3 { margin-top: 0; }
+
+  .wrongright { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .wrongright div { border-radius: 8px; padding: 8px 12px; font-size: 1.05rem; }
+  .wrongright .x { background: var(--red-soft); color: var(--red); }
+  .wrongright .x::before { content: "✗ "; }
+  .wrongright .ok { background: var(--green-soft); color: var(--green); }
+  .wrongright .ok::before { content: "✓ "; }
+
+  /* english trap table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* summary */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .summary div { border-radius: 12px; padding: 14px 16px; background: var(--green-soft); font-size: 1rem; }
+  .summary b { color: var(--green); }
+
+  /* exercises */
+  .score {
+    display: inline-flex; gap: 6px; align-items: center;
+    background: var(--green-soft); color: var(--green);
+    font-weight: 700; border-radius: 999px; padding: 4px 14px; font-size: 0.9rem;
+  }
+  .q {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .q .prompt { font-size: 1.2rem; margin-bottom: 8px; }
+  .q .prompt .num { color: var(--muted); font-size: 0.9rem; margin-right: 6px; }
+  .q .blank {
+    display: inline-block; min-width: 2.2em; text-align: center;
+    border-bottom: 2px solid var(--muted); margin: 0 2px; font-weight: 700;
+  }
+  .q .blank.ok { color: var(--green); border-color: var(--green); }
+  .q .blank.no { color: var(--red); border-color: var(--red); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    font: inherit; font-size: 1.05rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 6px 16px; border-radius: 10px; cursor: pointer;
+  }
+  .opt:hover:not([disabled]) { border-color: var(--ink); }
+  .opt.correct { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+  .opt[disabled] { cursor: default; }
+  .opts.col { flex-direction: column; align-items: stretch; }
+  .opts.col .opt { text-align: left; }
+  .fb { margin-top: 8px; font-size: 0.95rem; display: none; border-radius: 8px; padding: 8px 12px; }
+  .fb.show { display: block; }
+  .fb.good { background: var(--green-soft); color: var(--green); }
+  .fb.bad { background: var(--red-soft); color: var(--red); }
+  .fb .why { color: var(--ink); display: block; margin-top: 2px; }
+
+  .reveal-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .attempt {
+    flex: 1 1 260px;
+    font: inherit; font-size: 1.1rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; background: var(--bg); color: var(--ink);
+  }
+  .btn {
+    font: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #1a1816; } }
+  .answer { display: none; margin-top: 8px; background: var(--green-soft); color: var(--green); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; }
+  .answer.show { display: block; }
+  .answer .note { display: block; font-size: 0.88rem; color: var(--ink); }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+
+  /* class activity */
+  .activity { background: var(--gold-soft); border-radius: 14px; padding: 18px 20px; }
+  .activity ol { margin: 6px 0 0; padding-left: 1.3em; }
+  .activity li { margin-bottom: 6px; }
+  .speech { display: grid; gap: 8px; margin-top: 12px; }
+  .bubble { background: var(--paper); border-radius: 14px; padding: 8px 14px; max-width: 520px; font-size: 1.1rem; }
+  .bubble.r { margin-left: auto; }
+  .bubble small { display: block; color: var(--muted); font-size: 0.8rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 30px; }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 14px; }
+    nav.steps, .btn, .score { display: none !important; }
+    section.card { break-inside: avoid; border-color: #ccc; }
+    header.hero { background: none; color: #000; border: 2px solid #000; }
+    .answer { display: none !important; }
+  }
+  .tab { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 8px 16px; font: inherit; font-size: 0.95rem; cursor: pointer; }
+  .tab[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+  .exit { font-size: 1.3rem; font-weight: 600; text-align: center; padding: 22px 12px; border: 2px dashed var(--red); border-radius: 14px; color: var(--red); }
+  .timer-wrap { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .toggles { display: inline-flex; gap: 6px; align-items: center; font-size: 0.92rem; color: var(--muted); cursor: pointer; }
+  @media (prefers-color-scheme: dark) { .tab[aria-pressed="true"] { color: #1a1816; } }
+
+  .kai { font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .remember { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+  .remember div { background: var(--green-soft); border-radius: 12px; padding: 12px 14px; font-size: 0.98rem; }
+  .remember b { color: var(--green); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .msg { margin-top: 10px; min-height: 1.6em; font-size: 0.98rem; }
+  .msg.good { color: var(--green); }
+  .msg.bad { color: var(--red); }
+
+  /* predict */
+  .pred { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pred button { font: inherit; font-size: 1.05rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .pred button.on { background: var(--gold-soft); border-color: var(--gold); }
+  .pred button.yes { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .pred button.no { opacity: 0.45; text-decoration: line-through; }
+
+  /* flashcards + match */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .fc { position: relative; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); cursor: pointer; padding: 14px 10px 10px; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+  .fc:hover { border-color: var(--ink); }
+  .fc .hz { font-size: 1.8rem; font-weight: 700; line-height: 1.2; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .fc .pyw { color: var(--muted); }
+  .fc .back { display: none; font-size: 0.9rem; }
+  .fc.flipped .back { display: block; }
+  .fc .say { position: absolute; top: 6px; right: 6px; border: 0; background: transparent; cursor: pointer; font-size: 1rem; opacity: 0.6; }
+  .fc .pos { position: absolute; top: 8px; left: 8px; font-size: 0.72rem; font-weight: 700; border-radius: 6px; padding: 1px 7px; background: var(--bg); color: var(--muted); }
+  .hide-py .fc .pyw { display: none; }
+  .match { display: grid; grid-template-columns: 1fr 1.4fr; gap: 14px; margin-top: 10px; }
+  @media (max-width: 640px) { .match { grid-template-columns: 1fr; } }
+  .mcol { display: grid; gap: 8px; align-content: start; }
+  .mbtn { font: inherit; text-align: left; border: 1px solid var(--line); background: var(--paper); color: var(--ink); padding: 7px 12px; border-radius: 10px; cursor: pointer; }
+  .mbtn.zh { font-size: 1.25rem; text-align: center; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .mbtn.sel { outline: 3px solid var(--gold); }
+  .mbtn.done { background: var(--green-soft); border-color: var(--green); color: var(--green); cursor: default; }
+  .mbtn.shake { animation: shake .35s; background: var(--red-soft); border-color: var(--red); }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+  /* text */
+  .textbox { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; background: var(--paper); }
+  .textbox h3 { text-align: center; margin: 0 0 10px; font-size: 1.5rem; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .para { margin-bottom: 14px; padding-left: 12px; border-left: 4px solid var(--line); }
+  .para .plabel { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+  .snt { display: inline; cursor: pointer; border-radius: 4px; font-size: 1.3rem; line-height: 1.9; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .snt:hover { background: var(--gold-soft); }
+  .snt.active { background: var(--gold-soft); }
+  .snt.playing { background: var(--red-soft); }
+  .hl { border-bottom: 2px solid var(--red); }
+  .no-hl .hl { border-bottom: none; }
+  .gloss { margin: 10px 0 0; background: var(--bg); border-radius: 10px; padding: 10px 14px; min-height: 64px; }
+  .gloss .gz { font-size: 1.15rem; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .gloss .gp2 { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+  .gloss .ge { font-size: 0.95rem; }
+  .hide-py .gloss .gp2 { display: none; }
+
+  .lq { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+  .lq .prompt { font-size: 1.12rem; margin-bottom: 8px; }
+  .lq .num { color: var(--muted); margin-right: 6px; }
+
+  .info td.ans { cursor: pointer; }
+  .info td.ans span { visibility: hidden; color: var(--green); font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; font-size: 1.12rem; }
+  .info td.ans::before { content: "？ 点击"; color: var(--muted); font-size: 0.85rem; }
+  .info td.ans.open::before { content: ""; }
+  .info td.ans.open span { visibility: visible; }
+  .info td:first-child { font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; font-size: 1.1rem; white-space: nowrap; }
+
+  /* grammar */
+  .gtabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .gp { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .gp h3 { margin: 0 0 6px; }
+  .gp .pat { display: inline-block; background: var(--red-soft); color: var(--red); font-weight: 700; border-radius: 8px; padding: 4px 12px; font-size: 1.1rem; margin-bottom: 8px; }
+  .gp .from { background: var(--gold-soft); border-radius: 10px; padding: 8px 12px; font-size: 1.15rem; margin: 6px 0; }
+  .gp .from::before { content: "课文："; color: var(--gold); font-weight: 700; font-size: 0.9rem; font-family: system-ui, sans-serif; }
+  .gp .exs { margin: 6px 0 0; padding-left: 1.2em; }
+  .gp .exs li { font-size: 1.1rem; margin-bottom: 2px; }
+  .gp .exs .tr { color: var(--muted); font-size: 0.88rem; }
+  .gp .check { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 10px; }
+
+  /* compare */
+  .cmp td { vertical-align: middle; }
+  .cmp td.cn { cursor: pointer; }
+  .cmp td.cn span { visibility: hidden; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; font-size: 1.08rem; }
+  .cmp td.cn::before { content: "？"; color: var(--muted); }
+  .cmp td.cn.open::before { content: ""; }
+  .cmp td.cn.open span { visibility: visible; }
+  .cmp input { width: 100%; font: inherit; font-size: 1rem; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; background: var(--bg); color: var(--ink); }
+  .frame { background: var(--blue-soft); color: var(--blue); border-radius: 12px; padding: 12px 16px; margin-top: 12px; font-size: 1.1rem; }
+  .frame li { margin-bottom: 2px; }
+
+  /* form */
+  .form { border: 2px solid var(--ink); border-radius: 6px; overflow: hidden; }
+  .frow { display: grid; grid-template-columns: 150px 1fr; border-bottom: 1px solid var(--line); }
+  .frow:last-child { border-bottom: 0; }
+  .frow.two { grid-template-columns: 150px minmax(0,1fr) 120px minmax(0,1fr); }
+  @media (max-width: 680px) { .frow.two { grid-template-columns: 120px 1fr; } .frow { grid-template-columns: 120px 1fr; } }
+  .flab { background: var(--bg); padding: 8px 10px; font-size: 1.05rem; border-right: 1px solid var(--line); font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .flab small { display: block; font-family: system-ui, sans-serif; font-size: 0.75rem; color: var(--muted); }
+  .hide-gloss .flab small { display: none; }
+  .fval { min-width: 0; padding: 6px 10px; display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .fval input[type=text], .fval input[type=email] { flex: 1; min-width: 80px; font: inherit; border: 0; border-bottom: 1.5px dashed var(--line); background: transparent; color: var(--ink); padding: 4px 2px; }
+  .fval input.short { flex: 0 0 42px; min-width: 0; }
+  .fval label { display: inline-flex; gap: 4px; align-items: center; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>第三十一课　课文</h1>
+    <p>去中国学习汉语 · Studying Chinese in China</p>
+  </header>
+
+  <nav class="steps" aria-label="Activities">
+    <a href="#t1">1 热身</a>
+    <a href="#t2">2 新词</a>
+    <a href="#t3">3 读一读</a>
+    <a href="#t4">4 语言点</a>
+    <a href="#t5">5 比一比</a>
+    <a href="#t6">6 填一填</a>
+    <a href="#t7">7 总结</a>
+    <label class="pyToggle"><input type="checkbox" id="pyT" checked> 拼音 pinyin</label>
+  </nav>
+
+  <!-- 1 warm-up -->
+  <section class="card" id="t1">
+    <span class="step-no">第一步 · 4 分钟</span>
+    <h2>热身：去中国学汉语，你想知道什么？</h2>
+    <p class="sub-en">Going to China to study Chinese: what would you want to know? Click the topics you think the text will mention. After reading, click “看结果” to check.</p>
+    <div class="pred" id="pred"></div>
+    <div class="toolbar" style="margin-top:12px"><button class="btn" id="predCheck">看结果 · Check after reading</button></div>
+    <div class="msg" id="predMsg"></div>
+  </section>
+
+  <!-- 2 vocabulary -->
+  <section class="card" id="t2">
+    <span class="step-no">第二步 · 8 分钟</span>
+    <h2>新词</h2>
+    <p class="sub-en">A. Fifteen words for the text. Click a card to see its meaning, 🔊 to hear it.</p>
+    <div class="cards" id="cards"></div>
+    <h3 style="margin-top:24px">B. 连一连 Match: click a word, then its meaning</h3>
+    <div class="match"><div class="mcol" id="mZ"></div><div class="mcol" id="mE"></div></div>
+    <div class="msg" id="mMsg"></div>
+    <button class="btn" id="mReset">重来 Reset</button>
+  </section>
+
+  <!-- 3 reading -->
+  <section class="card" id="t3">
+    <span class="step-no">第三步 · 12 分钟</span>
+    <h2>读一读：去中国学习汉语</h2>
+    <p class="sub-en">Click any sentence to see its pinyin and meaning below the text, and hear it read aloud. New words are underlined.</p>
+    <div class="toolbar">
+      <button class="btn primary" id="readAll">▶ 读全文 Read whole text</button>
+      <button class="btn" id="stopAll">■ 停 Stop</button>
+      <label class="toggles"><input type="checkbox" id="hlT" checked> 标出生词 Underline new words</label>
+    </div>
+    <div class="textbox" id="textbox"><h3>去中国学习汉语</h3></div>
+    <div class="gloss" id="gloss"><span class="en">点击一个句子 · Click a sentence.</span></div>
+
+    <h3 style="margin-top:24px">A. 每段说什么？ What is each paragraph about?</h3>
+    <div id="paraQ"></div>
+
+    <h3 style="margin-top:20px">B. 找信息 Find the information</h3>
+    <p class="sub-en">Say the answer to your partner first, then click to check.</p>
+    <div class="table-scroll"><table class="info" id="info"><thead><tr><th>问题</th><th>答案</th></tr></thead><tbody></tbody></table></div>
+
+    <h3 style="margin-top:20px">C. 对还是错？ True or false?</h3>
+    <div id="tf"></div>
+  </section>
+
+  <!-- 4 grammar -->
+  <section class="card" id="t4">
+    <span class="step-no">第四步 · 8 分钟</span>
+    <h2>语言点</h2>
+    <p class="sub-en">Five language points from the text. Read the pattern, then try the quick check.</p>
+    <div class="gtabs" id="gtabs"></div>
+    <div id="gbody"></div>
+
+    <h3 style="margin-top:24px">课本练习 · Textbook practice (多项选择)</h3>
+    <p class="sub-en">From page 14: choose the right word. These recycle words from the whole lesson.</p>
+    <div id="bookQ"></div>
+  </section>
+
+  <!-- 5 compare -->
+  <section class="card" id="t5">
+    <span class="step-no">第五步 · 8 分钟</span>
+    <h2>比一比：中国的大学和英国的大学</h2>
+    <p class="sub-en">Click “？” to reveal the Chinese university column (from the text and the cultural note on page 13). Fill in your own university, then compare with your partner.</p>
+    <div class="table-scroll">
+      <table class="cmp" id="cmp"><thead><tr><th></th><th>中国的大学</th><th>我们的大学</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="frame">
+      <b>说一说 · Compare:</b>
+      <ul style="margin:6px 0 0;padding-left:1.2em">
+        <li>中国的大学<b>一般</b>……，可是我们的大学……</li>
+        <li>在中国，每周上课的时间<b>大约为</b>……；在英国……</li>
+        <li>中国的大学<b>没有</b>reading week，<b>不过</b>……</li>
+        <li><b>如果</b>我去中国学汉语，我想……，<b>因为</b>……</li>
+        <li>你更想在哪儿上大学？为什么？</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 form -->
+  <section class="card" id="t6">
+    <span class="step-no">第六步 · 8 分钟</span>
+    <h2>填一填：留学申请表</h2>
+    <p class="sub-en">You're applying to study Chinese at a university in China. Fill in the application form (实用练习, page 18). <b>Use made-up details:</b> don't type a real passport number, address or phone number.</p>
+    <div class="toolbar">
+      <label class="toggles"><input type="checkbox" id="glossT" checked> 显示英文 Show English</label>
+      <button class="btn" id="formClear">清空 Clear form</button>
+    </div>
+    <div class="form" id="form">
+      <div class="frow two"><div class="flab">护照用名　姓<small>surname (as in passport)</small></div><div class="fval"><input type="text"></div><div class="flab">名<small>given name</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow two"><div class="flab">国籍<small>nationality</small></div><div class="fval"><input type="text"></div><div class="flab">出生地点<small>place of birth</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow two"><div class="flab">出生日期<small>date of birth</small></div><div class="fval"><input type="text" class="short">年<input type="text" class="short">月<input type="text" class="short">日</div><div class="flab">性别<small>sex</small></div><div class="fval"><label><input type="radio" name="sex"> 男</label><label><input type="radio" name="sex"> 女</label></div></div>
+      <div class="frow two"><div class="flab">已婚 / 未婚<small>married / single</small></div><div class="fval"><label><input type="radio" name="mar"> 已婚</label><label><input type="radio" name="mar"> 未婚</label></div><div class="flab">护照号码<small>passport no. (make one up!)</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow two"><div class="flab">最后学历<small>highest qualification</small></div><div class="fval"><input type="text"></div><div class="flab">现职业<small>current occupation</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow"><div class="flab">现工作单位 / 学校<small>current employer / school</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow"><div class="flab">永久通讯地址<small>permanent address (made up)</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow two"><div class="flab">电话<small>phone</small></div><div class="fval"><input type="text"></div><div class="flab">电子邮箱<small>email</small></div><div class="fval"><input type="text"></div></div>
+      <div class="frow"><div class="flab">申请学习时间<small>intended period of study</small></div><div class="fval">从<input type="text" class="short">年<input type="text" class="short">月<input type="text" class="short">日　到<input type="text" class="short">年<input type="text" class="short">月<input type="text" class="short">日</div></div>
+      <div class="frow"><div class="flab">现有汉语水平（词汇量）<small>current level (vocabulary)</small></div><div class="fval"><label><input type="radio" name="lv"> A 无</label><label><input type="radio" name="lv"> B 大约800</label><label><input type="radio" name="lv"> C 大约1500</label><label><input type="radio" name="lv"> D 大约2500</label><label><input type="radio" name="lv"> E 大约3500</label></div></div>
+      <div class="frow two"><div class="flab">学生本人签字<small>signature</small></div><div class="fval"><input type="text"></div><div class="flab">日期<small>date</small></div><div class="fval"><input type="text"></div></div>
+    </div>
+    <div class="frame">
+      <b>面试 · Interview:</b> swap with a partner. B is the admissions teacher and checks A's form by asking:
+      <ul style="margin:6px 0 0;padding-left:1.2em">
+        <li>你的国籍是什么？你是在哪儿出生的？</li>
+        <li>你想从什么时候学到什么时候？</li>
+        <li>你认识多少个汉字？能用汉语进行会话吗？</li>
+        <li>那你应该上初级班、中级班还是高级班？</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 summary -->
+  <section class="card" id="t7">
+    <span class="step-no">总结 · 2 分钟</span>
+    <h2>今天学的</h2>
+    <div class="summary">
+      <div><b>如果……（就）……了</b><br>如果你早点开始学，现在就说得很流利了。</div>
+      <div><b>为 = 是（书面）</b><br>初级班为零起点。</div>
+      <div><b>有的……，有的……</b><br>有的在中文系，有的在语言中心。</div>
+      <div><b>大约 / 左右 / 多</b><br>大约二十个小时 · 二十人左右 · 一千多个</div>
+      <div><b>一点儿……都不……</b><br>一点儿汉语都不会</div>
+    </div>
+    <h3>离开以前 · Before you leave</h3>
+    <div class="exit">如果你的朋友想去中国学汉语，你会告诉他什么？说三句话。</div>
+  </section>
+
+  <footer>步步高中文 4 · 第31课 · 课文</footer>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+  $('pyT').addEventListener('change', e => document.body.classList.toggle('hide-py', !e.target.checked));
+
+  let voices = [];
+  function loadVoices() { try { voices = window.speechSynthesis.getVoices().filter(v => /zh[-_]CN/i.test(v.lang)); } catch (e) {} }
+  try { loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; } catch (e) {}
+  function say(text, onend) {
+    try {
+      if (!('speechSynthesis' in window)) { onend && onend(); return; }
+      const u = new SpeechSynthesisUtterance(text); u.lang = 'zh-CN'; u.rate = 0.82;
+      if (voices.length) u.voice = voices[0];
+      u.onend = () => onend && onend(); u.onerror = () => onend && onend();
+      window.speechSynthesis.speak(u);
+    } catch (e) { onend && onend(); }
+  }
+  function stopSpeech() { try { window.speechSynthesis.cancel(); } catch (e) {} document.querySelectorAll('.snt.playing').forEach(s => s.classList.remove('playing')); }
+
+  function mcq(box, prompt, opts, ans, why, num) {
+    const q = document.createElement('div'); q.className = 'lq';
+    q.innerHTML = `<div class="prompt">${num ? `<span class="num">${num}.</span>` : ''}${prompt}</div><div class="opts"></div><div class="fb"></div>`;
+    const o = q.querySelector('.opts'), fb = q.querySelector('.fb');
+    opts.forEach(t => {
+      const b = document.createElement('button'); b.className = 'opt'; b.textContent = t;
+      b.addEventListener('click', () => {
+        const right = t === ans;
+        o.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (x.textContent === ans) x.classList.add('correct'); });
+        if (!right) b.classList.add('wrong');
+        fb.className = 'fb show ' + (right ? 'good' : 'bad');
+        fb.innerHTML = (right ? '对了！' : '不对。') + (why ? `<span class="why">${why}</span>` : '');
+      });
+      o.appendChild(b);
+    });
+    box.appendChild(q);
+  }
+
+  // ---------- 1 predict ----------
+  const PRED = [['分班考试 placement test', 1], ['学费 tuition fees', 0], ['上课时间 class times', 1], ['吃饭 food', 1], ['宿舍 dorms', 1], ['学期 semesters', 1], ['签证 visa', 0], ['每班人数 class size', 1], ['奖学金 scholarships', 0], ['要认识多少汉字 characters needed', 1]];
+  PRED.forEach(([t]) => { const b = document.createElement('button'); b.textContent = t; b.addEventListener('click', () => b.classList.toggle('on')); $('pred').appendChild(b); });
+  $('predCheck').addEventListener('click', () => {
+    let hit = 0, chose = 0;
+    [...$('pred').children].forEach((b, i) => {
+      const yes = PRED[i][1]; if (b.classList.contains('on')) { chose++; if (yes) hit++; }
+      b.classList.remove('on'); b.classList.add(yes ? 'yes' : 'no');
+    });
+    $('predMsg').className = 'msg good';
+    $('predMsg').textContent = `你猜对了 ${hit} 个！The text mentions the green topics. Fees, visas and scholarships aren't in it.`;
+  });
+
+  // ---------- 2 vocabulary ----------
+  const V = [
+    ['学习', 'xuéxí', 'study', '动/名'], ['开设', 'kāishè', 'set up, offer (a course)', '动'], ['对外汉语', 'duìwài Hànyǔ', 'Chinese as a foreign language', '名'],
+    ['大量', 'dàliàng', 'a large number of', '形'], ['零起点', 'língqǐdiǎn', 'from scratch, ab initio', '名'], ['为', 'wéi', 'be; become (formal)', '动'],
+    ['进行', 'jìnxíng', 'carry out, conduct', '动'], ['会话', 'huìhuà', 'conversation', '名'], ['一般', 'yìbān', 'generally; common', '副/形'],
+    ['每', 'měi', 'every, each', '代'], ['人数', 'rénshù', 'number of people', '名'], ['大约', 'dàyuē', 'approximately', '副'],
+    ['清真', 'qīngzhēn', 'halal, Muslim', '名'], ['菜系', 'càixì', 'style of cooking, cuisine', '名'], ['校园', 'xiàoyuán', 'campus', '名']
+  ];
+  V.forEach(([hz, py, en, pos]) => {
+    const c = document.createElement('div'); c.className = 'fc';
+    c.innerHTML = `<span class="pos">${pos}</span><button class="say" aria-label="Play">🔊</button><div class="hz">${hz}</div><div class="pyw">${py}</div><div class="back">${en}</div>`;
+    c.addEventListener('click', e => { if (e.target.closest('.say')) return; c.classList.toggle('flipped'); });
+    c.querySelector('.say').addEventListener('click', () => say(hz));
+    $('cards').appendChild(c);
+  });
+  let mSel = null, mDone = 0;
+  function buildMatch() {
+    mSel = null; mDone = 0; $('mMsg').textContent = '';
+    const set = shuffle(V).slice(0, 8);
+    $('mZ').innerHTML = ''; $('mE').innerHTML = '';
+    shuffle(set).forEach(v => {
+      const b = document.createElement('button'); b.className = 'mbtn zh'; b.textContent = v[0];
+      b.addEventListener('click', () => { if (b.classList.contains('done')) return; $('mZ').querySelectorAll('.sel').forEach(x => x.classList.remove('sel')); mSel = b; b.classList.add('sel'); });
+      $('mZ').appendChild(b);
+    });
+    shuffle(set).forEach(v => {
+      const b = document.createElement('button'); b.className = 'mbtn'; b.textContent = v[2];
+      b.addEventListener('click', () => {
+        if (b.classList.contains('done')) return;
+        if (!mSel) { $('mMsg').className = 'msg'; $('mMsg').textContent = '先点一个词 · Click a word first.'; return; }
+        const w = V.find(x => x[0] === mSel.textContent);
+        if (w[2] === v[2]) {
+          mSel.classList.remove('sel'); mSel.classList.add('done'); b.classList.add('done'); mSel = null; mDone++;
+          $('mMsg').className = 'msg good'; $('mMsg').textContent = mDone === 8 ? '全对！ Press “重来” for eight new words.' : '对！'; say(w[0]);
+        } else { b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'), 400); $('mMsg').className = 'msg bad'; $('mMsg').textContent = '再试试 · Try again.'; }
+      });
+      $('mE').appendChild(b);
+    });
+  }
+  $('mReset').addEventListener('click', buildMatch);
+  buildMatch();
+
+  // ---------- 3 text ----------
+  const HL = V.map(v => v[0]).concat(['分班考试']);
+  const P = [
+    [
+      ['如果你想去中国学习汉语，你要先找好学校。', 'Rúguǒ nǐ xiǎng qù Zhōngguó xuéxí Hànyǔ, nǐ yào xiān zhǎo hǎo xuéxiào.', 'If you want to go to China to study Chinese, first you need to find a good school.'],
+      ['中国很多的大学都开设对外汉语课，有的在中文系，有的在语言中心。', 'Zhōngguó hěn duō de dàxué dōu kāishè duìwài Hànyǔ kè, yǒude zài Zhōngwénxì, yǒude zài yǔyán zhōngxīn.', 'Many Chinese universities offer courses in Chinese as a foreign language, some in the Chinese department and some in a language centre.'],
+      ['每年都有大量的外国留学生到中国的大学学习汉语。', 'Měi nián dōu yǒu dàliàng de wàiguó liúxuéshēng dào Zhōngguó de dàxué xuéxí Hànyǔ.', 'Every year, large numbers of international students come to Chinese universities to study Chinese.']
+    ],
+    [
+      ['开始上课以前，你要参加分班考试。', 'Kāishǐ shàngkè yǐqián, nǐ yào cānjiā fēnbān kǎoshì.', 'Before classes start, you need to take a placement test.'],
+      ['初级班为零起点，一点儿汉语都不会的学生也可以参加。', 'Chūjíbān wéi língqǐdiǎn, yìdiǎnr Hànyǔ dōu bú huì de xuésheng yě kěyǐ cānjiā.', 'The beginners’ class starts from zero: students who don’t know any Chinese at all can join.'],
+      ['中级班的学生需要认识八百到一千多个汉字，能用汉语进行会话。', 'Zhōngjíbān de xuésheng xūyào rènshi bābǎi dào yìqiān duō ge Hànzì, néng yòng Hànyǔ jìnxíng huìhuà.', 'Intermediate students need to know 800 to just over 1,000 characters and be able to hold a conversation in Chinese.'],
+      ['高级班的学生需要认识一千五百多个汉字，能读懂中文报纸。', 'Gāojíbān de xuésheng xūyào rènshi yìqiān wǔbǎi duō ge Hànzì, néng dú dǒng Zhōngwén bàozhǐ.', 'Advanced students need to know over 1,500 characters and be able to read Chinese newspapers.'],
+      ['每个班人数一般在二十人左右。', 'Měi ge bān rénshù yìbān zài èrshí rén zuǒyòu.', 'Each class usually has about twenty students.']
+    ],
+    [
+      ['中国的大学一般上午八点开始上课，十二点吃午饭，中午休息两个小时，下午两点又开始上课。', 'Zhōngguó de dàxué yìbān shàngwǔ bā diǎn kāishǐ shàngkè, shí’èr diǎn chī wǔfàn, zhōngwǔ xiūxi liǎng ge xiǎoshí, xiàwǔ liǎng diǎn yòu kāishǐ shàngkè.', 'Chinese universities usually start classes at 8 am, have lunch at 12, rest for two hours at midday, and start classes again at 2 pm.'],
+      ['每周上课的时间大约为二十个小时左右。', 'Měi zhōu shàngkè de shíjiān dàyuē wéi èrshí ge xiǎoshí zuǒyòu.', 'There are about twenty hours of classes a week.'],
+      ['中国的大学一年分为两个学期，每年的九月初和二月底开学。', 'Zhōngguó de dàxué yì nián fēn wéi liǎng ge xuéqī, měi nián de jiǔ yuè chū hé èr yuè dǐ kāixué.', 'The university year is divided into two semesters, starting in early September and late February.'],
+      ['每个学期的学习时间为十六到二十周。', 'Měi ge xuéqī de xuéxí shíjiān wéi shíliù dào èrshí zhōu.', 'Each semester lasts sixteen to twenty weeks.'],
+      ['学校一般都有好几个餐厅，在那里你可以吃到来自中国不同菜系的饭菜，有的学校还有清真饭菜和西餐。', 'Xuéxiào yìbān dōu yǒu hǎo jǐ ge cāntīng, zài nàli nǐ kěyǐ chī dào láizì Zhōngguó bùtóng càixì de fàncài, yǒude xuéxiào hái yǒu qīngzhēn fàncài hé xīcān.', 'Universities usually have several canteens where you can eat dishes from China’s different regional cuisines; some also have halal food and Western food.'],
+      ['中国大学的校园里一般都有留学生宿舍，宿舍里面有电视、空调和冰箱等设备，留学生大多喜欢住在留学生宿舍。', 'Zhōngguó dàxué de xiàoyuán li yìbān dōu yǒu liúxuéshēng sùshè, sùshè lǐmiàn yǒu diànshì, kōngtiáo hé bīngxiāng děng shèbèi, liúxuéshēng dà duō xǐhuan zhù zài liúxuéshēng sùshè.', 'Chinese campuses usually have international student dorms with TVs, air conditioning, fridges and other facilities, and most international students like living there.']
+    ]
+  ];
+  function highlight(zh) {
+    const keys = HL.slice().sort((a, b) => b.length - a.length);
+    let out = '', i = 0;
+    while (i < zh.length) { const k = keys.find(k => zh.startsWith(k, i)); if (k) { out += `<span class="hl">${k}</span>`; i += k.length; } else { out += zh[i]; i++; } }
+    return out;
+  }
+  const SN = [];
+  P.forEach((para, pi) => {
+    const d = document.createElement('div'); d.className = 'para';
+    d.innerHTML = `<div class="plabel">第${'一二三'[pi]}段</div>`;
+    const p = document.createElement('p'); p.style.margin = '0';
+    para.forEach(s => {
+      const sp = document.createElement('span'); sp.className = 'snt'; sp.innerHTML = highlight(s[0]);
+      sp.addEventListener('click', () => {
+        stopSpeech();
+        document.querySelectorAll('.snt.active').forEach(x => x.classList.remove('active'));
+        sp.classList.add('active');
+        $('gloss').innerHTML = `<div class="gz">${s[0]}</div><div class="gp2">${s[1]}</div><div class="ge">${s[2]}</div>`;
+        say(s[0]);
+      });
+      p.appendChild(sp); SN.push([sp, s[0]]);
+    });
+    d.appendChild(p); $('textbox').appendChild(d);
+  });
+  let rIdx = -1;
+  function readFrom(i) {
+    if (i >= SN.length) { stopSpeech(); return; }
+    rIdx = i; SN.forEach((x, k) => x[0].classList.toggle('playing', k === i));
+    say(SN[i][1], () => { if (rIdx === i) setTimeout(() => readFrom(i + 1), 300); });
+  }
+  $('readAll').addEventListener('click', () => { stopSpeech(); readFrom(0); });
+  $('stopAll').addEventListener('click', () => { rIdx = -1; stopSpeech(); });
+  $('hlT').addEventListener('change', e => $('t3').classList.toggle('no-hl', !e.target.checked));
+
+  const HEADS = ['分班和班级 · Placement and classes', '在哪儿学汉语 · Where to study', '中国的大学生活 · University life'];
+  [['第一段说的是……', HEADS[1]], ['第二段说的是……', HEADS[0]], ['第三段说的是……', HEADS[2]]].forEach((q, i) => mcq($('paraQ'), q[0], HEADS, q[1], '', i + 1));
+
+  [
+    ['什么时候参加分班考试？', '开始上课以前'],
+    ['初级班的学生要会多少汉语？', '零起点，一点儿都不会也可以'],
+    ['中级班：要认识多少个汉字？', '八百到一千多个，能用汉语会话'],
+    ['高级班：要认识多少个汉字？', '一千五百多个，能读懂中文报纸'],
+    ['每个班有多少人？', '一般二十人左右'],
+    ['上午几点开始上课？', '八点'],
+    ['中午休息多长时间？', '两个小时（十二点吃午饭）'],
+    ['每周上多少个小时的课？', '大约二十个小时'],
+    ['什么时候开学？', '九月初和二月底'],
+    ['每个学期多少周？', '十六到二十周'],
+    ['在餐厅可以吃到什么？', '中国不同菜系的饭菜，有的还有清真饭菜和西餐'],
+    ['宿舍里有什么设备？', '电视、空调和冰箱等']
+  ].forEach(([q, a]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${q}</td><td class="ans"><span>${a}</span></td>`;
+    tr.querySelector('.ans').addEventListener('click', e => e.currentTarget.classList.toggle('open'));
+    document.querySelector('#info tbody').appendChild(tr);
+  });
+
+  [
+    ['在中国，只有中文系开设对外汉语课。', '错', '有的在中文系，有的在语言中心。'],
+    ['一点儿汉语都不会的学生也可以上初级班。', '对', '初级班为零起点。'],
+    ['中级班的学生要能读懂中文报纸。', '错', 'That’s the advanced class (高级班). 中级班 = 能用汉语进行会话.'],
+    ['中国的大学中午一般休息两个小时。', '对', '中午休息两个小时，下午两点又开始上课。'],
+    ['中国的大学一年有三个学期。', '错', '一年分为两个学期。'],
+    ['留学生大多不喜欢住在留学生宿舍。', '错', '留学生大多喜欢住在留学生宿舍。']
+  ].forEach((q, i) => mcq($('tf'), q[0], ['对', '错'], q[1], q[2], i + 1));
+
+  // ---------- 4 grammar ----------
+  const G = [
+    { tab: '① 如果', title: '如果: “if” (and “if only …”)', pat: '如果 + condition，（就）+ result',
+      expl: '如果 is more formal than 要是. In casual speech it’s often left out when the meaning is clear: （如果）你不去，我也不去。 But when you imagine something that didn’t happen (“if you had …”), keep 如果.',
+      from: ['如果你想去中国学习汉语，你要先找好学校。'],
+      exs: [['如果你早点开始学，现在汉语应该说得很流利了。', 'If you’d started earlier, you’d be fluent by now.'], ['如果他们昨天都来帮忙，这工作今天就该做完了。', 'If they’d all come to help yesterday, the work would be done by today.']],
+      checks: [['“If I had booked a room, I would have a key now.”', ['如果我预订了房间，现在就有钥匙了。', '我预订了房间，现在有钥匙。', '因为我预订了房间，所以现在有钥匙了。'], '如果我预订了房间，现在就有钥匙了。', 'It didn’t happen, so keep 如果, with 就……了 in the result.']] },
+    { tab: '② 为 wéi', title: '为 wéi = 是 (formal, written)', pat: 'A + 为 + B　·　分为 = divided into',
+      expl: 'In written Chinese, 为 (wéi, second tone) often replaces 是, especially with numbers, times and rules. 分为 = be divided into.',
+      from: ['初级班为零起点。', '每个学期的学习时间为十六到二十周。', '中国的大学一年分为两个学期。'],
+      exs: [['每个班的人数为二十人。', 'Each class has twenty students.'], ['在中国，对着门的座位为上座。', 'In China, the seat facing the door is the seat of honour.']],
+      checks: [['Write it formally: 每周上课的时间是二十个小时。', ['每周上课的时间为二十个小时。', '每周上课的时间为是二十个小时。', '每周为上课的时间二十个小时。'], '每周上课的时间为二十个小时。', '为 simply replaces 是.']] },
+    { tab: '③ 有的……有的', title: '有的……，有的……: some …, others …', pat: '有的 + (noun) + V，有的 + V',
+      expl: 'Use 有的 to split a group: some do this, some do that. 有的 goes before the verb, never at the end.',
+      from: ['有的在中文系，有的在语言中心。', '有的学校还有清真饭菜和西餐。'],
+      exs: [['我们班的同学有的读理科，有的读文科。', 'Some of our classmates study sciences, others humanities.'], ['留学生有的住在宿舍，有的住在外边。', 'Some international students live in the dorms, others off campus.']],
+      checks: [['“Some students live in the dorm, some live at home.”', ['学生有的住在宿舍，有的住在家里。', '学生住在宿舍有的，住在家里有的。', '有的学生住在宿舍，有的学生家里住。'], '学生有的住在宿舍，有的住在家里。', '有的 + verb phrase, twice.']] },
+    { tab: '④ 大约·左右·多', title: 'About, around, more than: 大约 · 左右 · 多', pat: '大约 + number　·　number + (measure) + 左右　·　number + 多 + measure',
+      expl: '大约 goes before the number; 左右 goes after it. 多 = “more than” and goes between the number and the measure word. The text uses 大约……左右 together, which is common in speech, but one of them is enough.',
+      from: ['每个班人数一般在二十人左右。', '每周上课的时间大约为二十个小时左右。', '认识一千五百多个汉字'],
+      exs: [['我大约八点到学校。', 'I get to school at about 8.'], ['我认识八百多个汉字。', 'I know over 800 characters.']],
+      checks: [['“About 20 people”', ['二十个人左右', '左右二十个人', '二十左右个人'], '二十个人左右', '左右 goes after the number + measure word + noun.'],
+               ['“More than 1,000 characters”', ['一千多个汉字', '一千个多汉字', '多一千个汉字'], '一千多个汉字', 'With round numbers, 多 goes before the measure word.']] },
+    { tab: '⑤ 一点儿……都不', title: '一点儿 + noun + 都不 / 都没: not … at all', pat: '一点儿 + (noun) + 都 + 不 / 没 + V',
+      expl: 'This strongly negates: not even a little. The object moves before the verb, and 都 (or 也) comes before 不 / 没.',
+      from: ['一点儿汉语都不会的学生也可以参加。'],
+      exs: [['我一点儿都不累。', 'I’m not tired at all.'], ['他一点儿中文都没学过。', 'He has never studied any Chinese at all.']],
+      checks: [['“I don’t understand any Chinese at all.”', ['我一点儿汉语都不懂。', '我都不懂一点儿汉语。', '我不懂一点儿汉语都。'], '我一点儿汉语都不懂。', '一点儿 + noun + 都 + 不 + verb.']] }
+  ];
+  function showG(i) {
+    document.querySelectorAll('#gtabs .tab').forEach((t, k) => t.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+    const g = G[i], box = $('gbody'); box.innerHTML = '';
+    const el = document.createElement('div'); el.className = 'gp';
+    el.innerHTML = `<h3>${g.title}</h3><div class="pat">${g.pat}</div><p class="en" style="margin:4px 0 8px">${g.expl}</p>
+      ${g.from.map(f => `<div class="from kai">${f}</div>`).join('')}
+      <ul class="exs">${g.exs.map(e => `<li><span class="kai">${e[0]}</span> <span class="tr">${e[1]}</span></li>`).join('')}</ul>
+      <div class="check"><b>试一试 Quick check</b><div class="cbox"></div></div>`;
+    box.appendChild(el);
+    g.checks.forEach((c, k) => mcq(el.querySelector('.cbox'), c[0], shuffle(c[1]), c[2], c[3], k + 1));
+  }
+  G.forEach((g, i) => { const t = document.createElement('button'); t.className = 'tab'; t.textContent = g.tab; t.addEventListener('click', () => showG(i)); $('gtabs').appendChild(t); });
+  showG(0);
+
+  [
+    ['＿＿＿我明年去中国，我一定去找你。', ['不然', '如果', '因为'], '如果', 'If I go to China next year …'],
+    ['我很幸运，我被上海大学＿＿＿了。', ['报到', '通知', '录取'], '录取', '被大学录取 = be admitted by a university.'],
+    ['我们学校语言中心的设备很＿＿＿。', ['先进', '新鲜', '好极了'], '先进', '设备 goes with 先进 (advanced).'],
+    ['请问，在哪儿＿＿＿住宿手续？', ['办理', '注册', '写'], '办理', '办理手续 is the fixed chunk.'],
+    ['李健＿＿＿一个医生家庭。', ['出来', '是', '来自'], '来自', '来自 = come from (a family, a country).'],
+    ['我还没有拿到学位，＿＿＿这个工作就是我的了。', ['不但', '不然', '不是'], '不然', 'Otherwise the job would be mine.'],
+    ['房子是＿＿＿人住的，你把房子空着，房子也会坏的。', ['需要', '不要', '一定'], '需要', 'A house needs people living in it.'],
+    ['在中国，对着门的座位＿＿＿上座。', ['办', '让', '为'], '为', '为 = 是 (formal).']
+  ].forEach((q, i) => mcq($('bookQ'), q[0], q[1], q[2], q[3], i + 1));
+
+  // ---------- 5 compare ----------
+  [
+    ['上午几点开始上课？', '一般八点'],
+    ['中午休息吗？', '休息两个小时'],
+    ['每周上课多少个小时？', '大约二十个小时，常常更多'],
+    ['一年有几个学期？', '两个学期'],
+    ['什么时候开学？', '九月初、二月底'],
+    ['每个学期多长？', '十六到二十周'],
+    ['有reading week吗？', '没有，不过有期中考试'],
+    ['考试多还是作业（coursework）多？', '考试比较多，作业比较少'],
+    ['学校餐厅怎么样？', '好几个餐厅，不同菜系'],
+    ['留学生住在哪儿？', '大多住在留学生宿舍']
+  ].forEach(([q, a]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="kai" style="font-size:1.08rem">${q}</td><td class="cn"><span>${a}</span></td><td><input type="text" placeholder="写一写 / 说一说" aria-label="${q}"></td>`;
+    tr.querySelector('.cn').addEventListener('click', e => e.currentTarget.classList.toggle('open'));
+    document.querySelector('#cmp tbody').appendChild(tr);
+  });
+
+  // ---------- 6 form ----------
+  $('glossT').addEventListener('change', e => $('form').classList.toggle('hide-gloss', !e.target.checked));
+  $('formClear').addEventListener('click', () => $('form').querySelectorAll('input').forEach(i => { if (i.type === 'radio') i.checked = false; else i.value = ''; }));
+</script>
+</body>
+</html>
