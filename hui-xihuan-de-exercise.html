@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会 · 喜欢 · 得 — 技能与爱好练习</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700;900&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB","Heiti SC","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif;
+    --font-serif:"Noto Serif SC","Songti SC","SimSun","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+    --font-latin:"Nunito","PingFang SC","Microsoft YaHei","Heiti SC","Noto Sans CJK SC",sans-serif;
+
+    --bg:#FAF8F3;
+    --panel:#FFFFFF;
+    --ink:#232026;
+    --ink-soft:#6A6570;
+    --brand:#5A4BA6;
+    --brand-deep:#3F3480;
+    --line:#EAE4DA;
+    --line-strong:#D8D0C2;
+    --shadow:0 12px 30px -18px rgba(40,32,50,.4);
+
+    --hui:#1F9E85;   --hui-bg:#DEF2ED;   /* 会 */
+    --xi:#D2618B;    --xi-bg:#FAE4EE;    /* 喜欢 */
+    --de:#E0862C;    --de-bg:#FBEBD6;    /* 得 */
+    --ok:#1F9E70; --no:#D2504A;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px;}
+  h1,h2,h3{font-family:var(--font-serif);margin:0;line-height:1.25;}
+
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(250,248,243,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex;align-items:center;gap:10px;height:58px;}
+  .logo{display:flex;gap:4px;}
+  .logo b{padding:0 9px;height:30px;border-radius:8px;display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-weight:900;font-size:15px;}
+  .logo b:nth-child(1){background:var(--hui);}
+  .logo b:nth-child(2){background:var(--xi);}
+  .logo b:nth-child(3){background:var(--de);}
+  .topbar .name{font-family:var(--font-serif);font-weight:900;font-size:16px;}
+  .spacer{flex:1;}
+  .lvl{font-family:var(--font-latin);font-weight:800;font-size:12px;color:var(--brand-deep);background:#EDE9F7;border:1px solid #D9D0EF;padding:5px 11px;border-radius:999px;}
+
+  .hero{padding:36px 0 6px;}
+  .hero .eyebrow{font-family:var(--font-latin);font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:12px;color:var(--brand);}
+  .hero h1{font-size:clamp(26px,5.4vw,40px);font-weight:900;margin:8px 0 8px;}
+  .hero h1 .a{color:var(--hui);} .hero h1 .b{color:var(--xi);} .hero h1 .c{color:var(--de);}
+  .hero p{color:var(--ink-soft);max-width:60ch;margin:0;}
+
+  /* pattern box */
+  .pats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 14px;}
+  .pat{background:var(--panel);border:1px solid var(--line);border-top:4px solid;border-radius:14px;padding:15px 16px 16px;box-shadow:var(--shadow);}
+  .pat.h{border-top-color:var(--hui);} .pat.x{border-top-color:var(--xi);} .pat.d{border-top-color:var(--de);}
+  .pat .tag{font-family:var(--font-serif);font-weight:900;font-size:22px;}
+  .pat.h .tag{color:var(--hui);} .pat.x .tag{color:var(--xi);} .pat.d .tag{color:var(--de);}
+  .pat .use{font-family:var(--font-latin);font-weight:800;font-size:12px;color:var(--ink-soft);margin:2px 0 8px;}
+  .pat .formula{font-size:14px;font-weight:700;background:var(--bg);border-radius:8px;padding:7px 9px;text-align:center;margin-bottom:8px;}
+  .pat.h .formula b{color:var(--hui);} .pat.x .formula b{color:var(--xi);} .pat.d .formula b{color:var(--de);}
+  .pat .eg{font-size:14.5px;}
+  .pat .eg .py{display:block;font-family:var(--font-latin);font-size:11.5px;color:var(--ink-soft);font-weight:700;}
+  .pat .eg .en{display:block;font-family:var(--font-latin);font-size:11.5px;color:var(--ink-soft);font-weight:600;}
+  .pat .neg{font-size:12.5px;color:var(--ink-soft);margin-top:6px;}
+  .pat .neg b{color:var(--ink);}
+
+  /* model */
+  .model{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);margin:6px 0 4px;}
+  .model .mh{font-family:var(--font-serif);font-weight:700;color:var(--brand);font-size:14px;margin-bottom:8px;letter-spacing:1px;}
+  .model p{margin:0;font-size:17px;}
+  .model .hl-h{color:var(--hui);font-weight:700;} .model .hl-x{color:var(--xi);font-weight:700;} .model .hl-d{color:var(--de);font-weight:700;}
+  .model .tr{color:var(--ink-soft);font-size:13.5px;font-family:var(--font-latin);font-weight:600;margin-top:10px;}
+
+  /* exercise */
+  section.ex{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px 22px;margin:20px 0;}
+  .ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap;}
+  .ex-head .letter{color:#fff;font-family:var(--font-latin);font-weight:800;font-size:14px;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;flex:none;}
+  .ex-head h3{font-size:18px;}
+  .ex-head h3 .k{font-family:var(--font-serif);}
+  .ex.A .letter{background:var(--hui);} .ex.A h3 .k{color:var(--hui);}
+  .ex.B .letter{background:var(--xi);} .ex.B h3 .k{color:var(--xi);}
+  .ex.C .letter{background:var(--de);} .ex.C h3 .k{color:var(--de);}
+  .ex.D .letter{background:var(--brand);}
+  .ex.E .letter{background:#8A6DAE;}
+  .ex .hint{color:var(--ink-soft);font-size:13.5px;margin:2px 0 16px;}
+
+  .item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);flex-wrap:wrap;}
+  .item:last-child{border-bottom:none;}
+  .item .n{font-family:var(--font-latin);font-weight:800;color:var(--brand);flex:none;min-width:20px;padding-top:6px;}
+  .sen{font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:4px 4px;flex:1;}
+  .cue{font-size:15px;padding:1px 8px;border-radius:6px;font-family:var(--font-latin);font-weight:800;}
+  .cue.yes{background:var(--hui-bg);color:var(--hui);}
+  .cue.no{background:#F3E7E6;color:var(--no);}
+  .cue.like{background:var(--xi-bg);color:var(--xi);}
+
+  .blank{display:inline-flex;gap:3px;margin:0 3px;vertical-align:middle;}
+  .pick{font-family:var(--font-sans);font-weight:700;font-size:14px;cursor:pointer;border:1.5px solid var(--line-strong);background:var(--bg);padding:5px 10px;border-radius:8px;transition:.12s;color:var(--ink);white-space:nowrap;}
+  .pick:hover{border-color:var(--brand);}
+  .pick.sel{border-color:var(--brand);background:#EDE9F7;color:var(--brand-deep);}
+  .pick.correct{border-color:var(--ok);background:#DEF3EA;color:var(--ok);}
+  .pick.wrong{border-color:var(--no);background:#FBE6E4;color:var(--no);text-decoration:line-through;}
+
+  .check-btn{margin-top:14px;font-family:var(--font-latin);font-weight:800;font-size:14px;cursor:pointer;background:var(--brand);color:#fff;border:none;padding:9px 20px;border-radius:10px;transition:.15s;}
+  .check-btn:hover{background:var(--brand-deep);}
+  .score{display:inline-block;margin-left:12px;font-family:var(--font-latin);font-weight:800;color:var(--ok);}
+
+  /* build sentences */
+  .build{padding:11px 0;border-bottom:1px dashed var(--line);}
+  .build:last-child{border-bottom:none;}
+  .build .cells{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:15.5px;}
+  .word{background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:4px 12px;font-weight:600;}
+  .word.adj{background:var(--de-bg);border-color:#EAC79A;color:#9A5B14;}
+  .arrow{color:var(--ink-soft);}
+  .build .line{display:block;border-bottom:1.5px dotted var(--line-strong);height:1.7em;margin-top:9px;}
+
+  .bank{background:var(--de-bg);border:1px solid #EAC79A;border-radius:10px;padding:11px 16px;margin-bottom:16px;}
+  .bank .bt{font-family:var(--font-serif);font-weight:700;font-size:13px;margin-bottom:6px;color:#9A5B14;}
+  .bank .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .bank .chip{background:var(--panel);border:1px solid #EAC79A;border-radius:999px;padding:3px 12px;font-size:14px;font-weight:600;}
+
+  /* table */
+  .ptable{width:100%;border-collapse:collapse;background:var(--panel);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px;font-size:15.5px;}
+  .ptable caption{caption-side:top;text-align:left;font-family:var(--font-serif);font-weight:700;color:var(--brand);padding:0 0 8px;font-size:15px;}
+  .ptable th{background:var(--brand);color:#fff;padding:9px 10px;font-size:14px;text-align:center;}
+  .ptable th:first-child{text-align:left;}
+  .ptable td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:center;}
+  .ptable td:first-child{text-align:left;font-weight:600;}
+  .ptable tr:last-child td{border-bottom:none;}
+  .yes{color:var(--hui);font-weight:800;} .nope{color:var(--no);font-weight:800;} .dash{color:var(--line-strong);}
+
+  .task{padding:10px 0;border-bottom:1px dashed var(--line);}
+  .task:last-child{border-bottom:none;}
+  .task .q{font-size:15.5px;font-weight:600;}
+  .task .line{display:block;border-bottom:1.5px dotted var(--line-strong);height:1.7em;margin-top:7px;}
+
+  .scaffold p{font-size:17px;margin:0 0 14px;}
+  .scaffold .fill{display:inline-block;border-bottom:2px solid var(--line-strong);min-width:130px;height:1.5em;vertical-align:bottom;margin:0 4px;}
+
+  /* teacher */
+  details.teacher{background:#242233;color:#EAE7F2;border-radius:14px;box-shadow:var(--shadow);margin:22px 0 10px;overflow:hidden;}
+  details.teacher summary{cursor:pointer;padding:17px 22px;font-family:var(--font-serif);font-weight:700;font-size:17px;list-style:none;display:flex;align-items:center;gap:10px;}
+  details.teacher summary::-webkit-details-marker{display:none;}
+  details.teacher summary .key{background:#F2C879;color:#242233;font-family:var(--font-latin);font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px;letter-spacing:1px;}
+  details.teacher summary .arw{margin-left:auto;transition:.2s;}
+  details.teacher[open] summary .arw{transform:rotate(180deg);}
+  .tbody{padding:2px 22px 22px;border-top:1px solid rgba(255,255,255,.12);}
+  .tbody h4{color:#F2C879;margin:16px 0 6px;font-size:14px;font-family:var(--font-serif);}
+  .tbody p,.tbody li{color:#D6D2E4;font-size:14.5px;}
+  .tbody .ans b{color:#FFE7B3;font-family:var(--font-serif);}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:12.5px;padding:28px 20px 44px;}
+
+  @media (max-width:640px){.pats{grid-template-columns:1fr;}}
+  @media print{
+    .topbar,.check-btn{display:none!important;}
+    body{background:#fff;}
+    section.ex,.pat,.model,.ptable,details.teacher{box-shadow:none;break-inside:avoid;}
+    details.teacher{break-before:page;}
+    .pick,.cue,.yes,.nope{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><b>会</b><b>喜欢</b><b>得</b></div>
+    <div class="name">技能与爱好</div>
+    <div class="spacer"></div>
+    <span class="lvl">A2 · 练习</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">语法 + 生词 · Grammar &amp; Vocabulary</p>
+    <h1><span class="a">会</span> · <span class="b">喜欢</span> · <span class="c">得</span> — 技能与爱好</h1>
+    <p>说说你能做什么、喜欢什么、做得怎么样。 Talk about what you <b>can</b> do, what you <b>like</b>, and <b>how well</b> you do it.</p>
+  </div>
+</header>
+
+<!-- PATTERN BOX -->
+<div class="wrap">
+  <div class="pats">
+    <div class="pat h">
+      <div class="tag">会</div>
+      <div class="use">CAN / know how to</div>
+      <div class="formula"><b>会</b> + 动词</div>
+      <div class="eg">我会游泳。<span class="py">wǒ huì yóuyǒng</span><span class="en">I can swim.</span></div>
+      <div class="neg">否定 negative： <b>不会</b> 游泳</div>
+    </div>
+    <div class="pat x">
+      <div class="tag">喜欢</div>
+      <div class="use">LIKE doing</div>
+      <div class="formula"><b>喜欢</b> + 动词</div>
+      <div class="eg">我喜欢游泳。<span class="py">wǒ xǐhuan yóuyǒng</span><span class="en">I like swimming.</span></div>
+      <div class="neg">否定 negative： <b>不喜欢</b> 游泳</div>
+    </div>
+    <div class="pat d">
+      <div class="tag">…得…</div>
+      <div class="use">HOW WELL</div>
+      <div class="formula">动词 + <b>得</b> + 描述</div>
+      <div class="eg">我游得很快。<span class="py">wǒ yóu de hěn kuài</span><span class="en">I swim very fast.</span></div>
+      <div class="neg">有宾语 with object： 打篮球打<b>得</b>很好</div>
+    </div>
+  </div>
+
+  <div class="model">
+    <div class="mh">看例子 · Model</div>
+    <p>我叫小美。我<span class="hl-h">会</span>游泳，也<span class="hl-h">会</span>弹钢琴。我很<span class="hl-x">喜欢</span>游泳，游<span class="hl-d">得</span>很快。我也<span class="hl-x">喜欢</span>弹钢琴，可是弹<span class="hl-d">得</span>不太好。我<span class="hl-h">不会</span>说法语，但是我想学。</p>
+    <p class="tr">I'm Xiaomei. I can swim, and I can play the piano. I really like swimming, and I swim fast. I also like the piano, but I don't play very well. I can't speak French, but I want to learn.</p>
+  </div>
+</div>
+
+<!-- A: 会 -->
+<div class="wrap">
+  <section class="ex A" data-ex>
+    <div class="ex-head"><span class="letter">A</span><h3>用 <span class="k">会</span> / 不会</h3></div>
+    <p class="hint">看图标：<span class="cue yes">✓ 能 can</span> 用「会」，<span class="cue no">✗ 不能</span> 用「不会」。 Choose 会 or 不会 from the ✓ / ✗ cue.</p>
+
+    <div class="item"><span class="n">1</span><div class="sen">我 <span class="cue yes">✓</span> <span class="blank" data-answer="会"><button class="pick">会</button><button class="pick">不会</button></span> 弹钢琴。</div></div>
+    <div class="item"><span class="n">2</span><div class="sen">弟弟 <span class="cue no">✗</span> <span class="blank" data-answer="不会"><button class="pick">会</button><button class="pick">不会</button></span> 开车。</div></div>
+    <div class="item"><span class="n">3</span><div class="sen">姐姐 <span class="cue yes">✓</span> <span class="blank" data-answer="会"><button class="pick">会</button><button class="pick">不会</button></span> 说法语。</div></div>
+    <div class="item"><span class="n">4</span><div class="sen">我 <span class="cue no">✗</span> <span class="blank" data-answer="不会"><button class="pick">会</button><button class="pick">不会</button></span> 骑自行车。</div></div>
+    <div class="item"><span class="n">5</span><div class="sen">爸爸 <span class="cue yes">✓</span> <span class="blank" data-answer="会"><button class="pick">会</button><button class="pick">不会</button></span> 做饭。</div></div>
+
+    <button class="check-btn" data-check>检查答案 Check</button><span class="score"></span>
+  </section>
+
+  <!-- B: 喜欢 -->
+  <section class="ex B" data-ex>
+    <div class="ex-head"><span class="letter">B</span><h3>用 <span class="k">喜欢</span> / 不喜欢</h3></div>
+    <p class="hint">看图标：<span class="cue like">♥ 喜欢</span> 用「喜欢」，<span class="cue no">✗ 不喜欢</span> 用「不喜欢」。 Choose 喜欢 or 不喜欢.</p>
+
+    <div class="item"><span class="n">1</span><div class="sen">我 <span class="cue like">♥</span> <span class="blank" data-answer="喜欢"><button class="pick">喜欢</button><button class="pick">不喜欢</button></span> 看电影。</div></div>
+    <div class="item"><span class="n">2</span><div class="sen">妹妹 <span class="cue no">✗</span> <span class="blank" data-answer="不喜欢"><button class="pick">喜欢</button><button class="pick">不喜欢</button></span> 跑步。</div></div>
+    <div class="item"><span class="n">3</span><div class="sen">哥哥 <span class="cue like">♥</span> <span class="blank" data-answer="喜欢"><button class="pick">喜欢</button><button class="pick">不喜欢</button></span> 打篮球。</div></div>
+    <div class="item"><span class="n">4</span><div class="sen">我 <span class="cue like">♥</span> <span class="blank" data-answer="喜欢"><button class="pick">喜欢</button><button class="pick">不喜欢</button></span> 唱歌。</div></div>
+    <div class="item"><span class="n">5</span><div class="sen">爷爷 <span class="cue no">✗</span> <span class="blank" data-answer="不喜欢"><button class="pick">喜欢</button><button class="pick">不喜欢</button></span> 玩游戏。</div></div>
+
+    <button class="check-btn" data-check>检查答案 Check</button><span class="score"></span>
+  </section>
+
+  <!-- C: 得 + description -->
+  <section class="ex C">
+    <div class="ex-head"><span class="letter">C</span><h3>用 <span class="k">得</span> + 描述</h3></div>
+    <p class="hint">用「动词 + 宾语 + 动词 + <b>得</b> + 描述」造句。 Build a sentence: <b>verb + object + verb + 得 + description</b>. &nbsp;例：姐姐 · 唱歌 · 好听 → <i>姐姐唱歌唱得很好听。</i></p>
+
+    <div class="bank"><div class="bt">描述词语 Descriptions (用「得」)</div><div class="chips"><span class="chip">很好</span><span class="chip">不错</span><span class="chip">很快</span><span class="chip">很慢</span><span class="chip">很流利</span><span class="chip">很好听</span><span class="chip">很好看</span><span class="chip">不太好</span><span class="chip">还可以</span></div></div>
+
+    <div class="build"><div class="cells"><span class="n" style="color:var(--brand);font-family:var(--font-latin);font-weight:800;">1</span><span class="word">爸爸</span><span class="word">跑步</span><span class="arrow">＋</span><span class="word adj">快</span></div><span class="line"></span></div>
+    <div class="build"><div class="cells"><span class="n" style="color:var(--brand);font-family:var(--font-latin);font-weight:800;">2</span><span class="word">弟弟</span><span class="word">游泳</span><span class="arrow">＋</span><span class="word adj">不太好</span></div><span class="line"></span></div>
+    <div class="build"><div class="cells"><span class="n" style="color:var(--brand);font-family:var(--font-latin);font-weight:800;">3</span><span class="word">哥哥</span><span class="word">打篮球</span><span class="arrow">＋</span><span class="word adj">不错</span></div><span class="line"></span></div>
+    <div class="build"><div class="cells"><span class="n" style="color:var(--brand);font-family:var(--font-latin);font-weight:800;">4</span><span class="word">妈妈</span><span class="word">说法语</span><span class="arrow">＋</span><span class="word adj">流利</span></div><span class="line"></span></div>
+    <div class="build"><div class="cells"><span class="n" style="color:var(--brand);font-family:var(--font-latin);font-weight:800;">5</span><span class="word">妹妹</span><span class="word">跳舞</span><span class="arrow">＋</span><span class="word adj">好看</span></div><span class="line"></span></div>
+  </section>
+
+  <!-- D: integration table -->
+  <section class="ex D">
+    <div class="ex-head"><span class="letter">D</span><h3>看表格，写句子 Read the table &amp; write</h3></div>
+    <p class="hint">这是小龙。看表格，用「会 / 喜欢 / 得」写句子。 This is Xiaolong. Use 会 / 喜欢 / 得 to write about him.</p>
+
+    <table class="ptable">
+      <caption>🧑 小龙 Xiaolong</caption>
+      <thead><tr><th>活动 Activity</th><th>会？ can?</th><th>喜欢？ likes?</th><th>做得怎么样 how well</th></tr></thead>
+      <tbody>
+        <tr><td>打篮球</td><td class="yes">✓</td><td class="yes">♥</td><td>很好</td></tr>
+        <tr><td>唱歌</td><td class="yes">✓</td><td class="yes">♥</td><td>不太好</td></tr>
+        <tr><td>做饭</td><td class="yes">✓</td><td class="nope">✗</td><td>还可以</td></tr>
+        <tr><td>开车</td><td class="nope">✗</td><td class="dash">—</td><td class="dash">—</td></tr>
+      </tbody>
+    </table>
+
+    <div class="task"><div class="q">1. 打篮球：</div><span class="line"></span></div>
+    <div class="task"><div class="q">2. 唱歌：</div><span class="line"></span></div>
+    <div class="task"><div class="q">3. 做饭：</div><span class="line"></span></div>
+    <div class="task"><div class="q">4. 开车：</div><span class="line"></span></div>
+  </section>
+
+  <!-- E: about yourself -->
+  <section class="ex E">
+    <div class="ex-head"><span class="letter">E</span><h3>说说你自己 About you</h3></div>
+    <p class="hint">用「会 / 不会 / 喜欢 / 不喜欢 / 得」写 5–6 个句子。 Write 5–6 sentences about yourself.</p>
+    <div class="scaffold">
+      <p>我会<span class="fill"></span>，也会<span class="fill"></span>。</p>
+      <p>我不会<span class="fill"></span>。</p>
+      <p>我很喜欢<span class="fill"></span>，我<span class="fill"></span>得<span class="fill"></span>。</p>
+      <p>我不太喜欢<span class="fill"></span>。</p>
+    </div>
+  </section>
+
+  <!-- TEACHER -->
+  <details class="teacher">
+    <summary>👩‍🏫 参考答案 <span class="key">ANSWER KEY</span><span class="arw">▾</span></summary>
+    <div class="tbody">
+      <h4>A · 会 / 不会</h4>
+      <p class="ans">1 <b>会</b> · 2 <b>不会</b> · 3 <b>会</b> · 4 <b>不会</b> · 5 <b>会</b></p>
+      <h4>B · 喜欢 / 不喜欢</h4>
+      <p class="ans">1 <b>喜欢</b> · 2 <b>不喜欢</b> · 3 <b>喜欢</b> · 4 <b>喜欢</b> · 5 <b>不喜欢</b></p>
+      <h4>C · 得 + 描述 (sample answers)</h4>
+      <p class="ans">1 爸爸跑步跑<b>得</b>很快。 &nbsp; 2 弟弟游泳游<b>得</b>不太好。 &nbsp; 3 哥哥打篮球打<b>得</b>不错。 &nbsp; 4 妈妈说法语说<b>得</b>很流利。 &nbsp; 5 妹妹跳舞跳<b>得</b>很好看。</p>
+      <h4>D · 看表格 (sample answers)</h4>
+      <p class="ans">1 小龙会打篮球，他很喜欢打篮球，打<b>得</b>很好。<br>2 小龙会唱歌，也喜欢唱歌，可是唱<b>得</b>不太好。<br>3 小龙会做饭，可是不喜欢做饭；他做饭做<b>得</b>还可以。<br>4 小龙不会开车。</p>
+      <h4>E · 说说你自己</h4>
+      <p class="ans">学生自己回答 (open). Check: 会/喜欢 + 动词; 得 comes <b>after</b> the verb + 很/不太 + adjective.</p>
+      <h4>📋 教学提示 Teaching notes</h4>
+      <ul>
+        <li>核心区别：<b>会 + 动词</b>（能力）；<b>喜欢 + 动词</b>（爱好）；<b>动词 + 得 + 形容词</b>（做得怎么样）。</li>
+        <li>有宾语时动词要重复：打篮球 → 打篮球<b>打</b>得很好（不能说「打篮球得很好」）。</li>
+        <li>常见错误：把「得」写成「的/地」，或漏掉「得」前的动词。</li>
+        <li>口语延伸：两人一组问答 —— 「你会不会…？」「你喜欢…吗？」「你…得怎么样？」</li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<footer>会 · 喜欢 · 得 — 技能与爱好练习 · A2</footer>
+
+<script>
+  document.querySelectorAll('.blank').forEach(function(blank){
+    blank.querySelectorAll('.pick').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        blank.querySelectorAll('.pick').forEach(function(b){b.classList.remove('sel','correct','wrong');});
+        btn.classList.add('sel');
+      });
+    });
+  });
+  document.querySelectorAll('[data-check]').forEach(function(cbtn){
+    cbtn.addEventListener('click', function(){
+      var ex = cbtn.closest('[data-ex]');
+      var blanks = ex.querySelectorAll('.blank');
+      var total = blanks.length, right = 0;
+      blanks.forEach(function(blank){
+        var ans = blank.getAttribute('data-answer');
+        var sel = blank.querySelector('.pick.sel');
+        blank.querySelectorAll('.pick').forEach(function(b){
+          b.classList.remove('correct','wrong');
+          if(b.textContent.trim() === ans) b.classList.add('correct');
+        });
+        if(sel && sel.textContent.trim() === ans) right++;
+        else if(sel) sel.classList.add('wrong');
+      });
+      cbtn.nextElementSibling.textContent = '✓ ' + right + ' / ' + total;
+    });
+  });
+</script>
+</body>
+</html>
