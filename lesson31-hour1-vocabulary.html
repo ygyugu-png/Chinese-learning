@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第31课 生词一</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css">
+<style>
+
+  :root {
+    --bg: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b655c;
+    --line: #e4ddd2;
+    --red: #b3261e;
+    --red-soft: #f7e3e1;
+    --gold: #a8741a;
+    --gold-soft: #f6ecd8;
+    --blue: #2f5d8a;
+    --blue-soft: #e3ecf5;
+    --green: #2e7d4f;
+    --green-soft: #e2f1e8;
+    --he: #2f5d8a;
+    --he-soft: #e3ecf5;
+    --ye: #a8741a;
+    --ye-soft: #f6ecd8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1816;
+      --paper: #24211e;
+      --ink: #efe9e1;
+      --muted: #a89f93;
+      --line: #3a3530;
+      --red: #f08a82;
+      --red-soft: #3d2422;
+      --gold: #e0b562;
+      --gold-soft: #3a3020;
+      --blue: #8cb6e0;
+      --blue-soft: #1f2d3b;
+      --green: #7cc79b;
+      --green-soft: #1e3328;
+      --he: #8cb6e0;
+      --he-soft: #1f2d3b;
+      --ye: #e0b562;
+      --ye-soft: #3a3020;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+  header.hero {
+    background: var(--red);
+    color: #fff;
+    border-radius: 18px;
+    padding: 30px 28px;
+    margin-bottom: 20px;
+  }
+  @media (prefers-color-scheme: dark) { header.hero { color: #1a1816; } }
+  .hero h1 { margin: 0; font-size: 2.3rem; line-height: 1.25; letter-spacing: 0.04em; }
+  .hero p { margin: 6px 0 0; font-size: 1rem; opacity: 0.9; }
+
+  nav.steps {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bg);
+    padding: 10px 0;
+    align-items: center;
+  }
+  nav.steps a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  nav.steps a:hover { border-color: var(--red); color: var(--red); }
+  .pyToggle { margin-left: auto; font-size: 0.88rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+
+  section.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    margin-bottom: 22px;
+  }
+  .step-no {
+    display: inline-block;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .step-no.self { background: var(--green-soft); color: var(--green); }
+  h2 { margin: 0 0 4px; font-size: 1.6rem; line-height: 1.3; }
+  .sub-en { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+  h3 { font-size: 1.15rem; margin: 22px 0 8px; }
+  .en { color: var(--muted); font-size: 0.92rem; }
+
+  .he { color: var(--he); font-weight: 700; background: var(--he-soft); border-radius: 4px; padding: 0 3px; }
+  .ye { color: var(--ye); font-weight: 700; background: var(--ye-soft); border-radius: 4px; padding: 0 3px; }
+
+  /* big compare */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .vs { grid-template-columns: 1fr; } }
+  .vs .side { border-radius: 14px; padding: 18px 18px; }
+  .vs .side.h { background: var(--he-soft); }
+  .vs .side.y { background: var(--ye-soft); }
+  .vs .big { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .vs .side.h .big { color: var(--he); }
+  .vs .side.y .big { color: var(--ye); }
+  .vs .what { font-weight: 600; margin: 8px 0 4px; }
+  .vs .formula {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .ex { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+  .ex li { background: var(--bg); border-radius: 10px; padding: 8px 14px; }
+  .ex .zh { font-size: 1.15rem; }
+  .ex .py { display: block; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  .ex .tr { display: block; color: var(--muted); font-size: 0.9rem; }
+  .hide-py .py { display: none !important; }
+
+  .rule { border-left: 4px solid var(--line); padding: 2px 0 2px 16px; margin: 18px 0; }
+  .rule.h { border-color: var(--he); }
+  .rule.y { border-color: var(--ye); }
+  .rule h3 { margin-top: 0; }
+
+  .wrongright { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .wrongright div { border-radius: 8px; padding: 8px 12px; font-size: 1.05rem; }
+  .wrongright .x { background: var(--red-soft); color: var(--red); }
+  .wrongright .x::before { content: "✗ "; }
+  .wrongright .ok { background: var(--green-soft); color: var(--green); }
+  .wrongright .ok::before { content: "✓ "; }
+
+  /* english trap table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* summary */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .summary div { border-radius: 12px; padding: 14px 16px; background: var(--green-soft); font-size: 1rem; }
+  .summary b { color: var(--green); }
+
+  /* exercises */
+  .score {
+    display: inline-flex; gap: 6px; align-items: center;
+    background: var(--green-soft); color: var(--green);
+    font-weight: 700; border-radius: 999px; padding: 4px 14px; font-size: 0.9rem;
+  }
+  .q {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .q .prompt { font-size: 1.2rem; margin-bottom: 8px; }
+  .q .prompt .num { color: var(--muted); font-size: 0.9rem; margin-right: 6px; }
+  .q .blank {
+    display: inline-block; min-width: 2.2em; text-align: center;
+    border-bottom: 2px solid var(--muted); margin: 0 2px; font-weight: 700;
+  }
+  .q .blank.ok { color: var(--green); border-color: var(--green); }
+  .q .blank.no { color: var(--red); border-color: var(--red); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    font: inherit; font-size: 1.05rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 6px 16px; border-radius: 10px; cursor: pointer;
+  }
+  .opt:hover:not([disabled]) { border-color: var(--ink); }
+  .opt.correct { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+  .opt[disabled] { cursor: default; }
+  .opts.col { flex-direction: column; align-items: stretch; }
+  .opts.col .opt { text-align: left; }
+  .fb { margin-top: 8px; font-size: 0.95rem; display: none; border-radius: 8px; padding: 8px 12px; }
+  .fb.show { display: block; }
+  .fb.good { background: var(--green-soft); color: var(--green); }
+  .fb.bad { background: var(--red-soft); color: var(--red); }
+  .fb .why { color: var(--ink); display: block; margin-top: 2px; }
+
+  .reveal-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .attempt {
+    flex: 1 1 260px;
+    font: inherit; font-size: 1.1rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; background: var(--bg); color: var(--ink);
+  }
+  .btn {
+    font: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #1a1816; } }
+  .answer { display: none; margin-top: 8px; background: var(--green-soft); color: var(--green); padding: 8px 12px; border-radius: 8px; font-size: 1.1rem; }
+  .answer.show { display: block; }
+  .answer .note { display: block; font-size: 0.88rem; color: var(--ink); }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+
+  /* class activity */
+  .activity { background: var(--gold-soft); border-radius: 14px; padding: 18px 20px; }
+  .activity ol { margin: 6px 0 0; padding-left: 1.3em; }
+  .activity li { margin-bottom: 6px; }
+  .speech { display: grid; gap: 8px; margin-top: 12px; }
+  .bubble { background: var(--paper); border-radius: 14px; padding: 8px 14px; max-width: 520px; font-size: 1.1rem; }
+  .bubble.r { margin-left: auto; }
+  .bubble small { display: block; color: var(--muted); font-size: 0.8rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 30px; }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 14px; }
+    nav.steps, .btn, .score { display: none !important; }
+    section.card { break-inside: avoid; border-color: #ccc; }
+    header.hero { background: none; color: #000; border: 2px solid #000; }
+    .answer { display: none !important; }
+  }
+
+  .n { color: var(--blue); }
+  .v { color: var(--red); }
+  .o { color: var(--gold); }
+  .tagpos { font-size: 0.75rem; font-weight: 700; border-radius: 6px; padding: 1px 8px; font-family: system-ui, sans-serif; }
+  .tagpos.n { background: var(--blue-soft); }
+  .tagpos.v { background: var(--red-soft); }
+  .tagpos.o { background: var(--gold-soft); }
+
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .seg button { font: inherit; font-size: 0.9rem; border: 0; background: var(--paper); color: var(--ink); padding: 7px 14px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* flashcards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+  .fc {
+    position: relative; min-height: 150px; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--paper); cursor: pointer; padding: 14px 12px 12px; text-align: center;
+    display: flex; flex-direction: column; justify-content: center; gap: 4px;
+    transition: border-color .15s, transform .15s;
+  }
+  .fc:hover { border-color: var(--ink); }
+  .fc .hz { font-size: 2.1rem; font-weight: 700; line-height: 1.2; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .fc .pyw { color: var(--muted); font-size: 1rem; }
+  .fc .back { display: none; font-size: 0.92rem; }
+  .fc.flipped .back { display: block; }
+  .fc .chunk { margin-top: 4px; font-size: 1rem; }
+  .fc .say {
+    position: absolute; top: 8px; right: 8px; border: 0; background: transparent; cursor: pointer;
+    font-size: 1.05rem; opacity: 0.6; padding: 2px 4px;
+  }
+  .fc .say:hover { opacity: 1; }
+  .fc .pos { position: absolute; top: 9px; left: 10px; }
+  .test-mode .fc:not(.flipped) .pyw, .test-mode .fc:not(.flipped) .pos { visibility: hidden; }
+  .hide-py .fc .pyw { display: none; }
+
+  /* sorting */
+  .pool { display: flex; flex-wrap: wrap; gap: 8px; min-height: 52px; padding: 10px; border: 1.5px dashed var(--line); border-radius: 12px; margin-bottom: 14px; }
+  .chip-w {
+    font: inherit; font-size: 1.25rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 4px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .chip-w.sel { outline: 3px solid var(--gold); }
+  .chip-w.ok { background: var(--green-soft); border-color: var(--green); color: var(--green); cursor: default; }
+  .chip-w.shake { animation: shake .35s; background: var(--red-soft); border-color: var(--red); }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+  .bins { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 680px) { .bins { grid-template-columns: 1fr; } }
+  .bin { border-radius: 14px; padding: 12px; min-height: 150px; cursor: pointer; border: 2px solid transparent; }
+  .bin:hover { border-color: var(--line); }
+  .bin.n { background: var(--blue-soft); }
+  .bin.v { background: var(--red-soft); }
+  .bin.o { background: var(--gold-soft); }
+  .bin h3 { margin: 0 0 2px; font-size: 1.2rem; }
+  .bin .hint { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+  .bin .got { display: flex; flex-wrap: wrap; gap: 6px; }
+  .bin .got span { background: var(--paper); border-radius: 8px; padding: 2px 10px; font-size: 1.1rem; }
+  .msg { margin-top: 10px; min-height: 1.6em; font-size: 0.98rem; }
+  .msg.good { color: var(--green); }
+  .msg.bad { color: var(--red); }
+
+  /* matching */
+  .match { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .match { grid-template-columns: 1fr; } }
+  .col { display: grid; gap: 8px; align-content: start; }
+  .col h3 { margin: 0 0 4px; }
+  .mbtn {
+    font: inherit; font-size: 1.25rem; text-align: center; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 12px; border-radius: 10px; cursor: pointer;
+  }
+  .mbtn.sel { outline: 3px solid var(--gold); }
+  .mbtn.done { background: var(--green-soft); border-color: var(--green); color: var(--green); cursor: default; }
+  .made { display: grid; gap: 8px; margin-top: 16px; }
+  .made .row { background: var(--green-soft); border-radius: 10px; padding: 8px 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+  .made .row b { color: var(--green); font-size: 1.2rem; }
+  .made .row span { font-size: 1.1rem; }
+
+  /* order */
+  .steps-pool, .steps-done { display: grid; gap: 8px; }
+  .steps-done { counter-reset: st; margin-top: 12px; }
+  .stepbtn {
+    font: inherit; font-size: 1.15rem; text-align: left; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .steps-done .stepbtn { background: var(--green-soft); border-color: var(--green); cursor: default; }
+  .steps-done .stepbtn::before { counter-increment: st; content: counter(st) ". "; font-weight: 700; color: var(--green); }
+  .frame { margin-top: 14px; background: var(--blue-soft); color: var(--blue); border-radius: 10px; padding: 12px 16px; font-size: 1.15rem; display: none; }
+  .frame.show { display: block; }
+
+  /* detective */
+  .det-q { font-size: 2rem; text-align: center; margin: 8px 0 12px; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .det-q .sep { color: var(--muted); margin: 0 18px; font-size: 1.4rem; }
+  .opts.center { justify-content: center; }
+  .opt.big { font-size: 1.5rem; padding: 6px 22px; }
+  .navrow { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; flex-wrap: wrap; gap: 8px; }
+  .radicals { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .radicals div { background: var(--bg); border-radius: 12px; padding: 10px 12px; text-align: center; }
+  .radicals b { display: block; font-size: 2rem; line-height: 1.2; }
+  .radicals span { font-size: 0.88rem; color: var(--muted); }
+
+  /* speaking */
+  .spin {
+    text-align: center; border: 2px dashed var(--red); border-radius: 16px; padding: 22px 12px; margin: 10px 0 14px;
+  }
+  .spin .word { font-size: 3.4rem; font-weight: 800; line-height: 1.2; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .spin .sub { color: var(--muted); }
+  .levels3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 680px) { .levels3 { grid-template-columns: 1fr; } }
+  .levels3 div { border-radius: 12px; padding: 12px 14px; background: var(--bg); }
+  .levels3 b { display: block; margin-bottom: 4px; }
+  .mini-timer { font-variant-numeric: tabular-nums; font-size: 1.6rem; font-weight: 700; }
+  .mini-timer.warn { color: var(--red); }
+  .qlist { display: grid; gap: 8px; counter-reset: q; }
+  .qlist li { list-style: none; background: var(--bg); border-radius: 10px; padding: 8px 14px; font-size: 1.12rem; }
+  .qlist li::before { counter-increment: q; content: counter(q) ". "; color: var(--muted); }
+  .qlist .hintline { display: block; color: var(--muted); font-size: 0.85rem; }
+  .hide-hints .qlist .hintline { display: none; }
+
+  /* speed quiz */
+  .quiz-hz { font-size: 4.2rem; font-weight: 800; text-align: center; line-height: 1.2; margin: 6px 0 12px; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .bar2 { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+  .bar2 i { display: block; height: 100%; background: var(--green); width: 0; transition: width .3s; }
+  .kai, .radicals b, #rOpts .opt, #dOpts .opt { font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .radicals b { font-size: 2.6rem; font-weight: 400; }
+  #rOpts .opt, #dOpts .opt { font-size: 1.9rem; padding: 2px 22px; }
+  .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .sc-tile { font: inherit; text-align: left; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 14px; padding: 14px; cursor: pointer; display: grid; gap: 2px; }
+  .sc-tile:hover { border-color: var(--ink); }
+  .sc-tile[aria-pressed="true"] { border: 2px solid var(--red); background: var(--red-soft); }
+  .sc-tile .ic { font-size: 1.8rem; }
+  .sc-tile .tt { font-weight: 700; font-size: 1.1rem; }
+  .sc-tile .pl { color: var(--muted); font-size: 0.85rem; }
+  .sc-panel { margin-top: 18px; border: 2px solid var(--red); border-radius: 16px; padding: 18px 20px; }
+  .sc-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+  .sc-place { color: var(--muted); font-size: 0.95rem; }
+  .sc-title { margin: 2px 0 0; font-size: 1.6rem; }
+  .sc-situ { background: var(--bg); border-radius: 10px; padding: 10px 14px; margin: 12px 0; }
+  .sc-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 680px) { .sc-roles { grid-template-columns: 1fr; } }
+  .sc-role { border-radius: 12px; padding: 12px 14px; }
+  .sc-role.a { background: var(--blue-soft); }
+  .sc-role.b { background: var(--gold-soft); }
+  .sc-role .who { font-weight: 700; }
+  .sc-role.a .who { color: var(--blue); }
+  .sc-role.b .who { color: var(--gold); }
+  .sc-role .task { font-size: 0.92rem; margin: 2px 0 6px; }
+  .sc-role .lines { margin: 0; padding-left: 1.1em; font-size: 1.12rem; }
+  .hide-lines .sc-role .lines { display: none; }
+  .sc-words { margin-top: 14px; }
+  .wchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .wchip { font: inherit; font-size: 1.3rem; border: 2px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 4px 16px; cursor: pointer; font-family: "KaiTi", "STKaiti", "Kaiti SC", "LXGW WenKai", serif; }
+  .wchip.used { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+  .wchip.used::before { content: "✓ "; }
+  .sc-twist { margin-top: 14px; }
+  .twist { margin-top: 10px; background: var(--red-soft); color: var(--red); border-radius: 10px; padding: 10px 14px; font-size: 1.05rem; }
+  .twist::before { content: "⚡ 意外！ "; font-weight: 700; }
+  .remember { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+  .remember div { background: var(--green-soft); border-radius: 12px; padding: 12px 14px; font-size: 0.98rem; }
+  .remember b { color: var(--green); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>第三十一课　在学校注册</h1>
+    <p>第一小时 · 生词一 · Hour 1: Vocabulary</p>
+  </header>
+
+  <nav class="steps" aria-label="Activities">
+    <a href="#a1">1 热身</a>
+    <a href="#a2">2 认一认</a>
+    <a href="#a3">3 分一分</a>
+    <a href="#a4">4 汉字侦探</a>
+    <a href="#a5">5 搭一搭</a>
+    <a href="#a6">6 排一排</a>
+    <a href="#a7">7 说一说</a>
+    <a href="#a8">8 快速认字</a>
+    <label class="pyToggle"><input type="checkbox" id="pyT" checked> 拼音 pinyin</label>
+  </nav>
+
+  <!-- 1 warm-up -->
+  <section class="card" id="a1">
+    <span class="step-no">活动一 · 5 分钟</span>
+    <h2>热身：你第一天到大学做了什么？</h2>
+    <p class="sub-en">Warm-up: what did you do on your first day at university?</p>
+    <div class="big-q">你第一天到大学的时候，先做了什么？然后做了什么？</div>
+    <p class="en">Say it in Chinese if you can, or in English if you can't yet. Today you'll learn how to say all of it in Chinese.</p>
+    <div class="chips">
+      <span class="chip">show your passport 🛂</span>
+      <span class="chip">fill in forms 📝</span>
+      <span class="chip">pay fees 💳</span>
+      <span class="chip">get a key 🔑</span>
+      <span class="chip">find your department 🏫</span>
+      <span class="chip">get a Chinese name ✍️</span>
+    </div>
+  </section>
+
+  <!-- 2 flashcards -->
+  <section class="card" id="a2">
+    <span class="step-no">活动二 · 10 分钟</span>
+    <h2>认一认：二十个新词</h2>
+    <p class="sub-en">Meet the words. Click a card to see its meaning and a useful chunk, and click 🔊 to hear it.</p>
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="Card mode">
+        <button id="mLearn" aria-pressed="true">学习 Learn</button>
+        <button id="mTest" aria-pressed="false">测试 Test (characters only)</button>
+      </div>
+      <button class="btn" id="shuffleCards">打乱 Shuffle</button>
+      <button class="btn" id="flipAll">全部翻开 / 合上</button>
+    </div>
+    <div class="cards" id="cards"></div>
+    <p class="en" style="margin-top:12px">Test mode: point at a card and the class says the pinyin and meaning before you click it.</p>
+  </section>
+
+  <!-- 3 sorting -->
+  <section class="card" id="a3">
+    <span class="step-no">活动三 · 8 分钟</span>
+    <h2>分一分：名词还是动词？</h2>
+    <p class="sub-en">Sort the words. Click a word, then click its group.</p>
+    <div class="remember" style="margin:0 0 14px">
+      <div><b>Test for a verb</b><br>Can you say <b>我要＿＿</b>? 我要预订 ✓</div>
+      <div><b>Test for a noun</b><br>Can you say <b>一张 / 一个 / 一把＿＿</b>? 一张表格 ✓</div>
+    </div>
+    <div class="pool" id="pool"></div>
+    <div class="bins">
+      <div class="bin n" data-bin="n"><h3>名词 nouns</h3><div class="hint">things, places · 东西、地方</div><div class="got"></div></div>
+      <div class="bin v" data-bin="v"><h3>动词 verbs</h3><div class="hint">actions · 做什么</div><div class="got"></div></div>
+      <div class="bin o" data-bin="o"><h3>其他 others</h3><div class="hint">if, names, describing words</div><div class="got"></div></div>
+    </div>
+    <div class="msg" id="sortMsg"></div>
+    <div style="margin-top:8px"><button class="btn" id="sortReset">重来 Reset</button></div>
+  </section>
+
+  <!-- 4 detective -->
+  <section class="card" id="a4">
+    <span class="step-no">活动四 · 8 分钟</span>
+    <h2>汉字侦探</h2>
+    <p class="sub-en">Character detective: spot the parts that repeat, and the characters get easier to remember.</p>
+
+    <h3>A. 哪个字一样？ Which character is the same?</h3>
+    <div class="q" style="border:none;padding:0">
+      <div class="det-q" id="dQ"></div>
+      <div class="opts center" id="dOpts"></div>
+      <div class="fb" id="dFb"></div>
+      <div class="navrow"><span class="score" id="dScore">0 / 0</span><button class="btn primary" id="dNext">下一个 Next →</button></div>
+    </div>
+
+    <h3 style="margin-top:30px">B. 部首 Radicals: the part that hints at meaning</h3>
+    <div class="radicals">
+      <div><b>讠</b><span>言 speech, words</span></div>
+      <div><b>钅</b><span>金 metal</span></div>
+      <div><b>辶</b><span>walking, moving</span></div>
+      <div><b>扌</b><span>手 hand</span></div>
+      <div><b>力</b><span>strength</span></div>
+    </div>
+    <div class="q" style="border:none;padding:0">
+      <div class="det-q" id="rQ"></div>
+      <div class="opts center" id="rOpts"></div>
+      <div class="fb" id="rFb"></div>
+      <div class="navrow"><span class="score" id="rScore">0 / 0</span><button class="btn primary" id="rNext">下一个 Next →</button></div>
+    </div>
+  </section>
+
+  <!-- 5 matching -->
+  <section class="card" id="a5">
+    <span class="step-no">活动五 · 10 分钟</span>
+    <h2>搭一搭：动词 + 名词</h2>
+    <p class="sub-en">Make chunks. Click a verb, then the noun it goes with. When you make a chunk, a sentence appears: say it out loud!</p>
+    <div class="match">
+      <div class="col"><h3 class="v">动词</h3><div id="mV" class="col"></div></div>
+      <div class="col"><h3 class="n">名词</h3><div id="mN" class="col"></div></div>
+    </div>
+    <div class="msg" id="mMsg"></div>
+    <div class="made" id="made"></div>
+    <div class="remember" style="margin-top:14px">
+      <div><b>English ≠ Chinese</b><br>You <i>do</i> a degree → 读学位<br>You <i>pay</i> fees → 交学费 (“hand over”)</div>
+    </div>
+    <div style="margin-top:10px"><button class="btn" id="mReset">重来 Reset</button></div>
+  </section>
+
+  <!-- 6 order -->
+  <section class="card" id="a6">
+    <span class="step-no">活动六 · 7 分钟</span>
+    <h2>排一排：注册那天</h2>
+    <p class="sub-en">Registration day: put the steps in the right order (click them in order). Then tell the story to your partner.</p>
+    <div class="steps-pool" id="sPool"></div>
+    <div class="steps-done" id="sDone"></div>
+    <div class="msg" id="sMsg"></div>
+    <div class="frame" id="sFrame">
+      <b>现在说一说 Now tell the story:</b><br>
+      注册那天，我<b>先</b>……，<b>然后</b>……，<b>再</b>……，……<b>以后</b>……，<b>最后</b>……。
+    </div>
+    <div style="margin-top:10px"><button class="btn" id="sReset">重来 Reset</button></div>
+  </section>
+
+  <!-- 7 speaking -->
+  <section class="card" id="a7">
+    <span class="step-no">活动七 · 10 分钟</span>
+    <h2>说一说：开学第一天</h2>
+    <p class="sub-en">Your first day at a university in Beijing. Choose a situation, decide who is A and who is B, and talk. Use every word on the card!</p>
+
+    <div class="remember" style="margin:0 0 14px">
+      <div><b>1. 选情景</b><br>Choose a situation.</div>
+      <div><b>2. 两分钟</b><br>Talk for 2 minutes. Your partner ticks each word you use.</div>
+      <div><b>3. 意外！</b><br>Halfway through, the teacher reveals a twist. Deal with it!</div>
+    </div>
+
+    <div class="sc-grid" id="scGrid"></div>
+
+    <div class="sc-panel" id="scPanel" hidden>
+      <div class="sc-head">
+        <div>
+          <div class="sc-place" id="scPlace"></div>
+          <h3 class="sc-title" id="scTitle"></h3>
+        </div>
+        <div class="timer-wrap">
+          <span class="mini-timer" id="scTimer">2:00</span>
+          <button class="btn primary" id="scGo">开始 Start</button>
+          <button class="btn" id="scReset">重来</button>
+        </div>
+      </div>
+      <p class="sc-situ" id="scSitu"></p>
+
+      <div class="sc-roles">
+        <div class="sc-role a">
+          <div class="who" id="scAWho"></div>
+          <div class="task" id="scATask"></div>
+          <ul class="lines" id="scALines"></ul>
+        </div>
+        <div class="sc-role b">
+          <div class="who" id="scBWho"></div>
+          <div class="task" id="scBTask"></div>
+          <ul class="lines" id="scBLines"></ul>
+        </div>
+      </div>
+
+      <div class="sc-words">
+        <b>必用词 Must-use words</b> <span class="en">(tick when you hear it)</span>
+        <span class="score" id="scCount" style="margin-left:6px">0 / 5</span>
+        <div class="wchips" id="scWords"></div>
+      </div>
+
+      <div class="sc-twist">
+        <button class="btn" id="scTwistBtn">⚡ 意外！ Reveal the twist</button>
+        <div class="twist" id="scTwist" hidden></div>
+      </div>
+
+      <label class="toggles" style="margin-top:12px"><input type="checkbox" id="scLinesT" checked> 显示句子提示 Show sentence starters</label>
+    </div>
+  </section>
+
+  <!-- 8 speed -->
+  <section class="card" id="a8">
+    <span class="step-no self">活动八 · 5 分钟</span>
+    <div class="bar">
+      <div>
+        <h2>快速认字</h2>
+        <p class="sub-en" style="margin:0">Speed recognition: what does this word mean? Ten words.</p>
+      </div>
+      <span class="score" id="qzScore">0 / 10</span>
+    </div>
+    <div class="bar2"><i id="qzBar"></i></div>
+    <div class="quiz-hz" id="qzHz"></div>
+    <div class="opts col" id="qzOpts"></div>
+    <div class="fb" id="qzFb"></div>
+    <div class="navrow"><span></span><button class="btn primary" id="qzNext">开始 Start</button></div>
+  </section>
+
+  <section class="card" id="exit">
+    <span class="step-no">出门卡 · Exit</span>
+    <h2>离开以前</h2>
+    <p class="sub-en">Before you leave: write three sentences about your own first day at university, each with a different verb + noun chunk.</p>
+    <div class="exit">我第一天到大学的时候，……</div>
+  </section>
+
+  <footer>步步高中文 4 · 第31课 · 生词一</footer>
+</div>
+
+<script>
+  // ---------- data ----------
+  const W = [
+    { hz:'读', py:'dú', en:'read; study (a subject)', pos:'v', chunk:'读学位 · 读中文' },
+    { hz:'报到', py:'bàodào', en:'report one’s arrival', pos:'v', chunk:'到中文系报到' },
+    { hz:'如果', py:'rúguǒ', en:'if', pos:'o', chunk:'如果……，就……' },
+    { hz:'学位', py:'xuéwèi', en:'(academic) degree', pos:'n', chunk:'读学位' },
+    { hz:'中文系', py:'zhōngwénxì', en:'Chinese department', pos:'n', chunk:'到中文系报到' },
+    { hz:'进修', py:'jìnxiū', en:'advanced (non-degree) study', pos:'v', chunk:'我是来进修的' },
+    { hz:'注册', py:'zhùcè', en:'register', pos:'v', alt:'n', chunk:'在这儿注册 · 注册手续' },
+    { hz:'录取', py:'lùqǔ', en:'admit (to a programme)', pos:'v', alt:'n', chunk:'大学录取了我' },
+    { hz:'通知书', py:'tōngzhīshū', en:'letter, notification', pos:'n', chunk:'录取通知书' },
+    { hz:'李健', py:'Lǐ Jiàn', en:'Li Jian (a name)', pos:'o', chunk:'他叫李健' },
+    { hz:'有意思', py:'yǒu yìsi', en:'interesting', pos:'o', chunk:'这个名字很有意思' },
+    { hz:'起名', py:'qǐmíng', en:'give a name', pos:'v', chunk:'给我起中文名字' },
+    { hz:'力量', py:'lìliàng', en:'strength', pos:'n', chunk:'很有力量' },
+    { hz:'表格', py:'biǎogé', en:'form', pos:'n', chunk:'填一张表格' },
+    { hz:'预订', py:'yùdìng', en:'book in advance', pos:'v', chunk:'预订宿舍' },
+    { hz:'办理', py:'bànlǐ', en:'deal with, process', pos:'v', chunk:'办理手续' },
+    { hz:'手续', py:'shǒuxù', en:'procedure', pos:'n', chunk:'注册手续' },
+    { hz:'办公室', py:'bàngōngshì', en:'office', pos:'n', chunk:'到办公室去' },
+    { hz:'交费', py:'jiāofèi', en:'pay fees', pos:'v', chunk:'交学费' },
+    { hz:'钥匙', py:'yàoshi', en:'key', pos:'n', chunk:'一把钥匙 · 取钥匙' }
+  ];
+  const POSLAB = { n:'名', v:'动', o:'其他' };
+
+  // ---------- helpers ----------
+  const $ = id => document.getElementById(id);
+  const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+  function speak(t) {
+    try {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(t);
+      u.lang = 'zh-CN'; u.rate = 0.8;
+      const v = window.speechSynthesis.getVoices().find(v => /zh[-_]CN/i.test(v.lang));
+      if (v) u.voice = v;
+      window.speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  $('pyT').addEventListener('change', e => document.body.classList.toggle('hide-py', !e.target.checked));
+
+  // ---------- 2 flashcards ----------
+  let cardOrder = W.slice();
+  function buildCards() {
+    const box = $('cards'); box.innerHTML = '';
+    cardOrder.forEach(w => {
+      const c = document.createElement('div'); c.className = 'fc'; c.tabIndex = 0;
+      c.innerHTML = `<span class="tagpos ${w.pos} pos">${POSLAB[w.pos]}${w.alt ? '/' + POSLAB[w.alt] : ''}</span>
+        <button class="say" aria-label="Play ${w.hz}">🔊</button>
+        <div class="hz">${w.hz}</div><div class="pyw">${w.py}</div>
+        <div class="back"><div>${w.en}</div><div class="chunk">${w.chunk}</div></div>`;
+      c.addEventListener('click', e => { if (e.target.closest('.say')) return; c.classList.toggle('flipped'); });
+      c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.classList.toggle('flipped'); } });
+      c.querySelector('.say').addEventListener('click', () => speak(w.hz));
+      box.appendChild(c);
+    });
+  }
+  $('mLearn').addEventListener('click', () => { document.body.classList.remove('test-mode'); $('mLearn').setAttribute('aria-pressed','true'); $('mTest').setAttribute('aria-pressed','false'); document.querySelectorAll('.fc').forEach(c => c.classList.remove('flipped')); });
+  $('mTest').addEventListener('click', () => { document.body.classList.add('test-mode'); $('mTest').setAttribute('aria-pressed','true'); $('mLearn').setAttribute('aria-pressed','false'); document.querySelectorAll('.fc').forEach(c => c.classList.remove('flipped')); });
+  $('shuffleCards').addEventListener('click', () => { cardOrder = shuffle(W); buildCards(); });
+  $('flipAll').addEventListener('click', () => { const cs = document.querySelectorAll('.fc'); const anyClosed = [...cs].some(c => !c.classList.contains('flipped')); cs.forEach(c => c.classList.toggle('flipped', anyClosed)); });
+  buildCards();
+
+  // ---------- 3 sorting ----------
+  let sel = null, sorted = 0;
+  const notes = {
+    '注册': '注册 is a verb here, but it can also be a noun: 注册手续.',
+    '录取': '录取 is a verb (大学录取了我), and also part of a noun: 录取通知书.',
+    '起名': '起名 is a verb + noun word: 给我起一个名字.',
+    '交费': '交费 is a verb + noun word: 交学费.',
+    '有意思': '有意思 describes things: 很有意思.',
+    '李健': '李健 is a name (专名).',
+    '如果': '如果 = if, a linking word (连词).'
+  };
+  function buildSort() {
+    sel = null; sorted = 0; $('sortMsg').textContent = ''; $('sortMsg').className = 'msg';
+    document.querySelectorAll('.bin .got').forEach(g => g.innerHTML = '');
+    const pool = $('pool'); pool.innerHTML = '';
+    shuffle(W).forEach(w => {
+      const b = document.createElement('button'); b.className = 'chip-w'; b.textContent = w.hz; b.dataset.hz = w.hz;
+      b.addEventListener('click', () => {
+        if (b.classList.contains('ok')) return;
+        document.querySelectorAll('.chip-w.sel').forEach(x => x.classList.remove('sel'));
+        sel = b; b.classList.add('sel');
+      });
+      pool.appendChild(b);
+    });
+  }
+  document.querySelectorAll('.bin').forEach(bin => bin.addEventListener('click', () => {
+    if (!sel) { $('sortMsg').textContent = '先点一个词 · Click a word first.'; $('sortMsg').className = 'msg'; return; }
+    const w = W.find(x => x.hz === sel.dataset.hz), target = bin.dataset.bin;
+    if (target === w.pos || target === w.alt) {
+      const s = document.createElement('span'); s.textContent = w.hz; bin.querySelector('.got').appendChild(s);
+      sel.remove(); sel = null; sorted++;
+      $('sortMsg').className = 'msg good';
+      $('sortMsg').textContent = '对！' + (notes[w.hz] ? ' ' + notes[w.hz] : '');
+      if (sorted === W.length) $('sortMsg').textContent = '全部分好了！太棒了！ All sorted!';
+    } else {
+      const b = sel; b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake');
+      setTimeout(() => b.classList.remove('shake'), 400);
+      $('sortMsg').className = 'msg bad';
+      $('sortMsg').textContent = '再想想 · Try again. Use the test: 我要＿＿？ 一张＿＿？';
+    }
+  }));
+  $('sortReset').addEventListener('click', buildSort);
+  buildSort();
+
+  // ---------- 4 detective ----------
+  const DQ = [
+    ['办理', '办公室', '办', ['办', '理', '公']],
+    ['录取', '取钥匙', '取', ['录', '取', '钥']],
+    ['起名', '名字', '名', ['起', '名', '字']],
+    ['通知书', '读书', '书', ['知', '读', '书']],
+    ['注册', '注意', '注', ['册', '注', '意']],
+    ['表格', '手表', '表', ['格', '表', '手']],
+    ['手续', '手机', '手', ['续', '机', '手']],
+    ['学位', '学生', '学', ['位', '学', '生']]
+  ];
+  const RQ = [
+    ['读', '讠', '讠 speech: you read out loud.'],
+    ['订', '讠', '讠 speech: you book by talking to someone (预订).'],
+    ['钥', '钅', '钅 metal: a key is made of metal.'],
+    ['进', '辶', '辶 moving: 进 = go in, 进修.'],
+    ['通', '辶', '辶 moving: 通 = go through, 通知书.'],
+    ['报', '扌', '扌 hand: 报到 = report in person (hand in your papers).'],
+    ['办', '力', '力 strength: 办 is 力 with two dots. 力量 has it too!']
+  ];
+  const RAD = ['讠', '钅', '辶', '扌', '力'];
+  function quizRunner(items, qEl, oEl, fbEl, scEl, nextBtn, render) {
+    let i = -1, ok = 0, done = 0, order = shuffle(items);
+    function next() {
+      i++; if (i >= order.length) { order = shuffle(items); i = 0; ok = 0; done = 0; }
+      fbEl.className = 'fb'; fbEl.innerHTML = '';
+      const { q, opts, ans, why } = render(order[i]);
+      qEl.innerHTML = q; oEl.innerHTML = '';
+      scEl.textContent = `${ok} / ${done}`;
+      opts.forEach(o => {
+        const b = document.createElement('button'); b.className = 'opt big'; b.textContent = o;
+        b.addEventListener('click', () => {
+          const right = o === ans;
+          oEl.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (x.textContent === ans) x.classList.add('correct'); });
+          if (!right) b.classList.add('wrong');
+          done++; if (right) ok++;
+          scEl.textContent = `${ok} / ${done}`;
+          fbEl.className = 'fb show ' + (right ? 'good' : 'bad');
+          fbEl.innerHTML = (right ? '对了！' : '不对，是 ' + ans + '。') + (why ? `<span class="why">${why}</span>` : '');
+        });
+        oEl.appendChild(b);
+      });
+    }
+    nextBtn.addEventListener('click', next);
+    next();
+  }
+  quizRunner(DQ, $('dQ'), $('dOpts'), $('dFb'), $('dScore'), $('dNext'), it => ({
+    q: `${it[0]}<span class="sep">·</span>${it[1]}`, opts: shuffle(it[3]), ans: it[2], why: `${it[0]} · ${it[1]}: both have ${it[2]}.`
+  }));
+  quizRunner(RQ, $('rQ'), $('rOpts'), $('rFb'), $('rScore'), $('rNext'), it => ({
+    q: it[0], opts: RAD, ans: it[1], why: it[2]
+  }));
+
+  // ---------- 5 matching ----------
+  const PAIRS = [
+    ['读', '学位', '我在英国读学位。'],
+    ['填', '表格', '请你填一下这张表格。'],
+    ['办理', '手续', '我要办理注册手续。'],
+    ['预订', '宿舍', '我预订了留学生宿舍。'],
+    ['交', '学费', '我们到办公室去交学费。'],
+    ['取', '钥匙', '交完费以后，去取钥匙。'],
+    ['起', '名字', '我的中文名字是老师给我起的。'],
+    ['看', '通知书', '请给我看一下你的录取通知书。']
+  ];
+  let mSel = null, mDone = 0;
+  function buildMatch() {
+    mSel = null; mDone = 0; $('made').innerHTML = ''; $('mMsg').textContent = '';
+    const V = $('mV'), N = $('mN'); V.innerHTML = ''; N.innerHTML = '';
+    shuffle(PAIRS).forEach(p => {
+      const b = document.createElement('button'); b.className = 'mbtn v'; b.textContent = p[0]; b.dataset.v = p[0];
+      b.addEventListener('click', () => { if (b.classList.contains('done')) return; V.querySelectorAll('.sel').forEach(x => x.classList.remove('sel')); mSel = b; b.classList.add('sel'); });
+      V.appendChild(b);
+    });
+    shuffle(PAIRS).forEach(p => {
+      const b = document.createElement('button'); b.className = 'mbtn n'; b.textContent = p[1]; b.dataset.n = p[1];
+      b.addEventListener('click', () => {
+        if (b.classList.contains('done')) return;
+        if (!mSel) { $('mMsg').className = 'msg'; $('mMsg').textContent = '先点一个动词 · Click a verb first.'; return; }
+        const pair = PAIRS.find(x => x[0] === mSel.dataset.v);
+        if (pair[1] === b.dataset.n) {
+          mSel.classList.remove('sel'); mSel.classList.add('done'); b.classList.add('done'); mSel = null; mDone++;
+          const r = document.createElement('div'); r.className = 'row';
+          r.innerHTML = `<b>${pair[0]}${pair[1]}</b><span>${pair[2]}</span>`;
+          r.style.cursor = 'pointer'; r.title = '🔊';
+          r.addEventListener('click', () => speak(pair[2]));
+          $('made').appendChild(r);
+          $('mMsg').className = 'msg good'; $('mMsg').textContent = mDone === PAIRS.length ? '全部搭好了！现在每人说一句。All done: now everyone say one!' : '对！说一说这个句子。Say the sentence!';
+          speak(pair[0] + pair[1]);
+        } else {
+          b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'), 400);
+          $('mMsg').className = 'msg bad'; $('mMsg').textContent = '不太对，再试试 · Not quite, try again.';
+        }
+      });
+      N.appendChild(b);
+    });
+  }
+  $('mReset').addEventListener('click', buildMatch);
+  buildMatch();
+
+  // ---------- 6 order ----------
+  const STEPS = ['到中文系报到', '给老师看录取通知书和护照', '填表格', '办理注册手续', '到办公室交费', '取钥匙'];
+  let sNext = 0;
+  function buildSteps() {
+    sNext = 0; $('sDone').innerHTML = ''; $('sMsg').textContent = ''; $('sFrame').classList.remove('show');
+    const pool = $('sPool'); pool.innerHTML = '';
+    shuffle(STEPS).forEach(s => {
+      const b = document.createElement('button'); b.className = 'stepbtn'; b.textContent = s;
+      b.addEventListener('click', () => {
+        if (s === STEPS[sNext]) {
+          sNext++; b.remove(); $('sDone').appendChild(b); $('sMsg').className = 'msg good';
+          $('sMsg').textContent = sNext === STEPS.length ? '完成！' : '对！下一步呢？ Next?';
+          if (sNext === STEPS.length) $('sFrame').classList.add('show');
+        } else {
+          b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'), 400);
+          $('sMsg').className = 'msg bad'; $('sMsg').textContent = '还不是这一步 · Not this step yet.';
+        }
+      });
+      pool.appendChild(b);
+    });
+  }
+  $('sReset').addEventListener('click', buildSteps);
+  buildSteps();
+
+  // ---------- 7 speaking: realistic scenarios ----------
+  const SC = [
+    {
+      icon: '🏫', place: '校门口 · At the university gate', title: '我该去哪儿报到？',
+      situ: 'It’s your first morning in Beijing. You have your bag, your passport and your offer letter, but you don’t know where to register. You stop a Chinese student who is walking past.',
+      a: { who: 'A · 新来的留学生 new international student', task: 'Find out where to register. Explain why you’re here.',
+           lines: ['请问，……是在哪儿报到？', '我是来进修的 / 读学位的。', '这是我的录取通知书。', '办公室在哪儿？'] },
+      b: { who: 'B · 中国学生 Chinese student', task: 'Help the newcomer. Ask what they are here to do and send them to the right place.',
+           lines: ['你是来读学位的还是来进修的？', '如果你读学位，要到……报到。', '中文系的办公室在……楼。', '欢迎你！'] },
+      words: ['报到', '进修', '学位', '中文系', '录取通知书'],
+      twist: 'The 中文系 office is closed until 2 pm (下午两点才开门). What will you do in the meantime? Ask about lunch or a place to wait.'
+    },
+    {
+      icon: '📝', place: '注册处 · Registration desk', title: '这张表格怎么填？',
+      situ: 'You’re at the registration desk. The teacher gives you a form, and it’s all in Chinese. Some boxes you don’t understand.',
+      a: { who: 'A · 留学生 international student', task: 'Ask how to fill in the form: which language, what goes in each box.',
+           lines: ['老师，这张表格用中文填还是用英文填？', '这儿要填什么？', '我没有中文名字，怎么办？', '填好了，给您。'] },
+      b: { who: 'B · 注册处老师 registration teacher', task: 'Give the form, explain how to fill it in, and check it.',
+           lines: ['请你填一下这张表格。', '如果你能用中文填，就用中文填。', '这儿写你的护照号码。', '好，注册手续办完了。'] },
+      words: ['表格', '注册', '如果', '手续', '办理'],
+      twist: 'The student has no Chinese name, and the form needs one! B offers to give them one: 我给你起一个中文名字吧！ Discuss what it means.'
+    },
+    {
+      icon: '🏠', place: '宿舍楼 · Dormitory reception', title: '我预订了房间',
+      situ: 'You booked a room in the international student dorm online. You go to the dorm reception to check in and get your key.',
+      a: { who: 'A · 留学生 international student', task: 'Say you booked a room, give your details, and ask for your key.',
+           lines: ['您好，我预订了一个房间。', '我叫……，这是我的护照。', '我可以现在取钥匙吗？', '房间在几楼？'] },
+      b: { who: 'B · 宿舍管理员 dorm staff', task: 'Find the booking, ask for documents, and explain what to do.',
+           lines: ['你是什么时候预订的？', '请给我看一下你的护照。', '你得先到办公室交费。', '交完费以后，再来取钥匙。'] },
+      words: ['预订', '钥匙', '交费', '办公室', '手续'],
+      twist: 'B can’t find the booking in the system (找不到你的预订)! A has to prove it: show the offer letter, explain when and how they booked.'
+    },
+    {
+      icon: '💳', place: '财务办公室 · Finance office', title: '在哪儿交费？',
+      situ: 'You need to pay your tuition and accommodation fees before you can get your student card and dorm key.',
+      a: { who: 'A · 留学生 international student', task: 'Pay your fees. Ask how much, how to pay, and what to do next.',
+           lines: ['请问，交费是在这儿吗？', '一共多少钱？', '可以用银行卡 / 微信交吗？', '交完费以后，我还要办理什么手续？'] },
+      b: { who: 'B · 办公室老师 office staff', task: 'Take the payment, explain the amount, and tell them the next step.',
+           lines: ['你注册了吗？', '学费是……，住宿费是……', '可以用……交。', '交完了。你可以去宿舍取钥匙了。'] },
+      words: ['交费', '办理', '手续', '注册', '办公室'],
+      twist: 'A hasn’t finished registering yet, so B can’t take the payment: 你得先注册，然后才能交费。 Where must A go first?'
+    },
+    {
+      icon: '🤝', place: '宿舍走廊 · Dorm corridor', title: '你的中文名字很有意思！',
+      situ: 'That evening, you meet your Chinese neighbour in the corridor. They see your name on your door: it’s in Chinese!',
+      a: { who: 'A · 留学生 international student', task: 'Introduce yourself. Explain who gave you your Chinese name and what it means.',
+           lines: ['你好！我叫……，中文名字叫……', '这个名字是……给我起的。', '……的意思是……', '我是来……的。你呢？'] },
+      b: { who: 'B · 中国邻居 Chinese neighbour', task: 'Comment on the name, ask about it, and ask what they are studying.',
+           lines: ['你的中文名字很有意思！', '是谁给你起的？', '这个名字很有力量。', '你是来读学位的吗？'] },
+      words: ['起名', '有意思', '力量', '进修', '学位'],
+      twist: 'B says the name sounds like something funny in Chinese (听起来像……)! A explains why they still like it, or asks B to suggest a new one.'
+    },
+    {
+      icon: '🔑', place: '宿舍办公室 · Dorm office, 11 pm', title: '我的钥匙丢了！',
+      situ: 'It’s late at night. You come back to the dorm and can’t find your key anywhere. You go to the dorm office.',
+      a: { who: 'A · 留学生 international student', task: 'Explain the problem and ask how to get a new key.',
+           lines: ['老师，不好意思，我的钥匙丢了。', '我住在……号房间。', '我要办理什么手续？', '要交费吗？'] },
+      b: { who: 'B · 宿舍管理员 dorm staff', task: 'Ask for details and explain what they need to do.',
+           lines: ['你住在几号房间？', '请给我看一下你的学生证 / 护照。', '你得填一张表格。', '新钥匙要交五十块钱。'] },
+      words: ['钥匙', '办公室', '办理', '表格', '交费'],
+      twist: 'The office has no spare keys tonight (今天没有新钥匙了). Where will A sleep? Negotiate a solution!'
+    }
+  ];
+  let scCur = null, scLeft = 120, scTick = null;
+  function scShowT() { const m = Math.floor(scLeft / 60), s = String(scLeft % 60).padStart(2, '0'); $('scTimer').textContent = `${m}:${s}`; $('scTimer').classList.toggle('warn', scLeft <= 30); }
+  function scStop() { clearInterval(scTick); scTick = null; }
+  function scOpen(i) {
+    scCur = SC[i];
+    document.querySelectorAll('.sc-tile').forEach((t, k) => t.setAttribute('aria-pressed', k === i ? 'true' : 'false'));
+    $('scPanel').hidden = false;
+    $('scPlace').textContent = `${scCur.icon} ${scCur.place}`;
+    $('scTitle').textContent = scCur.title;
+    $('scSitu').textContent = scCur.situ;
+    ['a', 'b'].forEach(r => {
+      const R = r.toUpperCase();
+      $('sc' + R + 'Who').textContent = scCur[r].who;
+      $('sc' + R + 'Task').textContent = scCur[r].task;
+      $('sc' + R + 'Lines').innerHTML = scCur[r].lines.map(l => `<li>${l}</li>`).join('');
+    });
+    const wbox = $('scWords'); wbox.innerHTML = '';
+    scCur.words.forEach(w => {
+      const b = document.createElement('button'); b.className = 'wchip'; b.textContent = w;
+      b.addEventListener('click', () => { b.classList.toggle('used'); scCount(); });
+      wbox.appendChild(b);
+    });
+    scCount();
+    $('scTwist').hidden = true; $('scTwist').textContent = scCur.twist;
+    scStop(); scLeft = 120; scShowT();
+    $('scPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function scCount() { const n = document.querySelectorAll('#scWords .wchip.used').length; $('scCount').textContent = `${n} / ${scCur.words.length}` + (n === scCur.words.length ? ' · 太棒了！' : ''); }
+  SC.forEach((s, i) => {
+    const t = document.createElement('button'); t.className = 'sc-tile'; t.setAttribute('aria-pressed', 'false');
+    t.innerHTML = `<span class="ic">${s.icon}</span><span class="tt">${s.title}</span><span class="pl">${s.place}</span>`;
+    t.addEventListener('click', () => scOpen(i));
+    $('scGrid').appendChild(t);
+  });
+  $('scGo').addEventListener('click', () => {
+    if (scTick) return; if (scLeft === 0) scLeft = 120;
+    scTick = setInterval(() => {
+      scLeft = Math.max(0, scLeft - 1); scShowT();
+      if (scLeft === 60 && $('scTwist').hidden) { $('scTwist').hidden = false; }
+      if (scLeft === 0) { scStop(); $('scTimer').textContent = '时间到！'; }
+    }, 1000);
+  });
+  $('scReset').addEventListener('click', () => { if (scCur) scOpen(SC.indexOf(scCur)); });
+  $('scTwistBtn').addEventListener('click', () => { $('scTwist').hidden = !$('scTwist').hidden; });
+  $('scLinesT').addEventListener('change', e => document.body.classList.toggle('hide-lines', !e.target.checked));
+
+  // ---------- 8 speed quiz ----------
+  let qz = [], qi = 0, qok = 0, answered = true;
+  function qzRound() {
+    if (qi >= qz.length) {
+      $('qzHz').textContent = qok === qz.length ? '太棒了！🎉' : `${qok} / ${qz.length}`;
+      $('qzOpts').innerHTML = ''; $('qzFb').className = 'fb'; $('qzNext').textContent = '再来一次 Again'; answered = true; return;
+    }
+    const w = qz[qi]; answered = false;
+    $('qzHz').textContent = w.hz; $('qzFb').className = 'fb'; $('qzFb').innerHTML = '';
+    const wrong = shuffle(W.filter(x => x.hz !== w.hz)).slice(0, 2);
+    const opts = shuffle([w, ...wrong]);
+    $('qzOpts').innerHTML = '';
+    opts.forEach(o => {
+      const b = document.createElement('button'); b.className = 'opt'; b.textContent = o.en;
+      b.addEventListener('click', () => {
+        if (answered) return; answered = true;
+        const right = o.hz === w.hz;
+        $('qzOpts').querySelectorAll('.opt').forEach(x => { x.disabled = true; if (x.textContent === w.en) x.classList.add('correct'); });
+        if (!right) b.classList.add('wrong'); else qok++;
+        $('qzFb').className = 'fb show ' + (right ? 'good' : 'bad');
+        $('qzFb').innerHTML = `${right ? '对了！' : '不对。'} <b>${w.hz}</b> ${w.py} = ${w.en}<span class="why">${w.chunk}</span>`;
+        $('qzScore').textContent = `${qok} / ${qz.length}`;
+        $('qzBar').style.width = ((qi + 1) / qz.length * 100) + '%';
+        $('qzNext').textContent = qi + 1 < qz.length ? '下一个 Next →' : '看结果 Result';
+        speak(w.hz);
+      });
+      $('qzOpts').appendChild(b);
+    });
+  }
+  $('qzNext').addEventListener('click', () => {
+    if (!qz.length || qi >= qz.length) { qz = shuffle(W.filter(w => w.hz !== '李健')).slice(0, 10); qi = 0; qok = 0; $('qzScore').textContent = '0 / 10'; $('qzBar').style.width = '0'; qzRound(); $('qzNext').textContent = '下一个 Next →'; return; }
+    if (!answered) return;
+    qi++; qzRound();
+  });
+</script>
+</body>
+</html>
