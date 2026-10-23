@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「了」的用法 — 在线语法课</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700;900&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB","Heiti SC","Noto Sans CJK SC",sans-serif;
+    --font-serif:"Noto Serif SC","Songti SC","SimSun","STSong","Noto Serif CJK SC",serif;
+    --font-latin:"Nunito","PingFang SC","Microsoft YaHei","Heiti SC",sans-serif;
+    --bg:#FAF8F3; --panel:#FFFFFF; --ink:#22262B; --ink-soft:#65707A;
+    --brand:#147E74; --brand-deep:#0E5D55; --brand-soft:#E1F0EE; --amber:#E0862C;
+    --line:#E7E3DA; --line-strong:#D5CFC3; --shadow:0 12px 30px -18px rgba(20,40,40,.4);
+    --done:#1F9E70; --done-bg:#DEF3EA;
+    --chg:#E0862C;  --chg-bg:#FBEBD6;
+    --neg:#D2504A;  --neg-bg:#FBE6E4;
+    --qst:#2F72C4;  --qst-bg:#E3EEFB;
+    --ok:#1F9E70; --no:#D2504A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#161A1C; --panel:#1F2427; --ink:#E9ECEE; --ink-soft:#9AA6AE; --brand:#3DB3A6; --brand-deep:#7FD3C9; --brand-soft:#1D3533;
+      --line:#2E3539; --line-strong:#3D464B; --shadow:none;
+      --done:#5BCB9F; --done-bg:#1C3329; --chg:#F0A65A; --chg-bg:#3A2C1C; --neg:#F08A84; --neg-bg:#3A2321; --qst:#7FB0EE; --qst-bg:#1D2A3B;
+      --ok:#5BCB9F; --no:#F08A84;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px;}
+  h1,h2,h3,h4{font-family:var(--font-serif);margin:0;line-height:1.3;}
+  .le{color:var(--amber);font-family:var(--font-serif);font-weight:900;}
+  .l1{color:var(--done);font-weight:700;background:var(--done-bg);border-radius:4px;padding:0 3px;}
+  .l2{color:var(--chg);font-weight:700;background:var(--chg-bg);border-radius:4px;padding:0 3px;}
+  .py{display:block;font-family:var(--font-latin);font-size:12px;color:var(--ink-soft);font-weight:700;}
+  .tr{display:block;font-family:var(--font-latin);font-size:12.5px;color:var(--ink-soft);font-weight:600;}
+  .hide-py .py{display:none!important;}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:30;background:var(--bg);background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex;align-items:center;gap:11px;height:58px;}
+  .logo{width:34px;height:34px;border-radius:9px;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:var(--font-serif);font-weight:900;font-size:20px;transform:rotate(-4deg);flex:none;}
+  .topbar .name{font-family:var(--font-serif);font-weight:900;font-size:16px;white-space:nowrap;}
+  .progress{flex:1;height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin:0 6px;min-width:60px;}
+  .progress i{display:block;height:100%;width:0;background:var(--brand);transition:width .4s;}
+  .ptxt{font-family:var(--font-latin);font-weight:800;font-size:12px;color:var(--brand-deep);white-space:nowrap;}
+  .pyswitch{font-family:var(--font-latin);font-weight:700;font-size:12px;color:var(--ink-soft);display:inline-flex;gap:5px;align-items:center;cursor:pointer;white-space:nowrap;}
+  @media (max-width:560px){.topbar .name{display:none;}}
+
+  /* hero */
+  .hero{padding:34px 0 6px;}
+  .eyebrow{font-family:var(--font-latin);font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:12px;color:var(--brand);}
+  .hero h1{font-size:clamp(28px,5.6vw,44px);font-weight:900;margin:8px 0;}
+  .hero p{color:var(--ink-soft);max-width:62ch;margin:0;}
+  .goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:18px 0 0;}
+  .goal{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14.5px;display:flex;gap:9px;}
+  .goal b{color:var(--brand);font-family:var(--font-latin);}
+
+  /* lesson map */
+  .map{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:22px 0 6px;}
+  .map a{text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 10px 9px;display:block;position:relative;}
+  .map a:hover{border-color:var(--brand);}
+  .map .no{font-family:var(--font-latin);font-weight:800;font-size:11px;color:var(--brand);}
+  .map .t{display:block;font-family:var(--font-serif);font-weight:700;font-size:15px;}
+  .map .m{font-family:var(--font-latin);font-size:11px;color:var(--ink-soft);font-weight:700;}
+  .map a.done{background:var(--done-bg);border-color:var(--done);}
+  .map a.done::after{content:"✓";position:absolute;top:6px;right:9px;color:var(--done);font-weight:800;}
+
+  .bigidea{background:var(--brand);color:#fff;border-radius:16px;padding:18px 22px;margin:22px 0 10px;box-shadow:var(--shadow);}
+  .bigidea .lbl{font-family:var(--font-latin);font-weight:800;font-size:11px;letter-spacing:2px;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px;}
+  .bigidea p{margin:10px 0 0;font-size:17px;}
+  .bigidea b{color:#FFE0AE;}
+
+  /* steps */
+  section.step{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px 24px;margin:22px 0;scroll-margin-top:72px;}
+  .step-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap;}
+  .step-head .num{color:#fff;font-family:var(--font-latin);font-weight:800;font-size:15px;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;background:var(--brand);}
+  .step-head h2{font-size:22px;}
+  .step-head .mins{margin-left:auto;font-family:var(--font-latin);font-weight:800;font-size:12px;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);padding:3px 10px;border-radius:999px;}
+  .lead{color:var(--ink-soft);margin:2px 0 14px;}
+  h3.sub{font-size:17px;margin:20px 0 8px;display:flex;align-items:center;gap:8px;}
+  h3.sub::before{content:"";width:6px;height:18px;border-radius:3px;background:var(--brand);}
+
+  .formula{font-size:16px;font-weight:700;background:var(--bg);border:1px dashed var(--line-strong);border-radius:10px;padding:10px 14px;margin:10px 0;text-align:center;}
+  .eglist{display:grid;gap:8px;margin:8px 0;}
+  .eg{background:var(--bg);border-radius:10px;padding:8px 14px;}
+  .eg .zh{font-size:18px;font-family:var(--font-serif);font-weight:500;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media (max-width:640px){.two{grid-template-columns:1fr;}}
+
+  .expert{border-left:4px solid var(--brand);background:var(--brand-soft);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0;}
+  .expert .h{font-family:var(--font-latin);font-weight:800;font-size:12px;letter-spacing:1.5px;color:var(--brand-deep);text-transform:uppercase;margin-bottom:4px;}
+  .expert p{margin:4px 0;font-size:15px;}
+  .careful{background:var(--neg-bg);border-left:4px solid var(--neg);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0;}
+  .careful .h{font-family:var(--font-serif);font-weight:700;color:var(--neg);margin-bottom:4px;}
+  .careful p{margin:4px 0;font-size:15px;}
+  .okx{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0;}
+  .okx div{border-radius:8px;padding:6px 12px;font-family:var(--font-serif);font-size:16.5px;}
+  .okx .ok{background:var(--done-bg);color:var(--done);} .okx .ok::before{content:"✓ ";}
+  .okx .x{background:var(--neg-bg);color:var(--neg);} .okx .x::before{content:"✗ ";}
+  @media (max-width:560px){.okx{grid-template-columns:1fr;}}
+
+  .tablewrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:15px;}
+  th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  th{font-family:var(--font-latin);font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;}
+  td.zh{font-family:var(--font-serif);font-size:17px;}
+
+  /* notice */
+  .notice{display:grid;gap:10px;}
+  .notice .pair{border:1px solid var(--line);border-radius:12px;padding:12px 14px;}
+  .notice .s{font-family:var(--font-serif);font-size:18px;}
+  .notice .r{display:none;margin-top:6px;font-size:14.5px;color:var(--ink-soft);}
+  .notice .pair.open .r{display:block;}
+  .notice button{font:inherit;font-size:13px;font-weight:700;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer;margin-top:6px;}
+
+  /* three sentences */
+  .three{display:grid;gap:8px;}
+  .three button{font:inherit;text-align:left;border:1.5px solid var(--line-strong);background:var(--bg);color:var(--ink);border-radius:12px;padding:10px 14px;cursor:pointer;}
+  .three .s{font-family:var(--font-serif);font-size:18px;}
+  .three .m{display:none;font-size:14.5px;margin-top:4px;}
+  .three button.open{border-color:var(--qst);background:var(--qst-bg);}
+  .three button.open .m{display:block;}
+
+  /* timeline */
+  .tl{display:grid;gap:14px;margin:10px 0;}
+  .tlrow .lab{font-family:var(--font-serif);font-size:17px;margin-bottom:4px;}
+  .bar{position:relative;height:30px;background:var(--bg);border:1px solid var(--line);border-radius:8px;}
+  .bar .seg{position:absolute;top:4px;bottom:4px;border-radius:5px;}
+  .bar .now{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink);}
+  .bar .now::after{content:"现在 now";position:absolute;top:-16px;left:-22px;font-family:var(--font-latin);font-size:10.5px;font-weight:800;color:var(--ink-soft);white-space:nowrap;}
+  .tlrow .cap{font-size:13.5px;color:var(--ink-soft);margin-top:4px;}
+
+
+  /* exercises */
+  .quick{border:1.5px dashed var(--brand);border-radius:14px;padding:14px 16px;margin-top:18px;}
+  .quick .qh{font-family:var(--font-latin);font-weight:800;font-size:13px;color:var(--brand-deep);margin-bottom:6px;}
+  .ex{margin-top:6px;}
+  .ex-head{display:flex;align-items:center;gap:10px;margin:18px 0 2px;flex-wrap:wrap;}
+  .ex-head .letter{color:#fff;font-family:var(--font-latin);font-weight:800;font-size:14px;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--amber);}
+  .ex-head h3{font-size:18px;}
+  .ex-head .score{margin-left:auto;font-family:var(--font-latin);font-weight:800;font-size:13px;color:var(--ok);background:var(--done-bg);border-radius:999px;padding:2px 12px;}
+  .hint{color:var(--ink-soft);font-size:13.5px;margin:2px 0 10px;}
+  .item{padding:10px 0;border-bottom:1px dashed var(--line);}
+  .item:last-child{border-bottom:none;}
+  .item .q{font-size:17.5px;font-family:var(--font-serif);display:flex;flex-wrap:wrap;align-items:center;gap:2px;}
+  .item .q .n{font-family:var(--font-latin);font-weight:800;color:var(--brand);margin-right:8px;font-size:14px;}
+  .item .q .en{font-family:var(--font-sans);font-size:15px;}
+  .gap{display:inline-block;min-width:1.8em;text-align:center;border-bottom:2px solid var(--line-strong);margin:0 2px;font-weight:700;}
+  .gap.ok{color:var(--ok);border-color:var(--ok);} .gap.no{color:var(--no);border-color:var(--no);}
+  .picks{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px;}
+  .picks.col{flex-direction:column;}
+  .pick{font:inherit;font-size:15px;font-weight:600;cursor:pointer;border:1.5px solid var(--line-strong);background:var(--bg);color:var(--ink);padding:6px 14px;border-radius:9px;text-align:left;}
+  .picks.col .pick{font-family:var(--font-serif);font-size:16.5px;font-weight:500;}
+  .pick:hover:not([disabled]){border-color:var(--brand);}
+  .pick.correct{border-color:var(--ok);background:var(--done-bg);color:var(--ok);}
+  .pick.wrong{border-color:var(--no);background:var(--neg-bg);color:var(--no);text-decoration:line-through;}
+  .pick[disabled]{cursor:default;}
+  .slot{font:inherit;font-family:var(--font-latin);font-weight:800;font-size:12px;color:var(--chg);background:var(--chg-bg);border:1.5px dashed var(--chg);border-radius:6px;padding:0 7px;margin:0 2px;cursor:pointer;}
+  .slot.correct{border-style:solid;color:var(--ok);background:var(--done-bg);border-color:var(--ok);font-family:var(--font-serif);font-size:15px;}
+  .slot.wrong{border-style:solid;color:var(--no);background:var(--neg-bg);border-color:var(--no);}
+  .fb{display:none;margin-top:7px;border-radius:9px;padding:8px 12px;font-size:14.5px;}
+  .fb.show{display:block;} .fb.good{background:var(--done-bg);color:var(--ok);} .fb.bad{background:var(--neg-bg);color:var(--no);}
+  .fb .why{display:block;color:var(--ink);margin-top:2px;}
+  .write{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+  .write input{flex:1 1 260px;font:inherit;font-size:16px;border:1.5px solid var(--line-strong);border-radius:9px;padding:7px 11px;background:var(--bg);color:var(--ink);}
+  .btn{font-family:var(--font-latin);font-weight:800;font-size:13.5px;cursor:pointer;background:var(--brand);color:#fff;border:none;padding:8px 16px;border-radius:9px;}
+  .btn:hover{background:var(--brand-deep);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line-strong);}
+  .model{display:none;margin-top:8px;background:var(--done-bg);color:var(--ok);border-radius:9px;padding:8px 12px;font-family:var(--font-serif);font-size:17px;}
+  .model small{display:block;font-family:var(--font-sans);font-size:13.5px;color:var(--ink);}
+  .open .model{display:block;}
+  .stepdone{margin-top:18px;display:flex;justify-content:flex-end;}
+  .stepdone .btn.is-done{background:var(--done);}
+
+  .bank{background:var(--bg);border:1px solid var(--line-strong);border-radius:10px;padding:11px 16px;margin:6px 0 12px;}
+  .bank .bt{font-family:var(--font-serif);font-weight:700;font-size:13px;margin-bottom:6px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{background:var(--panel);border:1px solid var(--line-strong);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:600;}
+  textarea{width:100%;min-height:150px;font:inherit;font-size:16.5px;border:1.5px solid var(--line-strong);border-radius:12px;padding:12px 14px;background:var(--bg);color:var(--ink);line-height:1.8;}
+  .checklist{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px;}
+  .checklist label{display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:15px;}
+  .checklist input{width:18px;height:18px;margin-top:4px;accent-color:var(--done);}
+
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
+  .sumcard{border-radius:12px;padding:12px 14px;border-top:4px solid;background:var(--bg);}
+  .sumcard.d{border-color:var(--done);} .sumcard.c{border-color:var(--chg);} .sumcard.n{border-color:var(--neg);} .sumcard.q{border-color:var(--qst);}
+  .sumcard b{font-family:var(--font-serif);display:block;margin-bottom:2px;}
+  .sumcard span{font-family:var(--font-serif);font-size:15.5px;}
+  .cando{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:7px;}
+  .cando li{border:1px solid var(--line);border-radius:10px;padding:8px 12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;font-size:15px;}
+  .stars button{font:inherit;border:0;background:transparent;font-size:20px;cursor:pointer;color:var(--line-strong);padding:0 1px;}
+  .stars button.on{color:var(--amber);}
+
+  details.teacher{background:#213230;color:#E7EFED;border-radius:14px;box-shadow:var(--shadow);margin:22px 0 10px;overflow:hidden;}
+  details.teacher summary{cursor:pointer;padding:17px 22px;font-family:var(--font-serif);font-weight:700;font-size:17px;list-style:none;display:flex;align-items:center;gap:10px;}
+  details.teacher summary::-webkit-details-marker{display:none;}
+  details.teacher summary .key{background:#F2C879;color:#213230;font-family:var(--font-latin);font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px;letter-spacing:1px;}
+  details.teacher summary .arw{margin-left:auto;transition:.2s;}
+  details.teacher[open] summary .arw{transform:rotate(180deg);}
+  .tbody{padding:2px 22px 22px;border-top:1px solid rgba(255,255,255,.12);}
+  .tbody h4{color:#F2C879;margin:16px 0 6px;font-size:14px;}
+  .tbody p,.tbody li{color:#D2DED9;font-size:14.5px;}
+  .tbody b{color:#FFE0AE;font-family:var(--font-serif);}
+  footer{text-align:center;color:var(--ink-soft);font-size:12.5px;padding:28px 20px 44px;}
+  @media print{
+    .topbar,.btn,.stepdone{display:none!important;}
+    body{background:#fff;color:#000;}
+    section.step,details.teacher{box-shadow:none;break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo">了</div>
+    <div class="name">「了」的用法</div>
+    <div class="progress" aria-label="Lesson progress"><i id="pbar"></i></div>
+    <span class="ptxt" id="ptxt">0 / 7</span>
+    <label class="pyswitch"><input type="checkbox" id="pyT" checked> 拼音</label>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">在线语法课 · Online grammar lesson · Stage 2</p>
+    <h1>「<span class="le">了</span>」的用法</h1>
+    <p>「了」is one of the most useful words in Chinese, and one of the most misunderstood. Work through the seven steps in order. Each step has a short explanation, examples, and a quick check. The full practice is in step 7.</p>
+    <div class="goals">
+      <div class="goal"><b>1</b><span>Use V + 了 to say an action is <b>completed</b></span></div>
+      <div class="goal"><b>2</b><span>Use sentence-final 了 for a <b>change</b> or new situation</span></div>
+      <div class="goal"><b>3</b><span>Make <b>negatives</b> and <b>questions</b> correctly</span></div>
+      <div class="goal"><b>4</b><span>Know when <b>not</b> to use 了</span></div>
+    </div>
+    <nav class="map" id="map">
+      <a href="#s1" data-s="s1"><span class="no">STEP 1</span><span class="t">热身</span><span class="m">5 min</span></a>
+      <a href="#s2" data-s="s2"><span class="no">STEP 2</span><span class="t">V + 了</span><span class="m">10 min</span></a>
+      <a href="#s3" data-s="s3"><span class="no">STEP 3</span><span class="t">句尾 了</span><span class="m">10 min</span></a>
+      <a href="#s4" data-s="s4"><span class="no">STEP 4</span><span class="t">否定和问句</span><span class="m">6 min</span></a>
+      <a href="#s5" data-s="s5"><span class="no">STEP 5</span><span class="t">比一比</span><span class="m">10 min</span></a>
+      <a href="#s6" data-s="s6"><span class="no">STEP 6</span><span class="t">不用「了」</span><span class="m">6 min</span></a>
+      <a href="#s7" data-s="s7"><span class="no">STEP 7</span><span class="t">练习</span><span class="m">20 min</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="bigidea">
+    <span class="lbl">最重要 · KEY IDEA</span>
+    <p>「了」<b>不是</b>过去时 (not a past tense). It has two main jobs: ① it shows that an action is <b>完成 completed</b>; ② it shows that a situation has <b>变化 changed</b>. Time words like 昨天 tell you <i>when</i>; 了 tells you <i>whether it's done or new</i>.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <section class="step" id="s1">
+    <div class="step-head"><span class="num">1</span><h2>热身：注意到区别了吗？</h2><span class="mins">5 min</span></div>
+    <p class="lead">Notice the difference. Read each pair, think about what changes in meaning, then reveal.</p>
+    <div class="notice" id="notice"></div>
+    <div class="stepdone"><button class="btn" data-done="s1">✓ 完成第一步 Step done</button></div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="s2">
+    <div class="step-head"><span class="num">2</span><h2>V + <span class="le">了</span>：完成 Completion</h2><span class="mins">10 min</span></div>
+    <p class="lead">了 straight after a verb tells us the action is <b>completed</b>. We call it 了<sub>1</sub>.</p>
+    <div class="formula">主语 + 动词（+ 补语）+ <span class="l1">了</span> + 数量 / 描述 + 宾语</div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Subject</th><th>Verb (+ complement)</th><th>了</th><th>Number / description</th><th>Object</th></tr></thead>
+        <tbody>
+          <tr><td class="zh">我</td><td class="zh">买</td><td class="zh"><span class="l1">了</span></td><td class="zh">6个</td><td class="zh">苹果</td></tr>
+          <tr><td class="zh">她</td><td class="zh">看（完）</td><td class="zh"><span class="l1">了</span></td><td class="zh">昨天的</td><td class="zh">足球比赛</td></tr>
+          <tr><td class="zh">小王</td><td class="zh">吃（完）</td><td class="zh"><span class="l1">了</span></td><td></td><td class="zh">午饭</td></tr>
+          <tr><td class="zh">大卫</td><td class="zh">学（好）</td><td class="zh"><span class="l1">了</span></td><td></td><td class="zh">中国功夫</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">想做的还是做完的？ Plan or done?</h3>
+    <div class="two">
+      <div class="eglist">
+        <div class="eg"><span class="zh">你买什么？</span><span class="py">Nǐ mǎi shénme?</span><span class="tr">What are you going to buy?</span></div>
+        <div class="eg"><span class="zh">我买6个苹果。</span><span class="py">Wǒ mǎi liù ge píngguǒ.</span><span class="tr">I'm going to buy 6 apples.</span></div>
+      </div>
+      <div class="eglist">
+        <div class="eg"><span class="zh">你买<span class="l1">了</span>什么？</span><span class="py">Nǐ mǎi le shénme?</span><span class="tr">What did you buy?</span></div>
+        <div class="eg"><span class="zh">我买<span class="l1">了</span>6个苹果。</span><span class="py">Wǒ mǎi le liù ge píngguǒ.</span><span class="tr">I bought 6 apples.</span></div>
+      </div>
+    </div>
+
+    <div class="expert">
+      <div class="h">Expert tip · 专家提示 ①</div>
+      <p><b>A bare object sounds unfinished.</b> 我买了苹果…… makes a Chinese listener wait for more ("…and then?"). Complete the sentence in one of three ways:</p>
+      <p>• add a number or description: 我买了<b>6个</b>苹果。 · 她看了<b>昨天的</b>比赛。<br>• add a follow-up clause: 我买了苹果<b>就回家了</b>。<br>• use sentence-final 了 instead (step 3): 我买苹果<span class="l2">了</span>。</p>
+    </div>
+    <div class="expert">
+      <div class="h">Expert tip · 专家提示 ②</div>
+      <p><b>With a complement, 了 goes after the complement</b>, never in between: 我写好<span class="l1">了</span>。 ✓ · 我写了好。 ✗ · 她看完<span class="l1">了</span>那本书。 ✓</p>
+    </div>
+
+
+    <div class="quick">
+      <div class="qh">⚡ Quick check</div>
+      <div id="q2"></div>
+    </div>
+    <div class="stepdone"><button class="btn" data-done="s2">✓ 完成第二步 Step done</button></div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" id="s3">
+    <div class="step-head"><span class="num">3</span><h2>句尾 <span class="le">了</span>：变化 Change</h2><span class="mins">10 min</span></div>
+    <p class="lead">了 at the end of a sentence tells us that something is <b>new</b> or <b>different</b> from before. We call it 了<sub>2</sub>. It can follow verbs, adjectives, and whole sentences.</p>
+    <div class="formula">…… + <span class="l2">了</span>。（句子最后 · at the end of the sentence）</div>
+
+    <h3 class="sub">① 新情况 A new situation</h3>
+    <div class="eglist">
+      <div class="eg"><span class="zh">下雨<span class="l2">了</span>。</span><span class="py">Xià yǔ le.</span><span class="tr">It's started raining. (It wasn't before.)</span></div>
+      <div class="eg"><span class="zh">天气冷<span class="l2">了</span>。</span><span class="py">Tiānqì lěng le.</span><span class="tr">It's got cold.</span></div>
+      <div class="eg"><span class="zh">小王不在家，他去图书馆<span class="l2">了</span>。</span><span class="py">Xiǎo Wáng bú zài jiā, tā qù túshūguǎn le.</span><span class="tr">Xiao Wang isn't home. He's gone to the library.</span></div>
+      <div class="eg"><span class="zh">对不起，我来晚<span class="l2">了</span>。</span><span class="py">Duìbuqǐ, wǒ lái wǎn le.</span><span class="tr">Sorry, I'm late.</span></div>
+    </div>
+
+    <h3 class="sub">② 会 / 能 + V + 了: “now I can”</h3>
+    <div class="eglist">
+      <div class="eg"><span class="zh">我会开车<span class="l2">了</span>。</span><span class="py">Wǒ huì kāichē le.</span><span class="tr">I can drive now. (I couldn't before.)</span></div>
+      <div class="eg"><span class="zh">我现在能看懂中文菜单<span class="l2">了</span>！</span><span class="py">Wǒ xiànzài néng kàn dǒng Zhōngwén càidān le!</span><span class="tr">Now I can read Chinese menus!</span></div>
+    </div>
+
+    <h3 class="sub">③ 不 + V + 了: “not any more”, a change of plan</h3>
+    <div class="two">
+      <div class="eg"><span class="zh">今天晚上，他不来晚会。</span><span class="tr">He isn't coming to the party tonight. (just a fact)</span></div>
+      <div class="eg"><span class="zh">今天晚上，他不来晚会<span class="l2">了</span>。</span><span class="tr">He's not coming after all. (He was going to come; now he has changed his plan.)</span></div>
+    </div>
+
+    <h3 class="sub">④ 语气 Emphasis: set patterns</h3>
+    <div class="eglist">
+      <div class="eg"><span class="zh">这个电脑太贵<span class="l2">了</span>！</span><span class="py">Zhège diànnǎo tài guì le!</span><span class="tr">This computer is way too expensive! (太 + adj. + 了)</span></div>
+      <div class="eg"><span class="zh">我早就想学中国功夫<span class="l2">了</span>！</span><span class="py">Wǒ zǎo jiù xiǎng xué Zhōngguó gōngfu le!</span><span class="tr">I've wanted to learn kung fu for ages!</span></div>
+      <div class="eg"><span class="zh">明天要考试<span class="l2">了</span>。</span><span class="py">Míngtiān yào kǎoshì le.</span><span class="tr">The exam is tomorrow! (要……了 = about to happen)</span></div>
+    </div>
+
+    <div class="expert">
+      <div class="h">Expert tip · 专家提示</div>
+      <p>A useful test: if you can add “now” or “already” in English (<i>It's <b>now</b> raining; I can drive <b>now</b>; he's <b>already</b> gone</i>), sentence-final 了 is probably right.</p>
+    </div>
+
+    <div class="quick">
+      <div class="qh">⚡ Quick check</div>
+      <div id="q3"></div>
+    </div>
+    <div class="stepdone"><button class="btn" data-done="s3">✓ 完成第三步 Step done</button></div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step" id="s4">
+    <div class="step-head"><span class="num">4</span><h2>否定和问句 Negatives &amp; questions</h2><span class="mins">6 min</span></div>
+    <p class="lead">This is where most mistakes happen. One rule: <b>没 and 了 never go together</b> for the same action.</p>
+    <div class="formula">没（有）+ 动词　→　不用「了」</div>
+    <div class="okx"><div class="ok">我看<span class="l1">了</span>电影。</div><div class="ok">我没（有）看电影。</div></div>
+    <div class="okx"><div class="ok">我买<span class="l1">了</span>三本书。</div><div class="ok">我没（有）买书。</div></div>
+    <div class="okx"><div class="x">我没看了电影。</div><div class="x">我不看了电影。</div></div>
+
+    <h3 class="sub">问句 Questions and short answers</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Question</th><th>Yes</th><th>Not yet</th></tr></thead>
+        <tbody>
+          <tr><td class="zh">你吃饭<span class="l2">了</span>吗？</td><td class="zh">吃<span class="l1">了</span>。</td><td class="zh">还没（吃）。</td></tr>
+          <tr><td class="zh">你做作业<span class="l2">了</span>没有？</td><td class="zh">做<span class="l1">了</span>。</td><td class="zh">还没做呢。</td></tr>
+          <tr><td class="zh">他来<span class="l2">了</span>没有？</td><td class="zh">来<span class="l1">了</span>。</td><td class="zh">还没来。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="expert">
+      <div class="h">Expert tip · 专家提示</div>
+      <p>还没……呢 (“not yet”) is extremely common in speech: <b>我还没吃呢。</b> It suggests you will do it soon.</p>
+    </div>
+    <div class="quick">
+      <div class="qh">⚡ Quick check</div>
+      <div id="q4"></div>
+    </div>
+    <div class="stepdone"><button class="btn" data-done="s4">✓ 完成第四步 Step done</button></div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step" id="s5">
+    <div class="step-head"><span class="num">5</span><h2>比一比 Compare: <span class="l1">了₁</span> vs <span class="l2">了₂</span></h2><span class="mins">10 min</span></div>
+    <p class="lead">Same words, different message.</p>
+    <div class="two">
+      <div class="eglist">
+        <div class="eg"><span class="zh">她去哪儿<span class="l2">了</span>？</span><span class="tr">Where is she? (Where has she gone?)</span></div>
+        <div class="eg"><span class="zh">她去上海<span class="l2">了</span>。</span><span class="tr">She's gone to Shanghai. (She's there now.)</span></div>
+      </div>
+      <div class="eglist">
+        <div class="eg"><span class="zh">你去<span class="l1">了</span>哪儿？</span><span class="tr">Where did you go? (Where have you been?)</span></div>
+        <div class="eg"><span class="zh">我去<span class="l1">了</span>上海。</span><span class="tr">I went to Shanghai. (I'm back now.)</span></div>
+      </div>
+    </div>
+
+    <h3 class="sub">他去书店买词典：了在哪儿？ Click each sentence</h3>
+    <div class="three" id="three"></div>
+
+    <h3 class="sub">一个“了”还是两个“了”？ One 了 or two?</h3>
+    <div class="tl">
+      <div class="tlrow">
+        <div class="lab">我学<span class="l1">了</span>两年中文。</div>
+        <div class="bar"><span class="seg" style="left:8%;width:40%;background:var(--done)"></span><span class="now" style="left:78%"></span></div>
+        <div class="cap">I studied Chinese for two years. The two years are finished; maybe I stopped.</div>
+      </div>
+      <div class="tlrow">
+        <div class="lab">我学<span class="l1">了</span>两年中文<span class="l2">了</span>。</div>
+        <div class="bar"><span class="seg" style="left:38%;width:40%;background:linear-gradient(90deg,var(--done),var(--chg))"></span><span class="now" style="left:78%"></span></div>
+        <div class="cap">I've been studying Chinese for two years (so far), and I'm still studying. The second 了 brings it up to now.</div>
+      </div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th></th><th>V + <span class="l1">了</span></th><th>句尾 <span class="l2">了</span></th></tr></thead>
+        <tbody>
+          <tr><td>Main meaning</td><td>Action completed</td><td>Change, new situation</td></tr>
+          <tr><td>Number before the object</td><td class="zh">✓ 她买<span class="l1">了</span>6个苹果。</td><td class="zh">✗ 她买6个苹果了。</td></tr>
+          <tr><td>After adjectives</td><td>—</td><td class="zh">✓ 天冷<span class="l2">了</span>。</td></tr>
+          <tr><td>About the future</td><td class="zh">✓ 下<span class="l1">了</span>课我去找你。</td><td class="zh">✓ 明天要考试<span class="l2">了</span>。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="quick">
+      <div class="qh">⚡ Quick check</div>
+      <div id="q5"></div>
+    </div>
+    <div class="stepdone"><button class="btn" data-done="s5">✓ 完成第五步 Step done</button></div>
+  </section>
+
+  <!-- STEP 6 -->
+  <section class="step" id="s6">
+    <div class="step-head"><span class="num">6</span><h2>什么时候<b>不用</b>「<span class="le">了</span>」？</h2><span class="mins">6 min</span></div>
+    <p class="lead">了 ≠ past tense. Many sentences about the past have no 了, and some sentences about the future do.</p>
+
+    <div class="careful"><div class="h">① 过去的习惯 Habits: 每天、常常、经常、以前……</div>
+      <div class="okx"><div class="ok">以前我每天跑步。</div><div class="x">以前我每天跑步了。</div></div>
+      <p>我以前天天坐公共汽车，现在我每天开车去大学。 Both halves describe habits, so no 了.</p>
+    </div>
+    <div class="careful"><div class="h">② 过去的状态 States: 是、在、喜欢、觉得、知道 (describing how things were)</div>
+      <div class="okx"><div class="ok">昨天天气很好。</div><div class="x">昨天天气很好了。</div></div>
+      <div class="okx"><div class="ok">小时候我很喜欢吃糖。</div><div class="x">小时候我很喜欢了吃糖。</div></div>
+      <p><b>But</b> these verbs can take sentence-final 了 when there's a change: 我知道<span class="l2">了</span>！ (Now I know / Got it!) · 我喜欢上他<span class="l2">了</span>。 (I've fallen for him.)</p>
+    </div>
+    <div class="careful"><div class="h">③ 几个动作 Several actions in a row: 了 usually goes on the last one</div>
+      <p style="font-family:var(--font-serif);font-size:17px">她站起来，打开门，跑<span class="l1">了</span>出去。</p>
+      <p>She stood up, opened the door and ran out.</p>
+    </div>
+    <div class="expert"><div class="h">了 can be used about the future</div>
+      <p style="font-family:var(--font-serif);font-size:17px">明天下<span class="l1">了</span>课我就去找你。　你吃<span class="l1">了</span>饭以后快去看书，明天要考试<span class="l2">了</span>。</p>
+      <p>“Once class is over tomorrow, I'll come to find you.” 了 marks the first action as completed before the second one, even in the future.</p>
+    </div>
+    <div class="expert"><div class="h">Describing a scene: your choice</div>
+      <p style="font-family:var(--font-serif);font-size:17px">在昨天的晚会上，小王唱歌，我跳舞，大卫表演中国功夫。</p>
+      <p>When you paint a picture of what was going on, rather than reporting completed results, you can leave 了 out.</p>
+    </div>
+    <div class="quick">
+      <div class="qh">⚡ Quick check</div>
+      <div id="q6"></div>
+    </div>
+    <div class="stepdone"><button class="btn" data-done="s6">✓ 完成第六步 Step done</button></div>
+  </section>
+
+  <!-- STEP 7 PRACTICE -->
+  <section class="step" id="s7">
+    <div class="step-head"><span class="num">7</span><h2>练习 Practice</h2><span class="mins">20 min</span></div>
+    <p class="lead">Now put it all together. You get feedback straight away, so read the explanations, especially when you get one wrong.</p>
+
+    <div class="ex"><div class="ex-head"><span class="letter">A</span><h3>用不用「了」？ Do we need 了?</h3><span class="score" id="scA">0 / 10</span></div>
+      <p class="hint">Choose <b>了</b> (we need it) or <b>✗</b> (no 了).</p><div id="exA"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">B</span><h3>「了」放在哪里？ Where does 了 go?</h3><span class="score" id="scB">0 / 8</span></div>
+      <p class="hint">Click the right position.</p><div id="exB"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">C</span><h3>完成还是变化？ Completion or change?</h3><span class="score" id="scC">0 / 7</span></div>
+      <p class="hint">What does 了 show in each sentence?</p><div id="exC"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">D</span><h3>变否定句 Make it negative</h3><span class="score" id="scD">0 / 5</span></div>
+      <p class="hint">Use 没, and remember what happens to 了.</p><div id="exD"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">E</span><h3>问和答 Questions &amp; answers</h3><span class="score" id="scE">0 / 4</span></div>
+      <p class="hint">Choose the answer that matches the note in brackets.</p><div id="exE"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">F</span><h3>改错 Correct the mistake</h3></div>
+      <p class="hint">Each sentence uses 了 wrongly. Type the correct sentence, then check.</p><div id="exF"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">G</span><h3>翻译 Translate</h3></div>
+      <p class="hint">Say it, write it, then check. Some have two good answers.</p><div id="exG"></div></div>
+
+    <div class="ex"><div class="ex-head"><span class="letter">H</span><h3>写一写：上个周末和现在</h3></div>
+      <p class="hint">Write 5–6 sentences: what did you do last weekend (了₁), and what has changed in your life recently (了₂)?</p>
+      <div class="bank"><div class="bt">词语 Word bank</div><div class="chips">
+        <span class="chip">去</span><span class="chip">看</span><span class="chip">买</span><span class="chip">吃</span><span class="chip">喝</span><span class="chip">见朋友</span><span class="chip">学习</span><span class="chip">打篮球</span><span class="chip">会……了</span><span class="chip">不……了</span><span class="chip">……冷了 / 忙了</span><span class="chip">还没……呢</span></div></div>
+      <p class="hint" style="font-family:var(--font-serif);font-size:15.5px">例：上个周末我去了商店，买了两件衣服。我还没做作业呢！现在天气冷了，我不去游泳了。</p>
+      <textarea id="writing" placeholder="在这儿写 · Write here…"></textarea>
+      <ul class="checklist">
+        <li><label><input type="checkbox"> At least two V + 了 sentences with a number or description (买了两件……)</label></li>
+        <li><label><input type="checkbox"> At least one sentence-final 了 for a change (冷了 / 会……了 / 不……了)</label></li>
+        <li><label><input type="checkbox"> One negative with 没 or 还没……呢, and no 了 in it</label></li>
+        <li><label><input type="checkbox"> No 了 with habits (每天 / 常常) or states (很好 / 喜欢)</label></li>
+      </ul>
+    </div>
+    <div class="stepdone"><button class="btn" data-done="s7">✓ 完成第七步 Step done</button></div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="step" id="sum">
+    <div class="step-head"><span class="num">★</span><h2>总结 Summary</h2></div>
+    <div class="summary">
+      <div class="sumcard d"><b>① 完成 V + 了</b><span>我买<span class="l1">了</span>6个苹果。</span></div>
+      <div class="sumcard c"><b>② 变化 ……了。</b><span>下雨<span class="l2">了</span>。我会开车<span class="l2">了</span>。</span></div>
+      <div class="sumcard n"><b>③ 否定 没 + V</b><span>我没看电影。（没有了！）</span></div>
+      <div class="sumcard q"><b>④ 问句 ……了吗？</b><span>你吃饭<span class="l2">了</span>吗？—还没呢。</span></div>
+    </div>
+    <h3 class="sub">我能…… How confident are you?</h3>
+    <ul class="cando" id="cando"></ul>
+  </section>
+
+  <details class="teacher">
+    <summary>👩‍🏫 参考答案和教学提示 <span class="key">ANSWER KEY</span><span class="arw">▾</span></summary>
+    <div class="tbody" id="key"></div>
+  </details>
+</div>
+
+<footer>「了」的用法 · 在线语法课 — Stage 2 · HSK 2–3</footer>
+
+<script>
+  var $ = function (id) { return document.getElementById(id); };
+  function shuffle(a) { var b = a.slice(); for (var i = b.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = b[i]; b[i] = b[j]; b[j] = t; } return b; }
+  function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+  function esc(s) { return String(s); }
+
+  $('pyT').addEventListener('change', function (e) { document.body.classList.toggle('hide-py', !e.target.checked); });
+
+  /* ---------- progress ---------- */
+  var STEPS = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
+  var done = store('le-lesson-done') || [];
+  function drawProgress() {
+    $('pbar').style.width = (done.length / STEPS.length * 100) + '%';
+    $('ptxt').textContent = done.length + ' / ' + STEPS.length;
+    document.querySelectorAll('#map a').forEach(function (a) { a.classList.toggle('done', done.indexOf(a.dataset.s) > -1); });
+    document.querySelectorAll('[data-done]').forEach(function (b) {
+      var d = done.indexOf(b.dataset.done) > -1;
+      b.classList.toggle('is-done', d);
+      b.textContent = d ? '✓ 已完成 Done' : b.textContent.replace('✓ 已完成 Done', '✓ 完成 Step done');
+    });
+  }
+  document.querySelectorAll('[data-done]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var s = b.dataset.done, i = done.indexOf(s);
+      if (i > -1) done.splice(i, 1); else done.push(s);
+      store('le-lesson-done', done); drawProgress();
+      if (i === -1) { var n = STEPS.indexOf(s) + 1; var next = document.getElementById(STEPS[n] || 'sum'); if (next) next.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  drawProgress();
+
+  /* ---------- step 1 notice ---------- */
+  [
+    ['我买书。', '我买<span class="l1">了</span>书。', 'Without 了: a plan or a general statement (I buy / am going to buy books). With V + 了: the buying is done.'],
+    ['他不来。', '他不来<span class="l2">了</span>。', '他不来 = he isn’t coming. 他不来了 = he isn’t coming any more: his plan has changed.'],
+    ['天气很冷。', '天气冷<span class="l2">了</span>。', '很冷 describes the weather. 冷了 tells you it has changed: it wasn’t cold before.']
+  ].forEach(function (p, i) {
+    var d = document.createElement('div'); d.className = 'pair';
+    d.innerHTML = '<div class="s">' + (i + 1) + '.　' + p[0] + '　　vs　　' + p[1] + '</div><button>看解释 · Reveal</button><div class="r">' + p[2] + '</div>';
+    d.querySelector('button').addEventListener('click', function () { d.classList.toggle('open'); });
+    $('notice').appendChild(d);
+  });
+
+  /* ---------- three sentences ---------- */
+  [
+    ['1 他去<span class="l1">了</span>书店买词典。', 'He went to the bookshop to buy a dictionary. 去 is completed, but we don’t know whether he actually bought one.'],
+    ['2 他去书店买<span class="l1">了</span>词典。', 'He went to the bookshop and bought a dictionary. The buying is completed: he has a new dictionary now.'],
+    ['3 他去书店买词典<span class="l2">了</span>。', 'He’s gone (out) to the bookshop to buy a dictionary. A new situation: he isn’t here. We don’t know if he has got there, bought it, or come back.']
+  ].forEach(function (t) {
+    var b = document.createElement('button');
+    b.innerHTML = '<span class="s">' + t[0] + '</span><div class="m">' + t[1] + '</div>';
+    b.addEventListener('click', function () { b.classList.toggle('open'); });
+    $('three').appendChild(b);
+  });
+
+  /* ---------- exercise engine ---------- */
+  function scoreUpd(id, st, total) { if (!id) return; $(id).textContent = st.ok + ' / ' + total + (st.done === total ? (st.ok === total ? ' · 太棒了！' : ' · 完成') : ''); }
+  // choice items: {q, opts, ans, why, col}
+  function choice(boxId, scoreId, items, opts) {
+    opts = opts || {};
+    var box = $(boxId), st = { ok: 0, done: 0 }; box.innerHTML = ''; scoreUpd(scoreId, st, items.length);
+    items.forEach(function (it, i) {
+      var d = document.createElement('div'); d.className = 'item';
+      var qhtml = it.q.replace('＿', '<span class="gap">　</span>');
+      d.innerHTML = '<div class="q"><span class="n">' + (i + 1) + '</span>' + qhtml + '</div><div class="picks' + (it.col ? ' col' : '') + '"></div><div class="fb"></div>';
+      var pk = d.querySelector('.picks'), fb = d.querySelector('.fb'), gap = d.querySelector('.gap');
+      var list = opts.noShuffle ? it.opts : shuffle(it.opts);
+      list.forEach(function (o) {
+        var b = document.createElement('button'); b.className = 'pick'; b.textContent = o;
+        b.addEventListener('click', function () {
+          var right = o === it.ans;
+          pk.querySelectorAll('.pick').forEach(function (x) { x.disabled = true; if (x.textContent === it.ans) x.classList.add('correct'); });
+          if (!right) b.classList.add('wrong');
+          if (gap) { gap.textContent = it.ans === '✗' ? '—' : it.ans; gap.classList.add(right ? 'ok' : 'no'); }
+          fb.className = 'fb show ' + (right ? 'good' : 'bad');
+          fb.innerHTML = (right ? '✓ 对了！' : '✗ 不对。答案：' + it.ans) + '<span class="why">' + it.why + '</span>';
+          st.done++; if (right) st.ok++; scoreUpd(scoreId, st, items.length);
+        });
+        pk.appendChild(b);
+      });
+      box.appendChild(d);
+    });
+  }
+  // slot items: {q with {A}{B}{C}, ans, why}
+  function slots(boxId, scoreId, items) {
+    var box = $(boxId), st = { ok: 0, done: 0 }; box.innerHTML = ''; scoreUpd(scoreId, st, items.length);
+    items.forEach(function (it, i) {
+      var d = document.createElement('div'); d.className = 'item';
+      d.innerHTML = '<div class="q"><span class="n">' + (i + 1) + '</span>' + it.q.replace(/\{([A-D])\}/g, '<button class="slot" data-k="$1">$1</button>') + '</div><div class="fb"></div>';
+      var fb = d.querySelector('.fb'), ss = d.querySelectorAll('.slot');
+      ss.forEach(function (s) {
+        s.addEventListener('click', function () {
+          var right = s.dataset.k === it.ans;
+          ss.forEach(function (x) { x.disabled = true; if (x.dataset.k === it.ans) { x.classList.add('correct'); x.textContent = '了'; } });
+          if (!right) s.classList.add('wrong');
+          fb.className = 'fb show ' + (right ? 'good' : 'bad');
+          fb.innerHTML = (right ? '✓ 对了！' : '✗ 不对，是 ' + it.ans + '。') + '<span class="why">' + it.why + '</span>';
+          st.done++; if (right) st.ok++; scoreUpd(scoreId, st, items.length);
+        });
+      });
+      box.appendChild(d);
+    });
+  }
+  // reveal items
+  function reveal(boxId, items) {
+    var box = $(boxId); box.innerHTML = '';
+    items.forEach(function (it, i) {
+      var d = document.createElement('div'); d.className = 'item';
+      d.innerHTML = '<div class="q"><span class="n">' + (i + 1) + '</span><span class="' + (it.en ? 'en' : '') + '">' + it.q + '</span></div><div class="write"><input type="text" placeholder="写中文 · write in Chinese" aria-label="Answer ' + (i + 1) + '"><button class="btn ghost">看答案</button></div><div class="model">' + it.a + (it.note ? '<small>' + it.note + '</small>' : '') + '</div>';
+      d.querySelector('button').addEventListener('click', function () { d.classList.toggle('open'); });
+      box.appendChild(d);
+    });
+  }
+
+  /* ---------- quick checks ---------- */
+  choice('q2', null, [
+    { q: '我昨天买＿三本书。', opts: ['了', '✗'], ans: '了', why: 'Completed action + number: 买了三本书.' },
+    { q: 'Which is correct?', opts: ['我写好了。', '我写了好。'], ans: '我写好了。', why: '了 goes after the complement 好.', col: true },
+    { q: 'Which sounds complete on its own?', opts: ['我买了一件衣服。', '我买了衣服。'], ans: '我买了一件衣服。', why: 'A bare object after V了 sounds unfinished; a number completes it.', col: true }
+  ]);
+  choice('q3', null, [
+    { q: '以前我不会游泳，现在会游泳＿。', opts: ['了', '✗'], ans: '了', why: '会……了 = can now (a change).' },
+    { q: '这个电脑太贵＿！', opts: ['了', '✗'], ans: '了', why: '太 + adj. + 了 (emphasis).' },
+    { q: '他不来晚会了 means…', opts: ['He’s not coming any more (changed his mind).', 'He didn’t come to the party.'], ans: 'He’s not coming any more (changed his mind).', why: '不……了 = not any more.', col: true }
+  ]);
+  choice('q4', null, [
+    { q: '我看了电影。→ negative', opts: ['我没看电影。', '我没看了电影。', '我不看了电影。'], ans: '我没看电影。', why: '没 + V, and 了 goes.', col: true },
+    { q: '你吃饭了吗？ (Not yet.)', opts: ['还没吃呢。', '没吃了。', '不吃了。'], ans: '还没吃呢。', why: '还没……呢 = not yet.', col: true }
+  ]);
+  choice('q5', null, [
+    { q: 'Your friend is in Shanghai right now. Ask your classmate “Where is she?”', opts: ['她去哪儿了？', '她去了哪儿？'], ans: '她去哪儿了？', why: 'Sentence-final 了: she has gone somewhere and is there now.', col: true },
+    { q: 'I’ve been learning Chinese for two years (and still am).', opts: ['我学了两年中文了。', '我学了两年中文。'], ans: '我学了两年中文了。', why: 'Double 了 = up to now, still continuing.', col: true },
+    { q: 'He went to the bookshop and bought a dictionary (he has it now).', opts: ['他去书店买了词典。', '他去了书店买词典。', '他去书店买词典了。'], ans: '他去书店买了词典。', why: '了 after 买: the buying is completed.', col: true }
+  ]);
+  choice('q6', null, [
+    { q: '以前我每天都喝＿咖啡。', opts: ['了', '✗'], ans: '✗', why: '每天 = habit: no 了.' },
+    { q: '昨天天气很好＿。', opts: ['了', '✗'], ans: '✗', why: 'Describing a past state: no 了.' },
+    { q: '明天下＿课我就去找你。', opts: ['了', '✗'], ans: '了', why: '了 marks the first action as completed, even in the future.' }
+  ]);
+
+  /* ---------- practice ---------- */
+  var A = [
+    { q: '昨天我看＿一个电影。', ans: '了', why: 'Completed action with a number: 看了一个电影.' },
+    { q: '我每天早上都喝＿咖啡。', ans: '✗', why: '每天 = a habit: no 了.' },
+    { q: '以前我不会游泳，现在我会游泳＿。', ans: '了', why: '会……了: a change, now I can.' },
+    { q: '天气冷＿，我们回家吧。', ans: '了', why: 'Adjective + 了: the weather has changed.' },
+    { q: '我很喜欢＿中国菜。', ans: '✗', why: '喜欢 describes a state: no 了.' },
+    { q: '他上个月去＿两次北京。', ans: '了', why: '去了两次: a completed action with a number.' },
+    { q: '昨天天气很好＿。', ans: '✗', why: 'A past state: no 了.' },
+    { q: '我没去＿图书馆。', ans: '✗', why: '没 + V: never 了.' },
+    { q: '明天下＿课，我们一起去吃饭吧。', ans: '了', why: '了 ≠ past: “once class is over” tomorrow.' },
+    { q: '小时候我常常去＿奶奶家。', ans: '✗', why: '常常 = a past habit: no 了.' }
+  ].map(function (x) { x.opts = ['了', '✗']; return x; });
+  var B = [
+    { q: '哥哥{A}今天在{B}商店买{C}一本中文书。', ans: 'C', why: '买了一本中文书: completed action + number.' },
+    { q: '他为什么不{A}在家？他去{B}哪儿{C}？', ans: 'C', why: '他去哪儿了？ Where has he gone? A new situation.' },
+    { q: '我昨天{A}买{B}三本书{C}。', ans: 'B', why: 'Number before the object, so V + 了: 买了三本书.' },
+    { q: '我写{A}好{B}，你看看{C}吧。', ans: 'B', why: '写好了: 了 after the complement.' },
+    { q: '我们{A}吃{B}饭以后{C}去看电影吧。', ans: 'B', why: '吃了饭以后: the first action is completed before the second (future).' },
+    { q: '我{A}没去{B}看电影，我哥哥和爸爸一起去{C}。', ans: 'C', why: 'No 了 with 没; the brother and dad did go: 一起去了.' },
+    { q: '以前我不会{A}说中文，现在我会说{B}中文{C}。', ans: 'C', why: '会说中文了: a change, sentence-final.' },
+    { q: '他今天喝{A}三杯{B}咖啡{C}。', ans: 'A', why: '喝了三杯咖啡: completed action + number.' }
+  ];
+  var C = [
+    { q: '我买了6个苹果。', ans: '完成 completion', why: 'V了 + number: the buying is completed.' },
+    { q: '下雨了。', ans: '变化 change', why: 'It wasn’t raining before: a new situation.' },
+    { q: '我会开车了。', ans: '变化 change', why: '会……了: I couldn’t before, now I can.' },
+    { q: '她看完了昨天的足球比赛。', ans: '完成 completion', why: 'V + complement + 了: she finished watching it.' },
+    { q: '他不来晚会了。', ans: '变化 change', why: 'A change of plan.' },
+    { q: '昨天我去了图书馆。', ans: '完成 completion', why: 'V + 了: the trip is completed.' },
+    { q: '小王去图书馆了。', ans: '变化 change', why: 'New situation: he’s not here, he’s gone to the library.' }
+  ].map(function (x) { x.opts = ['完成 completion', '变化 change']; return x; });
+  var D = [
+    { q: '我吃了早饭。→', opts: ['我没吃了早饭。', '我没吃早饭。', '我不吃早饭。'], ans: '我没吃早饭。', why: '没 + V, no 了. 我不吃早饭 = I don’t eat breakfast (habit).' },
+    { q: '他去了学校。→', opts: ['他没去学校。', '他没去了学校。', '他不去学校。'], ans: '他没去学校。', why: '没 + V, no 了.' },
+    { q: '我买了一个手机。→', opts: ['我没买了手机。', '我不买手机。', '我没买手机。'], ans: '我没买手机。', why: '没 + V. The number 一个 is usually dropped in the negative.' },
+    { q: '昨天下雨了。→', opts: ['昨天没下雨了。', '昨天没下雨。', '昨天不下雨。'], ans: '昨天没下雨。', why: '没 + V, no 了.' },
+    { q: '她学了游泳。→', opts: ['她没学游泳。', '她不学了游泳。', '她没有学了游泳。'], ans: '她没学游泳。', why: '没（有）+ V, no 了.' }
+  ].map(function (x) { x.col = true; return x; });
+  var E = [
+    { q: '你吃饭了吗？<small style="color:var(--ink-soft);font-family:var(--font-latin)">(not yet)</small>', opts: ['吃了。', '还没呢。', '不吃。'], ans: '还没呢。', why: '还没（……呢） = not yet.' },
+    { q: '你买手机了吗？<small style="color:var(--ink-soft);font-family:var(--font-latin)">(already did)</small>', opts: ['没买手机。', '买了。', '还没买。'], ans: '买了。', why: 'Short “yes”: repeat the verb + 了.' },
+    { q: '你写完作业了没有？<small style="color:var(--ink-soft);font-family:var(--font-latin)">(not finished)</small>', opts: ['写完了。', '还没写完。', '不写作业。'], ans: '还没写完。', why: '还没 + V + complement.' },
+    { q: '他来了没有？<small style="color:var(--ink-soft);font-family:var(--font-latin)">(no)</small>', opts: ['他没来了。', '还没来。', '他不来。'], ans: '还没来。', why: 'No 了 after 没. (他不来 = he isn’t coming.)' }
+  ].map(function (x) { x.col = true; return x; });
+  var F = [
+    { q: '我没买了新衣服。', a: '我没买新衣服。', note: '没 + V: remove 了.' },
+    { q: '以前我每天跑了步。', a: '以前我每天跑步。', note: 'A past habit: no 了.' },
+    { q: '昨天天气很好了。', a: '昨天天气很好。', note: 'A past state: no 了.' },
+    { q: '我写了好作业。', a: '我写好了作业。/ 我写好作业了。', note: '了 goes after the complement.' },
+    { q: '我昨天买书了三本。', a: '我昨天买了三本书。', note: 'V + 了 + number + object.' },
+    { q: '他不喜欢了看书。', a: '他不喜欢看书。/ 他不喜欢看书了。', note: 'No 了 after 喜欢; put it at the end only if you mean “not any more”.' }
+  ];
+  var G = [
+    { q: 'I ate breakfast.', a: '我吃了早饭。/ 我吃早饭了。', note: '吃早饭了 sounds more natural on its own.', en: 1 },
+    { q: 'He studied Chinese for two years.', a: '他学了两年中文。', note: 'Add 了 at the end if he’s still studying: 他学了两年中文了。', en: 1 },
+    { q: 'We watched a movie.', a: '我们看了一个电影。', note: 'Add 一个 to make V了 + object complete.', en: 1 },
+    { q: 'She bought two books.', a: '她买了两本书。', note: 'Number before the object → V了.', en: 1 },
+    { q: 'It’s raining!', a: '下雨了！', note: 'A new situation.', en: 1 },
+    { q: 'I wrote a letter.', a: '我写了一封信。', note: 'Measure word for letters: 封.', en: 1 },
+    { q: 'My friend made dumplings.', a: '我的朋友包了饺子。', note: '包饺子 = make dumplings.', en: 1 },
+    { q: 'I can speak Chinese now.', a: '我会说中文了。', note: '会……了 = can now.', en: 1 },
+    { q: 'He didn’t do his homework.', a: '他没做作业。', note: '没 + V, no 了.', en: 1 },
+    { q: 'I’m not going to the cinema any more.', a: '我不去看电影了。', note: '不……了 = not any more.', en: 1 }
+  ];
+  choice('exA', 'scA', A, { noShuffle: true });
+  slots('exB', 'scB', B);
+  choice('exC', 'scC', C, { noShuffle: true });
+  choice('exD', 'scD', D);
+  choice('exE', 'scE', E);
+  reveal('exF', F);
+  reveal('exG', G);
+
+  /* writing draft */
+  try { var w = localStorage.getItem('le-lesson-writing'); if (w) $('writing').value = w; } catch (e) {}
+  $('writing').addEventListener('input', function () { try { localStorage.setItem('le-lesson-writing', $('writing').value); } catch (e) {} });
+
+  /* can-do */
+  ['I can say an action is completed with V + 了.', 'I can talk about changes with sentence-final 了.', 'I can make negatives with 没 (without 了).', 'I can ask and answer ……了吗？ / 还没呢.', 'I know when not to use 了 (habits, states).'].forEach(function (t) {
+    var li = document.createElement('li');
+    li.innerHTML = '<span>' + t + '</span><span class="stars"><button data-n="1" aria-label="1 star">★</button><button data-n="2" aria-label="2 stars">★</button><button data-n="3" aria-label="3 stars">★</button></span>';
+    var bs = li.querySelectorAll('.stars button');
+    bs.forEach(function (b) { b.addEventListener('click', function () { bs.forEach(function (x) { x.classList.toggle('on', +x.dataset.n <= +b.dataset.n); }); }); });
+    $('cando').appendChild(li);
+  });
+
+  /* answer key */
+  function list(arr, f) { return arr.map(function (x, i) { return (i + 1) + ' <b>' + f(x) + '</b>'; }).join(' · '); }
+  $('key').innerHTML =
+    '<h4>A · 用不用了</h4><p>' + list(A, function (x) { return x.ans; }) + '</p>' +
+    '<h4>B · 了的位置</h4><p>' + list(B, function (x) { return x.ans; }) + '</p>' +
+    '<h4>C · 完成还是变化</h4><p>' + list(C, function (x) { return x.ans.split(' ')[0]; }) + '</p>' +
+    '<h4>D · 否定</h4><p>' + list(D, function (x) { return x.ans; }) + '</p>' +
+    '<h4>E · 问答</h4><p>' + list(E, function (x) { return x.ans; }) + '</p>' +
+    '<h4>F · 改错</h4><p>' + list(F, function (x) { return x.a; }) + '</p>' +
+    '<h4>G · 翻译</h4><p>' + list(G, function (x) { return x.a; }) + '</p>' +
+    '<h4>H · 写一写</h4><p>Open answers. Check with the four-point checklist under the task.</p>' +
+    '<h4>📋 教学提示 Teaching notes</h4><ul>' +
+    '<li>Start from the key idea: 了 marks completion or change, not past time. Past habits and states don’t take 了.</li>' +
+    '<li>The most common learner errors are 没……了 in negatives, and 了 after 每天 / 常常. Exercises A, D and F target these.</li>' +
+    '<li>Bare-object V了 (我买了苹果。) is not wrong, but it sounds unfinished. Push students to add a number, a description or a follow-up clause.</li>' +
+    '<li>The three 书店买词典 sentences (step 5) work well as a whole-class discussion before the practice.</li>' +
+    '<li>Speaking extension: pairs ask “你周末做什么了？” and must answer with one V了 sentence and one 还没……呢.</li></ul>';
+</script>
+</body>
+</html>
